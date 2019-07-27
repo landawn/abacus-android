@@ -75,8 +75,8 @@ import android.widget.Toast;
  * @see <a href="https://github.com/jingle1267/android-utils">android-utils</a>
  * @see <a href="https://github.com/wyouflf/xUtils3">xUtils3</a>
  */
-public class Fu {
-    static final Logger logger = LoggerFactory.getLogger(Fu.class);
+public class CommonUtils {
+    static final Logger logger = LoggerFactory.getLogger(CommonUtils.class);
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
 
     protected static volatile Context context;
@@ -96,16 +96,16 @@ public class Fu {
         }
     };
 
-    private Fu() {
+    private CommonUtils() {
         // singleton.
     }
 
     public static synchronized void init(Context context) {
-        if (Fu.context != null) {
+        if (CommonUtils.context != null) {
             return;
         }
 
-        Fu.context = context;
+        CommonUtils.context = context;
 
         final ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         boolean isLargeHeap = (context.getApplicationInfo().flags & ApplicationInfo.FLAG_LARGE_HEAP) != 0;
@@ -979,7 +979,7 @@ public class Fu {
         }
     }
 
-    public static final class Utils extends Fu {
+    public static final class Utils extends CommonUtils {
 
         private Utils() {
             // singleton.

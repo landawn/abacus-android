@@ -10,7 +10,7 @@ A general Java programming library for Android
 [EventBus](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/EventBus_view.html), 
 [Observer](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/Observer_view.html), 
 [ObserverX](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/ObserverX_view.html) and 
-[Fu](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/Fu_view.html).
+[CommonUtils](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/CommonUtils_view.html).
 
 # Also See:
 [abacus-util](https://github.com/landawn/abacus-util).

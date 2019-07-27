@@ -48,11 +48,11 @@ public abstract class ObserverX<T> {
         }
 
         public Disposable onScrollChange(final OnScrollChangeListener onNext) {
-            return onScrollChange(onNext, Fu.ON_ERROR_MISSING);
+            return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError) {
-            return onScrollChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onScrollChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -65,7 +65,7 @@ public abstract class ObserverX<T> {
                 public void onNext(Object param) {
                     final Tuple5<View, Integer, Integer, Integer, Integer> tmp = (Tuple5<View, Integer, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onScrollChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -96,12 +96,12 @@ public abstract class ObserverX<T> {
         }
 
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext) {
-            return onScrollChange(onNext, Fu.ON_ERROR_MISSING);
+            return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
-            return onScrollChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onScrollChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
@@ -115,7 +115,7 @@ public abstract class ObserverX<T> {
                 public void onNext(Object param) {
                     final Tuple5<View, Integer, Integer, Integer, Integer> tmp = (Tuple5<View, Integer, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {

@@ -335,11 +335,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onClick(final OnClickListener onNext) {
-            return onClick(onNext, Fu.ON_ERROR_MISSING);
+            return onClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onClick(final OnClickListener onNext, final Consumer<? super Exception> onError) {
-            return onClick(onNext, onError, Fu.EMPTY_ACTION);
+            return onClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onClick(final OnClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -352,7 +352,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final View tmp = (View) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onClick(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -383,11 +383,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onLongClick(final OnLongClickListener onNext) {
-            return onLongClick(onNext, Fu.ON_ERROR_MISSING);
+            return onLongClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onLongClick(final OnLongClickListener onNext, final Consumer<? super Exception> onError) {
-            return onLongClick(onNext, onError, Fu.EMPTY_ACTION);
+            return onLongClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onLongClick(final OnLongClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -400,7 +400,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final View tmp = (View) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onLongClick(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -432,11 +432,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onDrag(final OnDragListener onNext) {
-            return onDrag(onNext, Fu.ON_ERROR_MISSING);
+            return onDrag(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onDrag(final OnDragListener onNext, final Consumer<? super Exception> onError) {
-            return onDrag(onNext, onError, Fu.EMPTY_ACTION);
+            return onDrag(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onDrag(final OnDragListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -449,7 +449,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple2<View, DragEvent> tmp = (Tuple2<View, DragEvent>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onDrag(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -481,11 +481,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onTouch(final OnTouchListener onNext) {
-            return onTouch(onNext, Fu.ON_ERROR_MISSING);
+            return onTouch(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onTouch(final OnTouchListener onNext, final Consumer<? super Exception> onError) {
-            return onTouch(onNext, onError, Fu.EMPTY_ACTION);
+            return onTouch(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onTouch(final OnTouchListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -498,7 +498,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple2<View, MotionEvent> tmp = (Tuple2<View, MotionEvent>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onTouch(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -530,11 +530,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onFocusChange(final OnFocusChangeListener onNext) {
-            return onFocusChange(onNext, Fu.ON_ERROR_MISSING);
+            return onFocusChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onFocusChange(final OnFocusChangeListener onNext, final Consumer<? super Exception> onError) {
-            return onFocusChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onFocusChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onFocusChange(final OnFocusChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -547,7 +547,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple2<View, Boolean> tmp = (Tuple2<View, Boolean>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onFocusChange(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -578,11 +578,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onHover(final OnHoverListener onNext) {
-            return onHover(onNext, Fu.ON_ERROR_MISSING);
+            return onHover(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onHover(final OnHoverListener onNext, final Consumer<? super Exception> onError) {
-            return onHover(onNext, onError, Fu.EMPTY_ACTION);
+            return onHover(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onHover(final OnHoverListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -595,7 +595,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple2<View, MotionEvent> tmp = (Tuple2<View, MotionEvent>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onHover(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -627,11 +627,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onKey(final OnKeyListener onNext) {
-            return onKey(onNext, Fu.ON_ERROR_MISSING);
+            return onKey(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onKey(final OnKeyListener onNext, final Consumer<? super Exception> onError) {
-            return onKey(onNext, onError, Fu.EMPTY_ACTION);
+            return onKey(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onKey(final OnKeyListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -644,7 +644,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple3<View, Integer, KeyEvent> tmp = (Tuple3<View, Integer, KeyEvent>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onKey(tmp._1, tmp._2, tmp._3);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -676,11 +676,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext) {
-            return onViewAttachedToWindow(onNext, Fu.ON_ERROR_MISSING);
+            return onViewAttachedToWindow(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError) {
-            return onViewAttachedToWindow(onNext, onError, Fu.EMPTY_ACTION);
+            return onViewAttachedToWindow(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -693,7 +693,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final View tmp = (View) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -731,11 +731,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext) {
-            return onViewDetachedFromWindow(onNext, Fu.ON_ERROR_MISSING);
+            return onViewDetachedFromWindow(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError) {
-            return onViewDetachedFromWindow(onNext, onError, Fu.EMPTY_ACTION);
+            return onViewDetachedFromWindow(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -748,7 +748,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final View tmp = (View) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -786,11 +786,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext) {
-            return onAttachStateChange(onNext, Fu.ON_ERROR_MISSING);
+            return onAttachStateChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext, final Consumer<? super Exception> onError) {
-            return onAttachStateChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onAttachStateChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -803,7 +803,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple2<Integer, View> tmp = (Tuple2<Integer, View>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         if (tmp._1 == 0) {
                             onNext.onViewAttachedToWindow(tmp._2);
                         } else {
@@ -849,11 +849,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext) {
-            return onLayoutChange(onNext, Fu.ON_ERROR_MISSING);
+            return onLayoutChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext, final Consumer<? super Exception> onError) {
-            return onLayoutChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onLayoutChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -866,7 +866,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> tmp = (Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onLayoutChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5, tmp._6, tmp._7, tmp._8, tmp._9);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -899,12 +899,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext) {
-            return onLayoutChange(onNext, Fu.ON_ERROR_MISSING);
+            return onLayoutChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
-            return onLayoutChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onLayoutChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext,
@@ -918,7 +918,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer> tmp = (Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -958,11 +958,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext) {
-            return onChildViewAdded(onNext, Fu.ON_ERROR_MISSING);
+            return onChildViewAdded(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError) {
-            return onChildViewAdded(onNext, onError, Fu.EMPTY_ACTION);
+            return onChildViewAdded(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError,
@@ -977,7 +977,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple2<View, View> tmp = (Tuple2<View, View>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1013,11 +1013,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext) {
-            return onChildViewRemoved(onNext, Fu.ON_ERROR_MISSING);
+            return onChildViewRemoved(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError) {
-            return onChildViewRemoved(onNext, onError, Fu.EMPTY_ACTION);
+            return onChildViewRemoved(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError,
@@ -1032,7 +1032,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple2<View, View> tmp = (Tuple2<View, View>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp._1, tmp._2);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1068,11 +1068,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext) {
-            return onHierarchyChange(onNext, Fu.ON_ERROR_MISSING);
+            return onHierarchyChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext, final Consumer<? super Exception> onError) {
-            return onHierarchyChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onHierarchyChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1086,7 +1086,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple3<Integer, View, View> tmp = (Tuple3<Integer, View, View>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         if (tmp._1 == 0) {
                             onNext.onChildViewAdded(tmp._2, tmp._3);
                         } else {
@@ -1137,11 +1137,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onTextChanged(final Consumer<? super String> onNext) {
-            return onTextChanged(onNext, Fu.ON_ERROR_MISSING);
+            return onTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
-            return onTextChanged(onNext, onError, Fu.EMPTY_ACTION);
+            return onTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1155,7 +1155,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final String tmp = (String) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1198,12 +1198,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext) {
-            return onTextChangged(onNext, Fu.ON_ERROR_MISSING);
+            return onTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
-            return onTextChangged(onNext, onError, Fu.EMPTY_ACTION);
+            return onTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
@@ -1218,7 +1218,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple4<CharSequence, Integer, Integer, Integer> tmp = (Tuple4<CharSequence, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1261,11 +1261,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable beforeTextChanged(final Consumer<? super String> onNext) {
-            return beforeTextChanged(onNext, Fu.ON_ERROR_MISSING);
+            return beforeTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable beforeTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
-            return beforeTextChanged(onNext, onError, Fu.EMPTY_ACTION);
+            return beforeTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable beforeTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1279,7 +1279,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final String tmp = (String) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1322,12 +1322,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext) {
-            return beforeTextChangged(onNext, Fu.ON_ERROR_MISSING);
+            return beforeTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
-            return beforeTextChangged(onNext, onError, Fu.EMPTY_ACTION);
+            return beforeTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
@@ -1342,7 +1342,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple4<CharSequence, Integer, Integer, Integer> tmp = (Tuple4<CharSequence, Integer, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1385,11 +1385,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable afterTextChanged(final Consumer<? super String> onNext) {
-            return afterTextChanged(onNext, Fu.ON_ERROR_MISSING);
+            return afterTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable afterTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
-            return afterTextChanged(onNext, onError, Fu.EMPTY_ACTION);
+            return afterTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable afterTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1403,7 +1403,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final String tmp = (String) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1446,11 +1446,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext) {
-            return afterTextChangged(onNext, Fu.ON_ERROR_MISSING);
+            return afterTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext, final Consumer<? super Exception> onError) {
-            return afterTextChangged(onNext, onError, Fu.EMPTY_ACTION);
+            return afterTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1464,7 +1464,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Editable tmp = (Editable) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1507,11 +1507,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onTextChanged(final TextWatcher onNext) {
-            return onTextChanged(onNext, Fu.ON_ERROR_MISSING);
+            return onTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onTextChanged(final TextWatcher onNext, final Consumer<? super Exception> onError) {
-            return onTextChanged(onNext, onError, Fu.EMPTY_ACTION);
+            return onTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onTextChanged(final TextWatcher onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1522,7 +1522,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             dispatcher.append(new DispatcherBase<Object>(onError, onComplete) {
                 @Override
                 public void onNext(final Object param) {
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         if (param instanceof Tuple5) {
                             final Tuple5<Integer, CharSequence, Integer, Integer, Integer> tmp = (Tuple5<Integer, CharSequence, Integer, Integer, Integer>) param;
 
@@ -1596,11 +1596,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onQueryTextChange(final Consumer<? super String> onNext) {
-            return onQueryTextChange(onNext, Fu.ON_ERROR_MISSING);
+            return onQueryTextChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onQueryTextChange(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
-            return onQueryTextChange(onNext, onError, Fu.EMPTY_ACTION);
+            return onQueryTextChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onQueryTextChange(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1614,7 +1614,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final String tmp = (String) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1652,11 +1652,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext) {
-            return onQueryTextSubmit(onNext, Fu.ON_ERROR_MISSING);
+            return onQueryTextSubmit(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
-            return onQueryTextSubmit(onNext, onError, Fu.EMPTY_ACTION);
+            return onQueryTextSubmit(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1670,7 +1670,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final String tmp = (String) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1708,11 +1708,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onQueryText(final OnQueryTextListener onNext) {
-            return onQueryText(onNext, Fu.ON_ERROR_MISSING);
+            return onQueryText(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onQueryText(final OnQueryTextListener onNext, final Consumer<? super Exception> onError) {
-            return onQueryText(onNext, onError, Fu.EMPTY_ACTION);
+            return onQueryText(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onQueryText(final OnQueryTextListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1726,7 +1726,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     @SuppressWarnings("unchecked")
                     final Tuple2<Integer, String> tmp = (Tuple2<Integer, String>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         if (tmp._1 == 0) {
                             onNext.onQueryTextChange(tmp._2);
                         } else {
@@ -1780,11 +1780,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onItemClick(final OnItemClickListener onNext) {
-            return onItemClick(onNext, Fu.ON_ERROR_MISSING);
+            return onItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onItemClick(final OnItemClickListener onNext, final Consumer<? super Exception> onError) {
-            return onItemClick(onNext, onError, Fu.EMPTY_ACTION);
+            return onItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onItemClick(final OnItemClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1797,7 +1797,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple4<AdapterView<?>, View, Integer, Integer> tmp = (Tuple4<AdapterView<?>, View, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onItemClick(tmp._1, tmp._2, tmp._3, tmp._4);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1828,12 +1828,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext) {
-            return onItemClick(onNext, Fu.ON_ERROR_MISSING);
+            return onItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
-            return onItemClick(onNext, onError, Fu.EMPTY_ACTION);
+            return onItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext, final Consumer<? super Exception> onError,
@@ -1847,7 +1847,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final Tuple4<AdapterView<?>, View, Integer, Integer> tmp = (Tuple4<AdapterView<?>, View, Integer, Integer>) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
@@ -1886,11 +1886,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext) {
-            return onMenuItemClick(onNext, Fu.ON_ERROR_MISSING);
+            return onMenuItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext, final Consumer<? super Exception> onError) {
-            return onMenuItemClick(onNext, onError, Fu.EMPTY_ACTION);
+            return onMenuItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
@@ -1903,7 +1903,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public void onNext(Object param) {
                     final MenuItem tmp = (MenuItem) param;
 
-                    if (Fu.isUiThread()) {
+                    if (CommonUtils.isUiThread()) {
                         onNext.onMenuItemClick(tmp);
                     } else {
                         UIExecutor.execute(new Try.Runnable<RuntimeException>() {
