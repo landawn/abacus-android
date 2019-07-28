@@ -18,26 +18,53 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class ViewBase.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class ViewBase extends View {
 
+    /**
+     * Instantiates a new view base.
+     *
+     * @param context the context
+     */
     public ViewBase(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     */
     public ViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
+    /**
+     * Instantiates a new view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     * @param defStyleAttr the def style attr
+     * @param defStyleRes the def style res
+     */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

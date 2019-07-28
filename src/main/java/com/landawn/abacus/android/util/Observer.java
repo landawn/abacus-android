@@ -60,92 +60,211 @@ import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * 
- * @since 0.9
- * 
+ * The Class Observer.
+ *
  * @author Haiyang Li
- * 
+ * @param <T> the generic type
+ * @since 0.9
  */
 public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
+
+    /**
+     * Instantiates a new observer.
+     */
     Observer() {
         super();
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the view observer
+     */
     public static <T extends View, O extends ViewObserver<T, O>> ViewObserver<T, O> of(final T view) {
         return new ViewObserver<>(view);
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the view group observer
+     */
     public static <T extends ViewGroup, O extends ViewGroupObserver<T, O>> ViewGroupObserver<T, O> of(final T view) {
         return new ViewGroupObserver<>(view);
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the text view observer
+     */
     public static <T extends TextView, O extends TextViewObserver<T, O>> TextViewObserver<T, O> of(final T view) {
         return new TextViewObserver<>(view);
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the search view observer
+     */
     public static <T extends SearchView, O extends SearchViewObserver<T, O>> SearchViewObserver<T, O> of(final T view) {
         return new SearchViewObserver<>(view);
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the auto complete text view observer
+     */
     public static <T extends AutoCompleteTextView, O extends AutoCompleteTextViewObserver<T, O>> AutoCompleteTextViewObserver<T, O> of(final T view) {
         return new AutoCompleteTextViewObserver<>(view);
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param menuItem the menu item
+     * @return the menu item observer
+     */
     public static <T extends MenuItem, O extends MenuItemObserver<T, O>> MenuItemObserver<T, O> of(final T menuItem) {
         return new MenuItemObserver<>(menuItem);
     }
 
+    /**
+     * The Class UIObserverBase.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     protected static abstract class UIObserverBase<T, O extends UIObserverBase<T, O>> extends Observer<T> implements Disposable {
+
+        /** The dispose actions. */
         final List<Runnable> disposeActions = new ArrayList<>();
+
+        /** The is disposed. */
         boolean isDisposed = false;
 
+        /**
+         * Instantiates a new UI observer base.
+         */
         protected UIObserverBase() {
         }
 
+        /**
+         * Debounce.
+         *
+         * @param intervalDurationInMillis the interval duration in millis
+         * @return the o
+         */
         @Override
         public O debounce(final long intervalDurationInMillis) {
             return (O) super.debounce(intervalDurationInMillis);
         }
 
+        /**
+         * Debounce.
+         *
+         * @param intervalDuration the interval duration
+         * @param unit the unit
+         * @return the o
+         */
         @Override
         public O debounce(final long intervalDuration, final TimeUnit unit) {
             return (O) super.debounce(intervalDuration, unit);
         }
 
+        /**
+         * Throttle first.
+         *
+         * @param intervalDurationInMillis the interval duration in millis
+         * @return the o
+         */
         @Override
         public O throttleFirst(final long intervalDurationInMillis) {
             return (O) super.throttleFirst(intervalDurationInMillis);
         }
 
+        /**
+         * Throttle first.
+         *
+         * @param intervalDuration the interval duration
+         * @param unit the unit
+         * @return the o
+         */
         @Override
         public O throttleFirst(final long intervalDuration, final TimeUnit unit) {
             return (O) super.throttleFirst(intervalDuration, unit);
         }
 
+        /**
+         * Throttle last.
+         *
+         * @param intervalDurationInMillis the interval duration in millis
+         * @return the o
+         */
         @Override
         public O throttleLast(final long intervalDurationInMillis) {
             return (O) super.throttleLast(intervalDurationInMillis);
         }
 
+        /**
+         * Throttle last.
+         *
+         * @param intervalDuration the interval duration
+         * @param unit the unit
+         * @return the o
+         */
         @Override
         public O throttleLast(final long intervalDuration, final TimeUnit unit) {
             return (O) super.throttleLast(intervalDuration, unit);
         }
 
+        /**
+         * Delay.
+         *
+         * @param delayInMillis the delay in millis
+         * @return the o
+         */
         @Override
         public O delay(final long delayInMillis) {
             return (O) super.delay(delayInMillis);
         }
 
+        /**
+         * Delay.
+         *
+         * @param delay the delay
+         * @param unit the unit
+         * @return the o
+         */
         @Override
         public O delay(final long delay, final TimeUnit unit) {
             return (O) super.delay(delay, unit);
         }
 
         /**
-         * 
+         * Time interval.
+         *
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -155,7 +274,9 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * 
+         * Timestamp.
+         *
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -164,6 +285,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             throw new UnsupportedOperationException();
         }
 
+        /**
+         * Skip.
+         *
+         * @param n the n
+         * @return the o
+         */
         @Override
         public O skip(final long n) {
             N.checkArgNotNegative(n, "n");
@@ -172,6 +299,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
 
         }
 
+        /**
+         * Limit.
+         *
+         * @param maxSize the max size
+         * @return the o
+         */
         @Override
         public O limit(final long maxSize) {
             return (O) super.limit(maxSize);
@@ -181,8 +314,9 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
          * Is it possible to cause memory leak by caching the previous values?
          */
         /**
-         * 
-         * @return
+         * Distinct.
+         *
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -195,8 +329,10 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
          * Is it possible to cause memory leak by caching the previous values?
          */
         /**
-         * 
-         * @param keyMapper
+         * Distinct by.
+         *
+         * @param keyMapper the key mapper
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -205,13 +341,23 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             throw new UnsupportedOperationException();
         }
 
+        /**
+         * Filter.
+         *
+         * @param filter the filter
+         * @return the o
+         */
         @Override
         public O filter(final Predicate<? super T> filter) {
             return (O) super.filter(filter);
         }
 
         /**
-         * @param map
+         * Map.
+         *
+         * @param <U> the generic type
+         * @param map the map
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -221,7 +367,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param map
+         * Flat map.
+         *
+         * @param <U> the generic type
+         * @param map the map
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -231,8 +381,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param timespan
-         * @param unit
+         * Buffer.
+         *
+         * @param timespan the timespan
+         * @param unit the unit
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -242,9 +395,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param timespan
-         * @param unit
-         * @param count
+         * Buffer.
+         *
+         * @param timespan the timespan
+         * @param unit the unit
+         * @param count the count
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -254,9 +410,12 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param timespan
-         * @param timeskip
-         * @param unit
+         * Buffer.
+         *
+         * @param timespan the timespan
+         * @param timeskip the timeskip
+         * @param unit the unit
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -266,10 +425,13 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param timespan
-         * @param timeskip
-         * @param unit
-         * @param count
+         * Buffer.
+         *
+         * @param timespan the timespan
+         * @param timeskip the timeskip
+         * @param unit the unit
+         * @param count the count
+         * @return the observer
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -279,8 +441,9 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * @param action
-         * 
+         * Observe.
+         *
+         * @param action the action
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -290,7 +453,10 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * 
+         * Observe.
+         *
+         * @param action the action
+         * @param onError the on error
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -300,7 +466,11 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * 
+         * Observe.
+         *
+         * @param action the action
+         * @param onError the on error
+         * @param onComplete the on complete
          * @deprecated Unsupported operation.
          */
         @Deprecated
@@ -309,6 +479,9 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             throw new UnsupportedOperationException();
         }
 
+        /**
+         * Dispose.
+         */
         @Override
         public void dispose() {
             if (isDisposed() == false) {
@@ -321,27 +494,75 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             }
         }
 
+        /**
+         * Checks if is disposed.
+         *
+         * @return true, if is disposed
+         */
         @Override
         public boolean isDisposed() {
             return isDisposed;
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about View information as the View is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class ViewObserver<T extends View, O extends ViewObserver<T, O>> extends UIObserverBase<T, O> {
+
+        /** The view. */
         final T _view;
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param view the view
+         */
         ViewObserver(final T view) {
             this._view = view;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onClick(final OnClickListener onNext) {
             return onClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onClick(final OnClickListener onNext, final Consumer<? super Exception> onError) {
             return onClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onClick(final OnClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -382,14 +603,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onLongClick(final OnLongClickListener onNext) {
             return onLongClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onLongClick(final OnLongClickListener onNext, final Consumer<? super Exception> onError) {
             return onLongClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onLongClick(final OnLongClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -431,14 +679,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onDrag(final OnDragListener onNext) {
             return onDrag(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onDrag(final OnDragListener onNext, final Consumer<? super Exception> onError) {
             return onDrag(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onDrag(final OnDragListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -480,14 +755,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onTouch(final OnTouchListener onNext) {
             return onTouch(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onTouch(final OnTouchListener onNext, final Consumer<? super Exception> onError) {
             return onTouch(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onTouch(final OnTouchListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -529,14 +831,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onFocusChange(final OnFocusChangeListener onNext) {
             return onFocusChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onFocusChange(final OnFocusChangeListener onNext, final Consumer<? super Exception> onError) {
             return onFocusChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onFocusChange(final OnFocusChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -577,14 +906,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onHover(final OnHoverListener onNext) {
             return onHover(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onHover(final OnHoverListener onNext, final Consumer<? super Exception> onError) {
             return onHover(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onHover(final OnHoverListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -626,14 +982,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onKey(final OnKeyListener onNext) {
             return onKey(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onKey(final OnKeyListener onNext, final Consumer<? super Exception> onError) {
             return onKey(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onKey(final OnKeyListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -675,14 +1058,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext) {
             return onViewAttachedToWindow(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError) {
             return onViewAttachedToWindow(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onViewAttachedToWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -730,14 +1140,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext) {
             return onViewDetachedFromWindow(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError) {
             return onViewDetachedFromWindow(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onViewDetachedFromWindow(final Consumer<? super View> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -785,14 +1222,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext) {
             return onAttachStateChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext, final Consumer<? super Exception> onError) {
             return onAttachStateChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onAttachStateChange(final OnAttachStateChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -848,14 +1312,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext) {
             return onLayoutChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext, final Consumer<? super Exception> onError) {
             return onLayoutChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final OnLayoutChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -898,15 +1389,42 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext) {
             return onLayoutChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
             return onLayoutChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an View
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onLayoutChange(final Consumer<? super Tuple9<View, Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -951,20 +1469,61 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about ViewGroup information as the ViewGroup is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class ViewGroupObserver<T extends ViewGroup, O extends ViewGroupObserver<T, O>> extends ViewObserver<T, ViewGroupObserver<T, O>> {
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param view the view
+         */
         ViewGroupObserver(final T view) {
             super(view);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext) {
             return onChildViewAdded(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError) {
             return onChildViewAdded(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onChildViewAdded(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError,
                 final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -1012,14 +1571,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext) {
             return onChildViewRemoved(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError) {
             return onChildViewRemoved(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onChildViewRemoved(final BiConsumer<? super View, ? super View> onNext, final Consumer<? super Exception> onError,
                 final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -1067,14 +1653,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext) {
             return onHierarchyChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext, final Consumer<? super Exception> onError) {
             return onHierarchyChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an ViewGroup
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onHierarchyChange(final OnHierarchyChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1130,20 +1743,61 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about TextView information as the TextView is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class TextViewObserver<T extends TextView, O extends TextViewObserver<T, O>> extends ViewObserver<T, O> {
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param view the view
+         */
         TextViewObserver(final T view) {
             super(view);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onTextChanged(final Consumer<? super String> onNext) {
             return onTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
             return onTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1197,15 +1851,42 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext) {
             return onTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
             return onTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -1260,14 +1941,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable beforeTextChanged(final Consumer<? super String> onNext) {
             return beforeTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable beforeTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
             return beforeTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable beforeTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1321,15 +2029,42 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext) {
             return beforeTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
             return beforeTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable beforeTextChangged(final Consumer<? super Tuple4<CharSequence, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -1384,14 +2119,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable afterTextChanged(final Consumer<? super String> onNext) {
             return afterTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable afterTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
             return afterTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable afterTextChanged(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1445,14 +2207,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext) {
             return afterTextChangged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext, final Consumer<? super Exception> onError) {
             return afterTextChangged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable afterTextChangged(final Consumer<? super Editable> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1506,14 +2295,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onTextChanged(final TextWatcher onNext) {
             return onTextChanged(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onTextChanged(final TextWatcher onNext, final Consumer<? super Exception> onError) {
             return onTextChanged(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an TextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onTextChanged(final TextWatcher onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1589,20 +2405,61 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about SearchView information as the SearchView is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class SearchViewObserver<T extends SearchView, O extends SearchViewObserver<T, O>> extends ViewGroupObserver<T, O> {
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param view the view
+         */
         SearchViewObserver(final T view) {
             super(view);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onQueryTextChange(final Consumer<? super String> onNext) {
             return onQueryTextChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onQueryTextChange(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
             return onQueryTextChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onQueryTextChange(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1651,14 +2508,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext) {
             return onQueryTextSubmit(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext, final Consumer<? super Exception> onError) {
             return onQueryTextSubmit(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onQueryTextSubmit(final Consumer<? super String> onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1707,14 +2591,41 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onQueryText(final OnQueryTextListener onNext) {
             return onQueryText(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onQueryText(final OnQueryTextListener onNext, final Consumer<? super Exception> onError) {
             return onQueryText(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an SearchView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onQueryText(final OnQueryTextListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1772,21 +2683,62 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about AutoCompleteTextView information as the AutoCompleteTextView is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class AutoCompleteTextViewObserver<T extends AutoCompleteTextView, O extends AutoCompleteTextViewObserver<T, O>>
             extends TextViewObserver<T, O> {
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param view the view
+         */
         AutoCompleteTextViewObserver(final T view) {
             super(view);
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onItemClick(final OnItemClickListener onNext) {
             return onItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onItemClick(final OnItemClickListener onNext, final Consumer<? super Exception> onError) {
             return onItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onItemClick(final OnItemClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -1827,15 +2779,42 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             return this;
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext) {
             return onItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
             return onItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an AutoCompleteTextView
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onItemClick(final Consumer<? super Tuple4<AdapterView<?>, View, Integer, Integer>> onNext, final Consumer<? super Exception> onError,
                 final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -1878,21 +2857,64 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
     }
 
+    /**
+     * An asynchronous update interface for receiving notifications
+     * about MenuItem information as the MenuItem is constructed.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class MenuItemObserver<T extends MenuItem, O extends MenuItemObserver<T, O>> extends UIObserverBase<T, O> {
+
+        /** The menu item. */
         final MenuItem _menuItem;
 
+        /**
+         * This method is called when information about an MenuItem
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param menuItem the menu item
+         */
         MenuItemObserver(final MenuItem menuItem) {
             this._menuItem = menuItem;
         }
 
+        /**
+         * This method is called when information about an MenuItem
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext) {
             return onMenuItemClick(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * This method is called when information about an MenuItem
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext, final Consumer<? super Exception> onError) {
             return onMenuItemClick(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * This method is called when information about an MenuItem
+         * which was previously requested using an asynchronous
+         * interface becomes available.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onMenuItemClick(final OnMenuItemClickListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");

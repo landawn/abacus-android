@@ -18,26 +18,53 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class ImageViewBase.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class ImageViewBase extends ImageView {
 
+    /**
+     * Instantiates a new image view base.
+     *
+     * @param context the context
+     */
     public ImageViewBase(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new image view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     */
     public ImageViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new image view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
+    /**
+     * Instantiates a new image view base.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     * @param defStyleAttr the def style attr
+     * @param defStyleRes the def style res
+     */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

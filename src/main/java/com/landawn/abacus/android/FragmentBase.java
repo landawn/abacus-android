@@ -17,10 +17,10 @@ package com.landawn.abacus.android;
 import android.app.Fragment;
 
 /**
- * 
- * @since 0.8
- * 
+ * The Class FragmentBase.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class FragmentBase extends Fragment {
 

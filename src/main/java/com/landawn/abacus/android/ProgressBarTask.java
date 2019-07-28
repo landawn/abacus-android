@@ -28,37 +28,53 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+// TODO: Auto-generated Javadoc
 /**
  * Designed to show progress bar easily for network or other heavy operation:
  * <pre>
  * <code>
-        final ProgressBarTask progressBarTask = ProgressBarTask.display(this, 1000, 0xFFE0E0E0);
-        final LoginRequest request = ...;
-
-        AsyncExecutor.executeInParallel(() -> accountService.login(request))
-            .callbackOnUiThread((e, resp) -> {
-                displayProgressBarTask.finish();
-
-                if (resp != null && resp.getRespCode() == ResponseCode.OK) {
-                    // TODO ...
-                } else {// TODO ...
-                }
-            });
+ *         final ProgressBarTask progressBarTask = ProgressBarTask.display(this, 1000, 0xFFE0E0E0);
+ *         final LoginRequest request = ...;
+ * 
+ *         AsyncExecutor.executeInParallel(() -> accountService.login(request))
+ *             .callbackOnUiThread((e, resp) -> {
+ *                 displayProgressBarTask.finish();
+ * 
+ *                 if (resp != null && resp.getRespCode() == ResponseCode.OK) {
+ *                     // TODO ...
+ *                 } else {// TODO ...
+ *                 }
+ *             });
  * </code>
  * </pre>
- * 
- * @since 0.8
- * 
+ *
  * @author haiyangl
+ * @since 0.8
  */
 public class ProgressBarTask {
+
+    /** The Constant activeProgressBarSet. */
     private static final Multiset<ViewGroup> activeProgressBarSet = new Multiset<>();
+
+    /** The max progress bar task. */
     private static volatile int maxProgressBarTask = Integer.MAX_VALUE;
+
+    /** The max progress bar task per view. */
     private static volatile int maxProgressBarTaskPerView = Integer.MAX_VALUE;
 
+    /** The future. */
     protected final ContinuableFuture<ProgressBar> future;
+
+    /** The progress bar. */
     protected ProgressBar progressBar;
 
+    /**
+     * Instantiates a new progress bar task.
+     *
+     * @param root the root
+     * @param delay the delay
+     * @param circleColor the circle color
+     */
     public ProgressBarTask(final ViewGroup root, final long delay, final int circleColor) {
         future = UIExecutor.execute(new Callable<ProgressBar>() {
             @Override
@@ -71,74 +87,173 @@ public class ProgressBarTask {
         }, delay);
     }
 
+    /**
+     * Sets the max progress bar task.
+     *
+     * @param maxProgressBarTask the new max progress bar task
+     */
     public static void setMaxProgressBarTask(int maxProgressBarTask) {
         ProgressBarTask.maxProgressBarTask = maxProgressBarTask;
     }
 
+    /**
+     * Sets the max progress bar task per view.
+     *
+     * @param maxProgressBarTaskPerView the new max progress bar task per view
+     */
     public static void setMaxProgressBarTaskPerView(int maxProgressBarTaskPerView) {
         ProgressBarTask.maxProgressBarTaskPerView = maxProgressBarTaskPerView;
     }
 
+    /**
+     * Display.
+     *
+     * @param activity the activity
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Activity activity) {
         return display(activity, 0);
     }
 
+    /**
+     * Display.
+     *
+     * @param activity the activity
+     * @param delay the delay
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Activity activity, final long delay) {
         return display(activity, delay, Integer.MIN_VALUE);
     }
 
+    /**
+     * Display.
+     *
+     * @param activity the activity
+     * @param delay the delay
+     * @param circleColor the circle color
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Activity activity, final long delay, final int circleColor) {
         return display((ViewGroup) activity.getWindow().getDecorView(), delay, circleColor);
     }
 
+    /**
+     * Display.
+     *
+     * @param dialog the dialog
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Dialog dialog) {
         return display(dialog, 0);
     }
 
+    /**
+     * Display.
+     *
+     * @param dialog the dialog
+     * @param delay the delay
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Dialog dialog, final long delay) {
         return display(dialog, delay, Integer.MIN_VALUE);
     }
 
+    /**
+     * Display.
+     *
+     * @param dialog the dialog
+     * @param delay the delay
+     * @param circleColor the circle color
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final Dialog dialog, final long delay, final int circleColor) {
         return display((ViewGroup) dialog.getWindow().getDecorView(), delay, circleColor);
     }
 
+    /**
+     * Display.
+     *
+     * @param root the root
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final ViewGroup root) {
         return display(root, 0);
     }
 
+    /**
+     * Display.
+     *
+     * @param root the root
+     * @param delay the delay
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final ViewGroup root, final long delay) {
         return display(root, delay, Integer.MIN_VALUE);
     }
 
+    /**
+     * Display.
+     *
+     * @param root the root
+     * @param delay the delay
+     * @param circleColor the circle color
+     * @return the progress bar task
+     */
     public static ProgressBarTask display(final ViewGroup root, final long delay, final int circleColor) {
         return new ProgressBarTask(root, delay, circleColor);
     }
 
+    /**
+     * Active progress bar task count.
+     *
+     * @return the int
+     */
     static int activeProgressBarTaskCount() {
         synchronized (activeProgressBarSet) {
             return (int) activeProgressBarSet.sumOfOccurrences();
         }
     }
 
+    /**
+     * Active progress bar task count.
+     *
+     * @param activity the activity
+     * @return the int
+     */
     static int activeProgressBarTaskCount(Activity activity) {
         synchronized (activeProgressBarSet) {
             return activeProgressBarSet.get(activity.getWindow().getDecorView());
         }
     }
 
+    /**
+     * Active progress bar task count.
+     *
+     * @param dialog the dialog
+     * @return the int
+     */
     static int activeProgressBarTaskCount(Dialog dialog) {
         synchronized (activeProgressBarSet) {
             return activeProgressBarSet.get(dialog.getWindow().getDecorView());
         }
     }
 
+    /**
+     * Active progress bar task count.
+     *
+     * @param root the root
+     * @return the int
+     */
     static int activeProgressBarTaskCount(ViewGroup root) {
         synchronized (activeProgressBarSet) {
             return activeProgressBarSet.get(root);
         }
     }
 
+    /**
+     * Finish.
+     */
     public void finish() {
         synchronized (this) {
             try {
@@ -162,6 +277,13 @@ public class ProgressBarTask {
         }
     }
 
+    /**
+     * Creates the progress bar.
+     *
+     * @param root the root
+     * @param circleColor the circle color
+     * @return the progress bar
+     */
     protected ProgressBar createProgressBar(final ViewGroup root, final int circleColor) {
         // Create layout params expecting to be added to a frame layout.
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(0, 0);

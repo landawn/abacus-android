@@ -17,10 +17,10 @@ package com.landawn.abacus.android;
 import android.app.DialogFragment;
 
 /**
- * 
- * @since 0.8
- * 
+ * The Class DialogFragmentBase.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class DialogFragmentBase extends DialogFragment {
 

@@ -25,36 +25,81 @@ import com.landawn.abacus.util.function.Consumer;
 import android.view.View;
 import android.view.View.OnScrollChangeListener;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * 
- * @since 0.9
- * 
+ * The Class ObserverX.
+ *
  * @author Haiyang Li
- * 
+ * @param <T> the generic type
+ * @since 0.9
  */
 public abstract class ObserverX<T> {
+
+    /**
+     * Instantiates a new observer X.
+     */
     ObserverX() {
 
     }
 
+    /**
+     * Of.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     * @param view the view
+     * @return the view observer X
+     */
     public static <T extends View, O extends ViewObserverX<T, O>> ViewObserverX<T, O> of(final T view) {
         return new ViewObserverX<>(view);
     }
 
+    /**
+     * The Class ViewObserverX.
+     *
+     * @param <T> the generic type
+     * @param <O> the generic type
+     */
     public static class ViewObserverX<T extends View, O extends ViewObserverX<T, O>> extends ViewObserver<T, ViewObserverX<T, O>> {
+
+        /**
+         * Instantiates a new view observer X.
+         *
+         * @param view the view
+         */
         ViewObserverX(T view) {
             super(view);
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onScrollChange(final OnScrollChangeListener onNext) {
             return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError) {
             return onScrollChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
             N.checkArgNotNull(onError, "onError");
@@ -95,15 +140,36 @@ public abstract class ObserverX<T> {
             return this;
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @return the disposable
+         */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext) {
             return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @return the disposable
+         */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
             return onScrollChange(onNext, onError, CommonUtils.EMPTY_ACTION);
         }
 
+        /**
+         * On scroll change.
+         *
+         * @param onNext the on next
+         * @param onError the on error
+         * @param onComplete the on complete
+         * @return the disposable
+         */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");

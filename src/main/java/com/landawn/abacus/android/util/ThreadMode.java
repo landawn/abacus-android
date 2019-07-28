@@ -14,12 +14,21 @@
 
 package com.landawn.abacus.android.util;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Enum ThreadMode.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public enum ThreadMode {
-    DEFAULT, SERIAL_EXECUTOR, THREAD_POOL_EXECUTOR, UI_THREAD;
+
+    /** The default. */
+    DEFAULT,
+    /** The serial executor. */
+    SERIAL_EXECUTOR,
+    /** The thread pool executor. */
+    THREAD_POOL_EXECUTOR,
+    /** The ui thread. */
+    UI_THREAD;
 }
