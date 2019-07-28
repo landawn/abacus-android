@@ -12,7 +12,7 @@ A general Java programming library for Android
 [ObserverX](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/ObserverX_view.html) and 
 [CommonUtils](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/CommonUtils_view.html).
 
-## Download/Installation & [Changes](https://github.com/landawn/abacus-util/blob/master/CHANGES.md):
+## Download/Installation & [Changes](https://github.com/landawn/abacus-android/blob/master/CHANGES.md):
 
 * [Maven](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.landawn%22)
 

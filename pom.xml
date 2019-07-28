@@ -20,7 +20,32 @@
 		<junit.platform.version>1.5.1</junit.platform.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>my-local-repo</id>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>android</artifactId>
+			<version>UNKNOWN</version>
+		</dependency>
+
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v7-appcompat</artifactId>
+			<version>7</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-util-se</artifactId>
