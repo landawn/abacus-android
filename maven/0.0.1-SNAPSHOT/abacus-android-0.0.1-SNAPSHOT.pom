@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>abacus-android</name>
-	<description>A general&simple library for Android</description>
+	<description>A general and simple library for Android</description>
 	<url>https://github.com/landawn/abacus-android</url>
 
 	<licenses>
