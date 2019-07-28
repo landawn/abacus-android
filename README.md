@@ -1,6 +1,10 @@
 # abacus-android
 A general Java programming library for Android 
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.landawn/abacus-android.svg)](https://maven-badges.herokuapp.com/maven-central/com.landawn/abacus-android/)
+[![Javadocs](https://www.javadoc.io/badge/com.landawn/abacus-android.svg)](https://www.javadoc.io/doc/com.landawn/abacus-android)
+
+
 * Programming in Android: 
 [SQLiteExecutor](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/SQLiteExecutor_view.html), 
 [SQLBuilder](https://cdn.staticaly.com/gh/landawn/abacus-android/master/docs/SQLBuilder_view.html), 
