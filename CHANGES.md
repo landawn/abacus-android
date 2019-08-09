@@ -1,3 +1,8 @@
+### 1.8.4
+
+* Improve Java Docs.
+
+
 ### 1.8.3
 
 * Improvements and bug fix.
