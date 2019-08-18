@@ -847,7 +847,7 @@ public class CommonUtils {
     /**
      * Run on ui thread.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @throws E the e
      */

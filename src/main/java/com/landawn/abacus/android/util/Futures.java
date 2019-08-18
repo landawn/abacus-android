@@ -278,7 +278,7 @@ public final class Futures {
      *
      * @param <T1>
      * @param <T2>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @return
@@ -298,7 +298,7 @@ public final class Futures {
      * @param <T1>
      * @param <T2>
      * @param <T3>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -321,7 +321,7 @@ public final class Futures {
      * @param <T2>
      * @param <T3>
      * @param <T4>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -346,7 +346,7 @@ public final class Futures {
      * @param <T3>
      * @param <T4>
      * @param <T5>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -373,7 +373,7 @@ public final class Futures {
      * @param <T4>
      * @param <T5>
      * @param <T6>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -403,7 +403,7 @@ public final class Futures {
      * @param <T5>
      * @param <T6>
      * @param <T7>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -430,7 +430,7 @@ public final class Futures {
      * @param <T1>
      * @param <T2>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param action
@@ -453,7 +453,7 @@ public final class Futures {
      * @param <T2>
      * @param <T3>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param cf1
      * @param cf2
      * @param cf3
@@ -475,7 +475,7 @@ public final class Futures {
      *
      * @param <T>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param cfs
      * @param action
      * @return

@@ -19,7 +19,7 @@ package com.landawn.abacus.android.eventBus;
  * The Interface Subscriber.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 public interface Subscriber<E> {

@@ -289,7 +289,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Gets the then apply.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      * @throws InterruptedException the interrupted exception
@@ -304,7 +304,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Gets the then apply.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param timeout
      * @param unit
      * @param action
@@ -323,7 +323,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Gets the then apply.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      * @throws E the e
@@ -337,7 +337,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Gets the then apply.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param timeout
      * @param unit
      * @param action
@@ -353,7 +353,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Gets the then accept.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      * @throws InterruptedException the interrupted exception
@@ -367,7 +367,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Gets the then accept.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param timeout
      * @param unit
      * @param action
@@ -385,7 +385,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Gets the then accept.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      * @throws E the e
@@ -398,7 +398,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Gets the then accept.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param timeout
      * @param unit
      * @param action
@@ -415,7 +415,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Map.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param func
      * @return
      */
@@ -651,7 +651,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -669,7 +669,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -686,7 +686,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -723,7 +723,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -740,7 +740,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -757,7 +757,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run on UI.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -768,7 +768,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run on UI.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -779,7 +779,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run on UI.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -802,7 +802,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call on UI.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -814,7 +814,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call on UI.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -825,7 +825,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run by TP.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -836,7 +836,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run by TP.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -847,7 +847,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Then run by TP.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -870,7 +870,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call by TP.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -882,7 +882,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Then call by TP.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param action
      * @return
      */
@@ -893,7 +893,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run after both.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -914,7 +914,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -934,7 +934,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -977,7 +977,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -997,7 +997,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1018,7 +1018,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run on UI after both.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1031,7 +1031,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run on UI after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1045,7 +1045,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run on UI after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1072,7 +1072,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1087,7 +1087,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1100,7 +1100,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run by TP after both.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1113,7 +1113,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run by TP after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1127,7 +1127,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run by TP after both.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1154,7 +1154,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1169,7 +1169,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1182,7 +1182,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run after either.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1201,7 +1201,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run after either.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1220,7 +1220,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run after either.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1260,7 +1260,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Call after either.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1281,7 +1281,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Call after either.
      *
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1301,7 +1301,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run on UI after either.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1314,7 +1314,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run on UI after either.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1328,7 +1328,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run on UI after either.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1355,7 +1355,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1370,7 +1370,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1383,7 +1383,7 @@ public class ContinuableFuture<T> implements Future<T> {
     /**
      * Run by TP after either.
      *
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1396,7 +1396,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run by TP after either.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1410,7 +1410,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * Run by TP after either.
      *
      * @param <U>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1437,7 +1437,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
@@ -1452,7 +1452,7 @@ public class ContinuableFuture<T> implements Future<T> {
      *
      * @param <U>
      * @param <R>
-     * @param <E> the element type
+     * @param <E>
      * @param other
      * @param action
      * @return
