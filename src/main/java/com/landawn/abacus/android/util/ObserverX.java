@@ -30,7 +30,7 @@ import android.view.View.OnScrollChangeListener;
  * The Class ObserverX.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.9
  */
 public abstract class ObserverX<T> {
@@ -45,10 +45,10 @@ public abstract class ObserverX<T> {
     /**
      * Of.
      *
-     * @param <T> the generic type
-     * @param <O> the generic type
-     * @param view the view
-     * @return the view observer X
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
      */
     public static <T extends View, O extends ViewObserverX<T, O>> ViewObserverX<T, O> of(final T view) {
         return new ViewObserverX<>(view);
@@ -57,15 +57,15 @@ public abstract class ObserverX<T> {
     /**
      * The Class ViewObserverX.
      *
-     * @param <T> the generic type
-     * @param <O> the generic type
+     * @param <T>
+     * @param <O>
      */
     public static class ViewObserverX<T extends View, O extends ViewObserverX<T, O>> extends ViewObserver<T, ViewObserverX<T, O>> {
 
         /**
          * Instantiates a new view observer X.
          *
-         * @param view the view
+         * @param view
          */
         ViewObserverX(T view) {
             super(view);
@@ -74,8 +74,8 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @return the disposable
+         * @param onNext
+         * @return
          */
         public Disposable onScrollChange(final OnScrollChangeListener onNext) {
             return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
@@ -84,9 +84,9 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @param onError the on error
-         * @return the disposable
+         * @param onNext
+         * @param onError
+         * @return
          */
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError) {
             return onScrollChange(onNext, onError, CommonUtils.EMPTY_ACTION);
@@ -95,10 +95,10 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @param onError the on error
-         * @param onComplete the on complete
-         * @return the disposable
+         * @param onNext
+         * @param onError
+         * @param onComplete
+         * @return
          */
         public Disposable onScrollChange(final OnScrollChangeListener onNext, final Consumer<? super Exception> onError, final Runnable onComplete) {
             N.checkArgNotNull(onNext, "onNext");
@@ -143,8 +143,8 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @return the disposable
+         * @param onNext
+         * @return
          */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext) {
             return onScrollChange(onNext, CommonUtils.ON_ERROR_MISSING);
@@ -153,9 +153,9 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @param onError the on error
-         * @return the disposable
+         * @param onNext
+         * @param onError
+         * @return
          */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError) {
@@ -165,10 +165,10 @@ public abstract class ObserverX<T> {
         /**
          * On scroll change.
          *
-         * @param onNext the on next
-         * @param onError the on error
-         * @param onComplete the on complete
-         * @return the disposable
+         * @param onNext
+         * @param onError
+         * @param onComplete
+         * @return
          */
         public Disposable onScrollChange(final Consumer<? super Tuple5<View, Integer, Integer, Integer, Integer>> onNext,
                 final Consumer<? super Exception> onError, final Runnable onComplete) {

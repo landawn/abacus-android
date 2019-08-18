@@ -30,7 +30,7 @@ public abstract class ImageViewBase extends ImageView {
     /**
      * Instantiates a new image view base.
      *
-     * @param context the context
+     * @param context
      */
     public ImageViewBase(Context context) {
         super(context);
@@ -39,8 +39,8 @@ public abstract class ImageViewBase extends ImageView {
     /**
      * Instantiates a new image view base.
      *
-     * @param context the context
-     * @param attrs the attrs
+     * @param context
+     * @param attrs
      */
     public ImageViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,9 +49,9 @@ public abstract class ImageViewBase extends ImageView {
     /**
      * Instantiates a new image view base.
      *
-     * @param context the context
-     * @param attrs the attrs
-     * @param defStyleAttr the def style attr
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
      */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -60,10 +60,10 @@ public abstract class ImageViewBase extends ImageView {
     /**
      * Instantiates a new image view base.
      *
-     * @param context the context
-     * @param attrs the attrs
-     * @param defStyleAttr the def style attr
-     * @param defStyleRes the def style res
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     * @param defStyleRes
      */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

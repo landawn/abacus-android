@@ -116,7 +116,7 @@ public final class SQLiteExecutor {
     /**
      * Instantiates a new SQ lite executor.
      *
-     * @param sqliteDatabase the sqlite database
+     * @param sqliteDatabase
      */
     public SQLiteExecutor(final SQLiteDatabase sqliteDatabase) {
         this(sqliteDatabase, DEFAULT_NAMING_POLICY);
@@ -125,7 +125,7 @@ public final class SQLiteExecutor {
     /**
      * Instantiates a new SQ lite executor.
      *
-     * @param sqliteDatabase the sqlite database
+     * @param sqliteDatabase
      * @param columnNamingPolicy a naming convention to convert the entity/property names in the Entity/Map parameter to table/column names
      */
     public SQLiteExecutor(final SQLiteDatabase sqliteDatabase, final NamingPolicy columnNamingPolicy) {
@@ -136,8 +136,8 @@ public final class SQLiteExecutor {
     /**
      * The properties will be excluded by add/addAll/batchAdd and update/updateAll/batchUpdate operations if the input is an entity.
      *
-     * @param targetClass the target class
-     * @param readOnlyPropNames the read only prop names
+     * @param targetClass
+     * @param readOnlyPropNames
      */
     public static void registerReadOnlyProps(Class<?> targetClass, Collection<String> readOnlyPropNames) {
         N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
@@ -161,8 +161,8 @@ public final class SQLiteExecutor {
     /**
      * The properties will be ignored by update/updateAll/batchUpdate operations if the input is an entity.
      *
-     * @param targetClass the target class
-     * @param writeOnlyPropNames the write only prop names
+     * @param targetClass
+     * @param writeOnlyPropNames
      */
     public static void registerWriteOnlyProps(Class<?> targetClass, Collection<String> writeOnlyPropNames) {
         N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
@@ -184,7 +184,7 @@ public final class SQLiteExecutor {
     /**
      * Sqlite DB.
      *
-     * @return the SQ lite database
+     * @return
      */
     public SQLiteDatabase sqliteDB() {
         return sqliteDB;
@@ -193,9 +193,9 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param targetClass the target class
-     * @param cursor the cursor
-     * @return the data set
+     * @param targetClass
+     * @param cursor
+     * @return
      */
     static DataSet extractData(Class<?> targetClass, Cursor cursor) {
         return extractData(targetClass, cursor, 0, Integer.MAX_VALUE);
@@ -205,10 +205,10 @@ public final class SQLiteExecutor {
      * Extract data.
      *
      * @param targetClass an entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param offset
+     * @param count
+     * @return
      */
     static DataSet extractData(Class<?> targetClass, Cursor cursor, int offset, int count) {
         final int columnCount = cursor.getColumnCount();
@@ -241,9 +241,9 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @return
      */
     @SuppressWarnings("rawtypes")
     static DataSet extractData(Cursor cursor, Class[] selectColumnTypes) {
@@ -253,11 +253,11 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @param offset
+     * @param count
+     * @return
      */
     @SuppressWarnings("rawtypes")
     static DataSet extractData(Cursor cursor, Class[] selectColumnTypes, int offset, int count) {
@@ -267,9 +267,9 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @return
      */
     @SuppressWarnings("rawtypes")
     static DataSet extractData(Cursor cursor, Collection<Class> selectColumnTypes) {
@@ -279,11 +279,11 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @param offset
+     * @param count
+     * @return
      */
     @SuppressWarnings("rawtypes")
     static DataSet extractData(Cursor cursor, Collection<Class> selectColumnTypes, int offset, int count) {
@@ -293,9 +293,9 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -306,11 +306,11 @@ public final class SQLiteExecutor {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -339,10 +339,10 @@ public final class SQLiteExecutor {
     /**
      * Returns values from all rows associated with the specified <code>targetClass</code> if the specified <code>targetClass</code> is an entity class, otherwise, only returns values from first column.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @return the list
+     * @param cursor
+     * @return
      */
     static <T> List<T> toList(Class<T> targetClass, Cursor cursor) {
         return toList(targetClass, cursor, 0, Integer.MAX_VALUE);
@@ -352,12 +352,12 @@ public final class SQLiteExecutor {
      *  
      * Returns values from all rows associated with the specified <code>targetClass</code> if the specified <code>targetClass</code> is an entity class, otherwise, only returns values from first column.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param cursor
+     * @param offset
+     * @param count
+     * @return
      */
     static <T> List<T> toList(Class<T> targetClass, Cursor cursor, int offset, int count) {
         if (ClassUtil.isEntity(targetClass)) {
@@ -376,11 +376,11 @@ public final class SQLiteExecutor {
     /**
      * Returns the values from the specified <code>column</code>. 
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param columnIndex the column index
-     * @return the list
+     * @param cursor
+     * @param columnIndex
+     * @return
      */
     static <T> List<T> toList(Class<T> targetClass, Cursor cursor, int columnIndex) {
         return toList(targetClass, cursor, columnIndex, 0, Integer.MAX_VALUE);
@@ -389,13 +389,13 @@ public final class SQLiteExecutor {
     /**
      * Returns the values from the specified <code>column</code>. 
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param columnIndex the column index
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param cursor
+     * @param columnIndex
+     * @param offset
+     * @param count
+     * @return
      */
     static <T> List<T> toList(final Class<T> targetClass, final Cursor cursor, final int columnIndex, int offset, int count) {
         if (columnIndex < 0 || columnIndex >= cursor.getColumnCount()) {
@@ -432,10 +432,10 @@ public final class SQLiteExecutor {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @return the t
+     * @param cursor
+     * @return
      */
     static <T> T toEntity(Class<T> targetClass, Cursor cursor) {
         return toEntity(targetClass, cursor, 0);
@@ -444,11 +444,11 @@ public final class SQLiteExecutor {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @param rowNum the row num
-     * @return the t
+     * @param cursor
+     * @param rowNum
+     * @return
      */
     static <T> T toEntity(Class<T> targetClass, Cursor cursor, int rowNum) {
         final List<T> list = toList(targetClass, cursor, rowNum, 1);
@@ -459,10 +459,10 @@ public final class SQLiteExecutor {
     /**
      * To entity.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param contentValues the content values
-     * @return the t
+     * @param <T>
+     * @param targetClass
+     * @param contentValues
+     * @return
      */
     static <T> T toEntity(final Class<T> targetClass, final ContentValues contentValues) {
         return toEntity(targetClass, contentValues, NamingPolicy.LOWER_CAMEL_CASE);
@@ -471,11 +471,11 @@ public final class SQLiteExecutor {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an Map class or Entity class with getter/setter methods.
-     * @param contentValues the content values
-     * @param namingPolicy the naming policy
-     * @return the t
+     * @param contentValues
+     * @param namingPolicy
+     * @return
      * @p 
      */
     @SuppressWarnings("deprecation")
@@ -584,9 +584,9 @@ public final class SQLiteExecutor {
     /**
      * To content values.
      *
-     * @param obj the obj
-     * @param ignoredPropNames the ignored prop names
-     * @return the content values
+     * @param obj
+     * @param ignoredPropNames
+     * @return
      */
     static ContentValues toContentValues(final Object obj, final Collection<String> ignoredPropNames) {
         return toContentValues(obj, ignoredPropNames, DEFAULT_NAMING_POLICY);
@@ -596,9 +596,9 @@ public final class SQLiteExecutor {
      * To content values.
      *
      * @param obj an instance of Map or Entity.
-     * @param ignoredPropNames the ignored prop names
-     * @param namingPolicy the naming policy
-     * @return the content values
+     * @param ignoredPropNames
+     * @param namingPolicy
+     * @return
      */
     static ContentValues toContentValues(final Object obj, final Collection<String> ignoredPropNames, final NamingPolicy namingPolicy) {
         return toContentValues(obj, ignoredPropNames, namingPolicy, false);
@@ -607,10 +607,10 @@ public final class SQLiteExecutor {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param id the id
-     * @return the optional
+     * @param <T>
+     * @param targetClass
+     * @param id
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     public <T> Optional<T> get(Class<T> targetClass, long id) throws DuplicatedResultException {
@@ -620,11 +620,11 @@ public final class SQLiteExecutor {
     /**
      * Find the entity from table specified by simple class name of the <code>targetClass</code> by the specified <code>id</code>.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @return the optional
+     * @param <T>
+     * @param targetClass
+     * @param id
+     * @param selectPropNames
+     * @return
      * @throws DuplicatedResultException if more than one records are found.
      */
     public <T> Optional<T> get(Class<T> targetClass, long id, Collection<String> selectPropNames) throws DuplicatedResultException {
@@ -634,10 +634,10 @@ public final class SQLiteExecutor {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param id the id
-     * @return the t
+     * @param <T>
+     * @param targetClass
+     * @param id
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     public <T> T gett(Class<T> targetClass, long id) throws DuplicatedResultException {
@@ -647,11 +647,11 @@ public final class SQLiteExecutor {
     /**
      * Find the entity from table specified by simple class name of the <code>targetClass</code> by the specified <code>id</code>.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @return the t
+     * @param <T>
+     * @param targetClass
+     * @param id
+     * @param selectPropNames
+     * @return
      * @throws DuplicatedResultException if more than one records are found.
      */
     public <T> T gett(Class<T> targetClass, long id, Collection<String> selectPropNames) throws DuplicatedResultException {
@@ -668,11 +668,11 @@ public final class SQLiteExecutor {
     /**
      * To content values.
      *
-     * @param obj the obj
-     * @param ignoredPropNames the ignored prop names
-     * @param namingPolicy the naming policy
-     * @param isForUpdate the is for update
-     * @return the content values
+     * @param obj
+     * @param ignoredPropNames
+     * @param namingPolicy
+     * @param isForUpdate
+     * @return
      */
     @SuppressWarnings("deprecation")
     private static ContentValues toContentValues(final Object obj, final Collection<String> ignoredPropNames, final NamingPolicy namingPolicy,
@@ -923,7 +923,7 @@ public final class SQLiteExecutor {
      * <p>The target table is identified by the simple class name of the specified entity.</p>
      *
      * @param entity with getter/setter methods
-     * @return the long
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public long insert(Object entity) {
@@ -941,8 +941,8 @@ public final class SQLiteExecutor {
      * <p>The target table is identified by the simple class name of the specified entity.</p>
      *
      * @param entity with getter/setter methods
-     * @param conflictAlgorithm the conflict algorithm
-     * @return the long
+     * @param conflictAlgorithm
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public long insert(Object entity, int conflictAlgorithm) {
@@ -957,9 +957,9 @@ public final class SQLiteExecutor {
      * Insert one record into database.
      * To exclude the some properties or default value, invoke {@code com.landawn.abacus.util.N#entity2Map(Object, boolean, Collection, NamingPolicy)}
      *
-     * @param table the table
+     * @param table
      * @param record can be <code>Map</code> or <code>entity</code> with getter/setter methods
-     * @return the long
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public long insert(String table, Object record) {
@@ -972,10 +972,10 @@ public final class SQLiteExecutor {
      * Insert one record into database.
      * To exclude the some properties or default value, invoke {@code com.landawn.abacus.util.N#entity2Map(Object, boolean, Collection, NamingPolicy)}
      *
-     * @param table the table
+     * @param table
      * @param record can be <code>Map</code> or <code>entity</code> with getter/setter methods
-     * @param conflictAlgorithm the conflict algorithm
-     * @return the long
+     * @param conflictAlgorithm
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public long insert(String table, Object record, int conflictAlgorithm) {
@@ -991,7 +991,7 @@ public final class SQLiteExecutor {
     /**
      * Removes the id default value.
      *
-     * @param initialValues the initial values
+     * @param initialValues
      */
     private void removeIdDefaultValue(final ContentValues initialValues) {
         Object value = initialValues.get(ID);
@@ -1010,10 +1010,10 @@ public final class SQLiteExecutor {
     /**
      * Insert multiple records into data store.
      *
-     * @param <T> the generic type
-     * @param entities the entities
-     * @param withTransaction the with transaction
-     * @return the long[]
+     * @param <T>
+     * @param entities
+     * @param withTransaction
+     * @return
      * @since 0.8.10
      */
     @Deprecated
@@ -1024,11 +1024,11 @@ public final class SQLiteExecutor {
     /**
      * Insert multiple records into data store.
      *
-     * @param <T> the generic type
-     * @param table the table
-     * @param records the records
-     * @param withTransaction the with transaction
-     * @return the long[]
+     * @param <T>
+     * @param table
+     * @param records
+     * @param withTransaction
+     * @return
      */
     @Deprecated
     <T> long[] insert(String table, T[] records, boolean withTransaction) {
@@ -1119,10 +1119,10 @@ public final class SQLiteExecutor {
     /**
      * Insert all.
      *
-     * @param <T> the generic type
-     * @param records the records
-     * @param withTransaction the with transaction
-     * @return the list
+     * @param <T>
+     * @param records
+     * @param withTransaction
+     * @return
      */
     public <T> List<Long> insertAll(Collection<T> records, boolean withTransaction) {
         return insertAll(this.getTableNameByEntity(records.iterator().next()), records, withTransaction);
@@ -1131,11 +1131,11 @@ public final class SQLiteExecutor {
     /**
      * Insert all.
      *
-     * @param <T> the generic type
-     * @param table the table
-     * @param records the records
-     * @param withTransaction the with transaction
-     * @return the list
+     * @param <T>
+     * @param table
+     * @param records
+     * @param withTransaction
+     * @return
      */
     public <T> List<Long> insertAll(String table, Collection<T> records, boolean withTransaction) {
         if (N.isNullOrEmpty(records)) {
@@ -1179,7 +1179,7 @@ public final class SQLiteExecutor {
      * To exclude the some properties or default value, invoke {@code com.landawn.abacus.util.N#entity2Map(Object, boolean, Collection, NamingPolicy)}
      *
      * @param entity with getter/setter methods
-     * @return the int
+     * @return
      */
     public int update(Object entity) {
         if (!ClassUtil.isEntity(entity.getClass())) {
@@ -1198,7 +1198,7 @@ public final class SQLiteExecutor {
     /**
      * Checks if is default id prop value.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return true, if is default id prop value
      */
     private static boolean isDefaultIdPropValue(final Object propValue) {
@@ -1214,7 +1214,7 @@ public final class SQLiteExecutor {
      *
      * @param entity with getter/setter methods
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
-     * @return the int
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public int update(Object entity, Condition whereClause) {
@@ -1228,8 +1228,8 @@ public final class SQLiteExecutor {
     /**
      * Gets the table name by entity.
      *
-     * @param entity the entity
-     * @return the table name by entity
+     * @param entity
+     * @return
      */
     private String getTableNameByEntity(Object entity) {
         return getTableNameByEntity(entity.getClass());
@@ -1238,8 +1238,8 @@ public final class SQLiteExecutor {
     /**
      * Gets the table name by entity.
      *
-     * @param entityClass the entity class
-     * @return the table name by entity
+     * @param entityClass
+     * @return
      */
     private String getTableNameByEntity(Class<?> entityClass) {
         return ClassUtil.getSimpleClassName(entityClass);
@@ -1250,10 +1250,10 @@ public final class SQLiteExecutor {
      * if the entity implements <code>DirtyMarker</code> interface, just update the dirty properties.
      * To exclude the some properties or default value, invoke {@code com.landawn.abacus.util.N#entity2Map(Object, boolean, Collection, NamingPolicy)}
      *
-     * @param table the table
+     * @param table
      * @param record can be <code>Map</code> or <code>entity</code> with getter/setter methods
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
-     * @return the int
+     * @return
      * @see com.landawn.abacus.util.Maps#entity2Map(Object, boolean, Collection, NamingPolicy)
      */
     public int update(String table, Object record, Condition whereClause) {
@@ -1279,8 +1279,8 @@ public final class SQLiteExecutor {
     /**
      * Delete the entity by id value in the entity.
      *
-     * @param entity the entity
-     * @return the int
+     * @param entity
+     * @return
      */
     public int delete(Object entity) {
         if (!ClassUtil.isEntity(entity.getClass())) {
@@ -1299,9 +1299,9 @@ public final class SQLiteExecutor {
     /**
      * Delete.
      *
-     * @param table the table
-     * @param id the id
-     * @return the int
+     * @param table
+     * @param id
+     * @return
      */
     public int delete(String table, long id) {
         return delete(table, CF.eq(ID, id));
@@ -1310,9 +1310,9 @@ public final class SQLiteExecutor {
     /**
      * Delete.
      *
-     * @param entityClass the entity class
-     * @param id the id
-     * @return the int
+     * @param entityClass
+     * @param id
+     * @return
      * @since 0.8.10
      */
     public int delete(Class<?> entityClass, long id) {
@@ -1322,9 +1322,9 @@ public final class SQLiteExecutor {
     /**
      * Delete.
      *
-     * @param table the table
+     * @param table
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
-     * @return the int
+     * @return
      */
     public int delete(String table, Condition whereClause) {
         if (whereClause == null) {
@@ -1339,9 +1339,9 @@ public final class SQLiteExecutor {
     /**
      * Delete.
      *
-     * @param entityClass the entity class
+     * @param entityClass
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
-     * @return the int
+     * @return
      * @since 0.8.10
      */
     public int delete(Class<?> entityClass, Condition whereClause) {
@@ -1351,10 +1351,10 @@ public final class SQLiteExecutor {
     /**
      * Delete.
      *
-     * @param table the table
-     * @param whereClause the where clause
-     * @param whereArgs the where args
-     * @return the int
+     * @param table
+     * @param whereClause
+     * @param whereArgs
+     * @return
      */
     @Deprecated
     int delete(String table, String whereClause, String... whereArgs) {
@@ -1366,7 +1366,7 @@ public final class SQLiteExecutor {
     /**
      * Execute a single SQL statement that is NOT a SELECT or any other SQL statement that returns data.
      *
-     * @param sql the sql
+     * @param sql
      */
     @Deprecated
     void execute(String sql) {
@@ -1376,7 +1376,7 @@ public final class SQLiteExecutor {
     /**
      * Execute a single SQL statement that is NOT a SELECT/INSERT/UPDATE/DELETE.
      *
-     * @param sql the sql
+     * @param sql
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
      */
     @Deprecated
@@ -1422,8 +1422,8 @@ public final class SQLiteExecutor {
     /**
      * Exists.
      *
-     * @param entityClass the entity class
-     * @param whereClause the where clause
+     * @param entityClass
+     * @param whereClause
      * @return true, if successful
      */
     public boolean exists(Class<?> entityClass, Condition whereClause) {
@@ -1433,8 +1433,8 @@ public final class SQLiteExecutor {
     /**
      * Exists.
      *
-     * @param tableName the table name
-     * @param whereClause the where clause
+     * @param tableName
+     * @param whereClause
      * @return true, if successful
      */
     public boolean exists(String tableName, Condition whereClause) {
@@ -1447,7 +1447,7 @@ public final class SQLiteExecutor {
     /**
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
-     * @param sql the sql
+     * @param sql
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
      * @return true, if successful
      */
@@ -1465,9 +1465,9 @@ public final class SQLiteExecutor {
     /**
      * Count.
      *
-     * @param entityClass the entity class
-     * @param whereClause the where clause
-     * @return the int
+     * @param entityClass
+     * @param whereClause
+     * @return
      */
     public int count(Class<?> entityClass, Condition whereClause) {
         return count(getTableNameByEntity(entityClass), whereClause);
@@ -1476,9 +1476,9 @@ public final class SQLiteExecutor {
     /**
      * Count.
      *
-     * @param tableName the table name
-     * @param whereClause the where clause
-     * @return the int
+     * @param tableName
+     * @param whereClause
+     * @return
      */
     public int count(String tableName, Condition whereClause) {
         final SP sp = select(tableName, SQLBuilder.COUNT_ALL, whereClause);
@@ -1490,9 +1490,9 @@ public final class SQLiteExecutor {
     /**
      * Count.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the int
+     * @param sql
+     * @param parameters
+     * @return
      * @deprecated may be misused and it's inefficient.
      */
     @Deprecated
@@ -1504,10 +1504,10 @@ public final class SQLiteExecutor {
     /**
      * Select.
      *
-     * @param tableName the table name
-     * @param selectColumnName the select column name
-     * @param whereClause the where clause
-     * @return the sp
+     * @param tableName
+     * @param selectColumnName
+     * @param whereClause
+     * @return
      */
     private SP select(String tableName, String selectColumnName, Condition whereClause) {
         switch (columnNamingPolicy) {
@@ -1528,9 +1528,9 @@ public final class SQLiteExecutor {
     /**
      * Query for boolean.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional boolean
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1543,9 +1543,9 @@ public final class SQLiteExecutor {
     /**
      * Query for char.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional char
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1558,9 +1558,9 @@ public final class SQLiteExecutor {
     /**
      * Query for byte.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional byte
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1573,9 +1573,9 @@ public final class SQLiteExecutor {
     /**
      * Query for short.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional short
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1588,9 +1588,9 @@ public final class SQLiteExecutor {
     /**
      * Query for int.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional int
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1603,9 +1603,9 @@ public final class SQLiteExecutor {
     /**
      * Query for long.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional long
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1618,9 +1618,9 @@ public final class SQLiteExecutor {
     /**
      * Query for float.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional float
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1633,9 +1633,9 @@ public final class SQLiteExecutor {
     /**
      * Query for double.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional double
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1648,9 +1648,9 @@ public final class SQLiteExecutor {
     /**
      * Query for string.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the nullable
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1661,9 +1661,9 @@ public final class SQLiteExecutor {
     /**
      * Query for date.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the nullable
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1674,9 +1674,9 @@ public final class SQLiteExecutor {
     /**
      * Query for time.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the nullable
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1687,9 +1687,9 @@ public final class SQLiteExecutor {
     /**
      * Query for timestamp.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the nullable
+     * @param sql
+     * @param parameters
+     * @return
      * @see SQLiteExecutor#queryForSingleResult(Class, String, Object...).
      */
     @SafeVarargs
@@ -1714,7 +1714,7 @@ public final class SQLiteExecutor {
      * <br>or limit only:</br>
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>limitValue</i></code></li>
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
-     * @return the nullable
+     * @return
      */
     @SuppressWarnings("unchecked")
     @SafeVarargs
@@ -1737,10 +1737,10 @@ public final class SQLiteExecutor {
      * Returns an {@code Optional} describing the value in the first row/column if it exists, otherwise return an empty {@code Optional}.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional
+     * @param targetClass
+     * @param sql
+     * @param parameters
+     * @return
      */
     @SafeVarargs
     public final <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String sql, Object... parameters) {
@@ -1776,7 +1776,7 @@ public final class SQLiteExecutor {
      * <br>or limit only:</br>
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>limitValue</i></code></li>
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
-     * @return the nullable
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      */
     @SuppressWarnings("unchecked")
@@ -1807,10 +1807,10 @@ public final class SQLiteExecutor {
      * And throws {@code DuplicatedResultException} if more than one record found.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the optional
+     * @param targetClass
+     * @param sql
+     * @param parameters
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      */
     @SafeVarargs
@@ -1838,11 +1838,11 @@ public final class SQLiteExecutor {
     /**
      * Find first.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @return the optional
+     * @param <T>
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @return
      */
     public <T> Optional<T> findFirst(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause) {
         return findFirst(targetClass, selectColumnNames, whereClause, null);
@@ -1853,12 +1853,12 @@ public final class SQLiteExecutor {
      * convert the column values to the type of mapping entity property if the mapping entity property is not assignable
      * from column value.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an entity class with getter/setter methods.
-     * @param selectColumnNames the select column names
+     * @param selectColumnNames
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
-     * @param orderBy the order by
-     * @return the optional
+     * @param orderBy
+     * @return
      */
     public <T> Optional<T> findFirst(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String orderBy) {
         final List<T> resultList = list(targetClass, selectColumnNames, whereClause, orderBy, 0, 1);
@@ -1873,14 +1873,14 @@ public final class SQLiteExecutor {
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an entity class with getter/setter methods.
      * @param sql set <code>offset</code> and <code>limit</code> in sql with format:
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>offsetValue</i>, <i>limitValue</i></code></li>
      * <br>or limit only:</br>
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>limitValue</i></code></li>
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
-     * @return the optional
+     * @return
      */
     @SafeVarargs
     public final <T> Optional<T> findFirst(final Class<T> targetClass, final String sql, Object... parameters) {
@@ -1892,11 +1892,11 @@ public final class SQLiteExecutor {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @return
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause) {
         return list(targetClass, selectColumnNames, whereClause, null);
@@ -1905,12 +1905,12 @@ public final class SQLiteExecutor {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param orderBy
+     * @return
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String orderBy) {
         return list(targetClass, selectColumnNames, whereClause, orderBy, 0, Integer.MAX_VALUE);
@@ -1919,14 +1919,14 @@ public final class SQLiteExecutor {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String orderBy, int offset, int count) {
         return list(targetClass, selectColumnNames, whereClause, null, null, orderBy, offset, count);
@@ -1935,14 +1935,14 @@ public final class SQLiteExecutor {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String groupBy, String having,
             String orderBy) {
@@ -1953,16 +1953,16 @@ public final class SQLiteExecutor {
      * Find the records from database with the specified <code>whereClause, groupby, having, orderBy</code>,
      * and convert result to a list of the specified <code>targetClass</code>.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an entity class with getter/setter methods.
-     * @param selectColumnNames the select column names
+     * @param selectColumnNames
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String groupBy, String having,
             String orderBy, int offset, int count) {
@@ -1979,14 +1979,14 @@ public final class SQLiteExecutor {
      * Find the records from database with the specified <code>sql, parameters</code>,
      * and convert result to a list of the specified <code>targetClass</code>.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an entity class with getter/setter methods.
      * @param sql set <code>offset</code> and <code>limit</code> in sql with format:
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>offsetValue</i>, <i>limitValue</i></code></li>
      * <br>or limit only:</br>
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>limitValue</i></code></li>
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
-     * @return the list
+     * @return
      */
     @SafeVarargs
     public final <T> List<T> list(final Class<T> targetClass, final String sql, Object... parameters) {
@@ -2010,10 +2010,10 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @return the data set
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @return
      */
     public DataSet query(final Class<?> targetClass, Collection<String> selectColumnNames, Condition whereClause) {
         return query(targetClass, selectColumnNames, whereClause, null);
@@ -2022,11 +2022,11 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @return the data set
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param orderBy
+     * @return
      */
     public DataSet query(final Class<?> targetClass, Collection<String> selectColumnNames, Condition whereClause, String orderBy) {
         return query(targetClass, selectColumnNames, whereClause, orderBy, 0, Integer.MAX_VALUE);
@@ -2035,13 +2035,13 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     public DataSet query(final Class<?> targetClass, Collection<String> selectColumnNames, Condition whereClause, String orderBy, int offset, int count) {
         return query(targetClass, selectColumnNames, whereClause, null, null, orderBy, offset, count);
@@ -2050,13 +2050,13 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param targetClass the target class
-     * @param selectColumnNames the select column names
-     * @param whereClause the where clause
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the data set
+     * @param targetClass
+     * @param selectColumnNames
+     * @param whereClause
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      */
     public DataSet query(final Class<?> targetClass, Collection<String> selectColumnNames, Condition whereClause, String groupBy, String having,
             String orderBy) {
@@ -2067,14 +2067,14 @@ public final class SQLiteExecutor {
      * Find the records from database with the specified <code>whereClause, groupby, having, orderBy</code> and return the result set.
      *
      * @param targetClass an entity class with getter/setter methods.
-     * @param selectColumnNames the select column names
+     * @param selectColumnNames
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     public DataSet query(final Class<?> targetClass, Collection<String> selectColumnNames, Condition whereClause, String groupBy, String having, String orderBy,
             int offset, int count) {
@@ -2095,10 +2095,10 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNameTypeMap the select column name type map
-     * @param whereClause the where clause
-     * @return the data set
+     * @param table
+     * @param selectColumnNameTypeMap
+     * @param whereClause
+     * @return
      * @since 0.8.10
      */
     @SuppressWarnings("rawtypes")
@@ -2109,11 +2109,11 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNameTypeMap the select column name type map
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNameTypeMap
+     * @param whereClause
+     * @param orderBy
+     * @return
      * @since 0.8.10
      */
     @SuppressWarnings("rawtypes")
@@ -2124,13 +2124,13 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNameTypeMap the select column name type map
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param table
+     * @param selectColumnNameTypeMap
+     * @param whereClause
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      * @since 0.8.10
      */
     @SuppressWarnings("rawtypes")
@@ -2141,13 +2141,13 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNameTypeMap the select column name type map
-     * @param whereClause the where clause
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNameTypeMap
+     * @param whereClause
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      * @since 0.8.10
      */
     @SuppressWarnings("rawtypes")
@@ -2158,15 +2158,15 @@ public final class SQLiteExecutor {
     /**
      * Find the records from database with the specified <code>whereClause, groupby, having, orderBy</code> and return the result set.
      *
-     * @param table the table
-     * @param selectColumnNameTypeMap the select column name type map
+     * @param table
+     * @param selectColumnNameTypeMap
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      * @since 0.8.10
      */
     @SuppressWarnings("rawtypes")
@@ -2190,11 +2190,11 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2205,12 +2205,12 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2221,14 +2221,14 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2239,14 +2239,14 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2257,16 +2257,16 @@ public final class SQLiteExecutor {
     /**
      * Find the records from database with the specified <code>whereClause, groupby, having, orderBy</code> and return the result set.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2285,11 +2285,11 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2300,12 +2300,12 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2316,14 +2316,14 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2334,14 +2334,14 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param whereClause the where clause
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param whereClause
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2352,16 +2352,16 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2378,12 +2378,12 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param where the where
-     * @param whereArgs the where args
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param where
+     * @param whereArgs
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2394,13 +2394,13 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param where the where
-     * @param whereArgs the where args
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param where
+     * @param whereArgs
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2412,15 +2412,15 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param where the where
-     * @param whereArgs the where args
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param where
+     * @param whereArgs
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2431,15 +2431,15 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param where the where
-     * @param whereArgs the where args
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param where
+     * @param whereArgs
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2451,17 +2451,17 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
      * @param where A filter declaring which rows to return, formatted as an SQL WHERE clause (excluding the WHERE itself). Passing null will return all rows for the given table.
      * @param whereArgs You may include ?s in selection, which will be replaced by the values from selectionArgs, in order that they appear in the selection. The values will be bound as Strings.
      * @param groupBy A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
      * @param having A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @Deprecated
     @SuppressWarnings("rawtypes")
@@ -2473,17 +2473,17 @@ public final class SQLiteExecutor {
     /**
      * Execute query.
      *
-     * @param table the table
-     * @param selectColumnNames the select column names
-     * @param selectColumnTypes the select column types
-     * @param where the where
-     * @param whereArgs the where args
-     * @param groupBy the group by
-     * @param having the having
-     * @param orderBy the order by
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param table
+     * @param selectColumnNames
+     * @param selectColumnTypes
+     * @param where
+     * @param whereArgs
+     * @param groupBy
+     * @param having
+     * @param orderBy
+     * @param offset
+     * @param count
+     * @return
      */
     @SuppressWarnings("rawtypes")
     private DataSet executeQuery(String table, String[] selectColumnNames, Type[] selectColumnTypes, String where, String[] whereArgs, String groupBy,
@@ -2540,7 +2540,7 @@ public final class SQLiteExecutor {
      * <br>or limit only:</br>
      * <li><code>SELECT * FROM account where id = ? LIMIT <i>limitValue</i></code></li>
      * @param parameters A Object Array/List, and Map/Entity with getter/setter methods for parameterized sql with named parameters
-     * @return the data set
+     * @return
      */
     @SafeVarargs
     public final DataSet query(Class<?> targetClass, String sql, Object... parameters) {
@@ -2550,12 +2550,12 @@ public final class SQLiteExecutor {
     /**
      * Query.
      *
-     * @param targetClass the target class
-     * @param sql the sql
-     * @param offset the offset
-     * @param count the count
-     * @param parameters the parameters
-     * @return the data set
+     * @param targetClass
+     * @param sql
+     * @param offset
+     * @param count
+     * @param parameters
+     * @return
      */
     private DataSet query(Class<?> targetClass, String sql, int offset, int count, Object... parameters) {
         final Cursor cursor = rawQuery(sql, parameters);
@@ -2570,9 +2570,9 @@ public final class SQLiteExecutor {
     /**
      * Raw query.
      *
-     * @param sql the sql
-     * @param parameters the parameters
-     * @return the cursor
+     * @param sql
+     * @param parameters
+     * @return
      */
     private Cursor rawQuery(String sql, Object... parameters) {
         final NamedSQL namedSQL = parseSQL(sql);
@@ -2626,8 +2626,8 @@ public final class SQLiteExecutor {
     /**
      * Format name.
      *
-     * @param tableName the table name
-     * @return the string
+     * @param tableName
+     * @return
      */
     private String formatName(String tableName) {
         switch (columnNamingPolicy) {
@@ -2648,8 +2648,8 @@ public final class SQLiteExecutor {
     /**
      * Parses the SQL.
      *
-     * @param sql the sql
-     * @return the named SQL
+     * @param sql
+     * @return
      */
     private NamedSQL parseSQL(String sql) {
         return NamedSQL.parse(sql);
@@ -2658,8 +2658,8 @@ public final class SQLiteExecutor {
     /**
      * Parses the string condition.
      *
-     * @param expr the expr
-     * @return the string
+     * @param expr
+     * @return
      */
     private String parseStringCondition(String expr) {
         if (N.isNullOrEmpty(expr)) {
@@ -2693,9 +2693,9 @@ public final class SQLiteExecutor {
     /**
      * Prepare arguments.
      *
-     * @param namedSQL the named SQL
-     * @param parameters the parameters
-     * @return the object[]
+     * @param namedSQL
+     * @param parameters
+     * @return
      */
     private Object[] prepareArguments(final NamedSQL namedSQL, final Object... parameters) {
         final int parameterCount = namedSQL.getParameterCount();
@@ -2756,8 +2756,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret condition.
      *
-     * @param condition the condition
-     * @return the command
+     * @param condition
+     * @return
      */
     private Command interpretCondition(Condition condition) {
         if (condition instanceof Binary) {
@@ -2779,8 +2779,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret binary.
      *
-     * @param binary the binary
-     * @return the command
+     * @param binary
+     * @return
      */
     private Command interpretBinary(Binary binary) {
         final Command cmd = new Command();
@@ -2794,8 +2794,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret between.
      *
-     * @param bt the bt
-     * @return the command
+     * @param bt
+     * @return
      */
     private Command interpretBetween(Between bt) {
         final Command cmd = new Command();
@@ -2809,8 +2809,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret in.
      *
-     * @param in the in
-     * @return the command
+     * @param in
+     * @return
      */
     private Command interpretIn(In in) {
         final Command cmd = new Command();
@@ -2832,8 +2832,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret junction.
      *
-     * @param junction the junction
-     * @return the command
+     * @param junction
+     * @return
      */
     private Command interpretJunction(Junction junction) {
         final List<Condition> conditionList = junction.getConditions();
@@ -2887,8 +2887,8 @@ public final class SQLiteExecutor {
     /**
      * Interpret expression.
      *
-     * @param exp the exp
-     * @return the command
+     * @param exp
+     * @return
      */
     private Command interpretExpression(Expression exp) {
         Command cmd = new Command();
@@ -2901,7 +2901,7 @@ public final class SQLiteExecutor {
     /**
      * Checks if is dirty marker entity.
      *
-     * @param cls the cls
+     * @param cls
      * @return true, if is dirty marker entity
      */
     private static boolean isDirtyMarkerEntity(final Class<?> cls) {
@@ -2922,7 +2922,7 @@ public final class SQLiteExecutor {
         /**
          * Gets the sql.
          *
-         * @return the sql
+         * @return
          */
         public String getSql() {
             return sql;
@@ -2940,7 +2940,7 @@ public final class SQLiteExecutor {
         /**
          * Gets the args.
          *
-         * @return the args
+         * @return
          */
         public String[] getArgs() {
             return args;
@@ -2958,7 +2958,7 @@ public final class SQLiteExecutor {
         /**
          * Hash code.
          *
-         * @return the int
+         * @return
          */
         @Override
         public int hashCode() {
@@ -2971,7 +2971,7 @@ public final class SQLiteExecutor {
         /**
          * Equals.
          *
-         * @param obj the obj
+         * @param obj
          * @return true, if successful
          */
         @Override
@@ -2992,7 +2992,7 @@ public final class SQLiteExecutor {
         /**
          * To string.
          *
-         * @return the string
+         * @return
          */
         @Override
         public String toString() {
@@ -3030,7 +3030,7 @@ public final class SQLiteExecutor {
     /**
      * The Class Type.
      *
-     * @param <T> the generic type
+     * @param <T>
      */
     static abstract class Type<T> {
 
@@ -3404,8 +3404,8 @@ public final class SQLiteExecutor {
         /**
          * Instantiates a new type.
          *
-         * @param androidSQLiteType the android SQ lite type
-         * @param typeClass the type class
+         * @param androidSQLiteType
+         * @param typeClass
          */
         private Type(int androidSQLiteType, Class<T> typeClass) {
             this.androidSQLiteType = androidSQLiteType;
@@ -3415,7 +3415,7 @@ public final class SQLiteExecutor {
         /**
          * Gets the android SQ lite type.
          *
-         * @return the android SQ lite type
+         * @return
          */
         public int getAndroidSQLiteType() {
             return androidSQLiteType;
@@ -3424,8 +3424,8 @@ public final class SQLiteExecutor {
         /**
          * Gets the type class.
          *
-         * @param <C> the generic type
-         * @return the type class
+         * @param <C>
+         * @return
          */
         public <C> Class<C> getTypeClass() {
             return (Class<C>) typeClass;
@@ -3434,36 +3434,36 @@ public final class SQLiteExecutor {
         /**
          * Gets the.
          *
-         * @param cursor the cursor
-         * @param columnIndex the column index
-         * @return the t
+         * @param cursor
+         * @param columnIndex
+         * @return
          */
         public abstract T get(Cursor cursor, int columnIndex);
 
         /**
          * Gets the.
          *
-         * @param contentValues the content values
-         * @param key the key
-         * @return the t
+         * @param contentValues
+         * @param key
+         * @return
          */
         public abstract T get(ContentValues contentValues, String key);
 
         /**
          * Sets the.
          *
-         * @param contentValues the content values
-         * @param key the key
-         * @param value the value
+         * @param contentValues
+         * @param key
+         * @param value
          */
         public abstract void set(ContentValues contentValues, String key, T value);
 
         /**
          * Value of.
          *
-         * @param <T> the generic type
-         * @param androidSQLiteType the android SQ lite type
-         * @return the type
+         * @param <T>
+         * @param androidSQLiteType
+         * @return
          */
         public static <T> Type<T> valueOf(final int androidSQLiteType) {
             switch (androidSQLiteType) {
@@ -3484,10 +3484,10 @@ public final class SQLiteExecutor {
         /**
          * Value of.
          *
-         * @param <T> the generic type
-         * @param <C> the generic type
-         * @param typeClass the type class
-         * @return the type
+         * @param <T>
+         * @param <C>
+         * @param typeClass
+         * @return
          */
         public static <T, C> Type<T> valueOf(final Class<C> typeClass) {
             Type<C> sqliteType = (Type<C>) classSQLiteTypePool.get(typeClass);
@@ -3521,9 +3521,9 @@ public final class SQLiteExecutor {
         /**
          * Array of.
          *
-         * @param <T> the generic type
-         * @param androidSQLiteTypes the android SQ lite types
-         * @return the type[]
+         * @param <T>
+         * @param androidSQLiteTypes
+         * @return
          */
         @SafeVarargs
         public static <T> Type<T>[] arrayOf(final int... androidSQLiteTypes) {
@@ -3540,9 +3540,9 @@ public final class SQLiteExecutor {
         /**
          * Array of.
          *
-         * @param <T> the generic type
-         * @param typeClasses the type classes
-         * @return the type[]
+         * @param <T>
+         * @param typeClasses
+         * @return
          */
         @SafeVarargs
         public static <T> Type<T>[] arrayOf(final Class<?>... typeClasses) {

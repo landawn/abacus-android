@@ -114,7 +114,7 @@ public class CommonUtils {
     /**
      * Inits the.
      *
-     * @param context the context
+     * @param context
      */
     public static synchronized void init(Context context) {
         if (CommonUtils.context != null) {
@@ -137,7 +137,7 @@ public class CommonUtils {
     /**
      * Context.
      *
-     * @return the context
+     * @return
      */
     public static Context context() {
         return context;
@@ -146,7 +146,7 @@ public class CommonUtils {
     /**
      * Cup count.
      *
-     * @return the int
+     * @return
      */
     public static int cupCount() {
         return CPU_COUNT;
@@ -175,7 +175,7 @@ public class CommonUtils {
     /**
      * Free disk space.
      *
-     * @param dir the dir
+     * @param dir
      * @return available size in megabytes.
      */
     public static int freeDiskSpace(File dir) {
@@ -187,7 +187,7 @@ public class CommonUtils {
     /**
      * Device brand.
      *
-     * @return the string
+     * @return
      * @see android.os.Build.BRAND
      */
     public static String deviceBrand() {
@@ -197,7 +197,7 @@ public class CommonUtils {
     /**
      * Device model.
      *
-     * @return the string
+     * @return
      * @see android.os.Build.MODEL
      */
     public static String deviceModel() {
@@ -207,7 +207,7 @@ public class CommonUtils {
     /**
      * Device manufacturer.
      *
-     * @return the string
+     * @return
      * @see android.os.Build.MANUFACTURER
      */
     public static String deviceManufacturer() {
@@ -245,9 +245,9 @@ public class CommonUtils {
     /**
      * Extract data.
      *
-     * @param targetClass the target class
-     * @param cursor the cursor
-     * @return the data set
+     * @param targetClass
+     * @param cursor
+     * @return
      * @see SQLiteExecutor#extractData(Class, Cursor)
      */
     public static DataSet extractData(final Class<?> targetClass, final Cursor cursor) {
@@ -258,10 +258,10 @@ public class CommonUtils {
      * Extract data.
      *
      * @param targetClass an entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param offset
+     * @param count
+     * @return
      * @see SQLiteExecutor#extractData(Class, Cursor, int, int)
      */
     public static DataSet extractData(final Class<?> targetClass, final Cursor cursor, final int offset, final int count) {
@@ -271,9 +271,9 @@ public class CommonUtils {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @return
      * @see SQLiteExecutor#extractData(Cursor, Class[])
      */
     @SuppressWarnings("rawtypes")
@@ -284,11 +284,11 @@ public class CommonUtils {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @param offset
+     * @param count
+     * @return
      * @see SQLiteExecutor#extractData(Cursor, Class[], int, int)
      */
     @SuppressWarnings("rawtypes")
@@ -299,9 +299,9 @@ public class CommonUtils {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @return
      * @see SQLiteExecutor#extractData(Cursor, Collection)
      */
     @SuppressWarnings("rawtypes")
@@ -312,11 +312,11 @@ public class CommonUtils {
     /**
      * Extract data.
      *
-     * @param cursor the cursor
-     * @param selectColumnTypes the select column types
-     * @param offset the offset
-     * @param count the count
-     * @return the data set
+     * @param cursor
+     * @param selectColumnTypes
+     * @param offset
+     * @param count
+     * @return
      * @see SQLiteExecutor#extractData(Cursor, Collection, int, int)
      */
     @SuppressWarnings("rawtypes")
@@ -327,10 +327,10 @@ public class CommonUtils {
     /**
      * Returns values from all rows associated with the specified <code>targetClass</code> if the specified <code>targetClass</code> is an entity class, otherwise, only returns values from first column.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @return the list
+     * @param cursor
+     * @return
      * @see SQLiteExecutor#toList(Class, Cursor)
      */
     public static <T> List<T> toList(final Class<T> targetClass, final Cursor cursor) {
@@ -340,12 +340,12 @@ public class CommonUtils {
     /**
      * Returns values from all rows associated with the specified <code>targetClass</code> if the specified <code>targetClass</code> is an entity class, otherwise, only returns values from first column.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param cursor
+     * @param offset
+     * @param count
+     * @return
      * @see SQLiteExecutor#toList(Class, Cursor, int, int)
      */
     public static <T> List<T> toList(final Class<T> targetClass, final Cursor cursor, final int offset, final int count) {
@@ -355,11 +355,11 @@ public class CommonUtils {
     /**
      * Returns the values from the specified <code>column</code>. 
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param columnIndex the column index
-     * @return the list
+     * @param cursor
+     * @param columnIndex
+     * @return
      * @see SQLiteExecutor#toList(Class, Cursor, int)
      */
     public static <T> List<T> toList(Class<T> targetClass, Cursor cursor, int columnIndex) {
@@ -369,13 +369,13 @@ public class CommonUtils {
     /**
      * Returns the values from the specified <code>column</code>. 
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param cursor the cursor
-     * @param columnIndex the column index
-     * @param offset the offset
-     * @param count the count
-     * @return the list
+     * @param cursor
+     * @param columnIndex
+     * @param offset
+     * @param count
+     * @return
      * @see SQLiteExecutor#toList(Class, Cursor, int, int, int)
      */
     public static <T> List<T> toList(final Class<T> targetClass, final Cursor cursor, final int columnIndex, final int offset, final int count) {
@@ -385,10 +385,10 @@ public class CommonUtils {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @return the t
+     * @param cursor
+     * @return
      * @see SQLiteExecutor#toEntity(Class, Cursor)
      */
     public static <T> T toEntity(Class<T> targetClass, Cursor cursor) {
@@ -398,11 +398,11 @@ public class CommonUtils {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setter methods.
-     * @param cursor the cursor
-     * @param rowNum the row num
-     * @return the t
+     * @param cursor
+     * @param rowNum
+     * @return
      * @see SQLiteExecutor#toEntity(Class, Cursor, int)
      */
     public static <T> T toEntity(Class<T> targetClass, Cursor cursor, int rowNum) {
@@ -412,10 +412,10 @@ public class CommonUtils {
     /**
      * To entity.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param contentValues the content values
-     * @return the t
+     * @param <T>
+     * @param targetClass
+     * @param contentValues
+     * @return
      * @see SQLiteExecutor#toEntity(Class, ContentValues)
      */
     public static <T> T toEntity(final Class<T> targetClass, final ContentValues contentValues) {
@@ -425,11 +425,11 @@ public class CommonUtils {
     /**
      * To entity.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass an Map class or Entity class with getter/setter methods.
-     * @param contentValues the content values
-     * @param namingPolicy the naming policy
-     * @return the t
+     * @param contentValues
+     * @param namingPolicy
+     * @return
      * @see SQLiteExecutor#toEntity(Class, ContentValues, NamingPolicy)
      */
     public static <T> T toEntity(final Class<T> targetClass, final ContentValues contentValues, final NamingPolicy namingPolicy) {
@@ -439,8 +439,8 @@ public class CommonUtils {
     /**
      * To content values.
      *
-     * @param obj the obj
-     * @return the content values
+     * @param obj
+     * @return
      * @see SQLiteExecutor#toContentValues(Object)
      */
     public static ContentValues toContentValues(final Object obj) {
@@ -450,9 +450,9 @@ public class CommonUtils {
     /**
      * To content values.
      *
-     * @param obj the obj
-     * @param ignoredPropNames the ignored prop names
-     * @return the content values
+     * @param obj
+     * @param ignoredPropNames
+     * @return
      * @see SQLiteExecutor#toContentValues(Object)
      */
     public static ContentValues toContentValues(final Object obj, final Collection<String> ignoredPropNames) {
@@ -463,8 +463,8 @@ public class CommonUtils {
      * To content values.
      *
      * @param obj an instance of Map or Entity.
-     * @param namingPolicy the naming policy
-     * @return the content values
+     * @param namingPolicy
+     * @return
      * @see SQLiteExecutor#toContentValues(Object, NamingPolicy)
      */
     public static ContentValues toContentValues(final Object obj, final NamingPolicy namingPolicy) {
@@ -475,9 +475,9 @@ public class CommonUtils {
      * To content values.
      *
      * @param obj an instance of Map or Entity.
-     * @param ignoredPropNames the ignored prop names
-     * @param namingPolicy the naming policy
-     * @return the content values
+     * @param ignoredPropNames
+     * @param namingPolicy
+     * @return
      * @see SQLiteExecutor#toContentValues(Object, NamingPolicy)
      */
     public static ContentValues toContentValues(final Object obj, final Collection<String> ignoredPropNames, final NamingPolicy namingPolicy) {
@@ -487,9 +487,9 @@ public class CommonUtils {
     /**
      * As content values.
      *
-     * @param key1 the key 1
-     * @param value1 the value 1
-     * @return the content values
+     * @param key1
+     * @param value1
+     * @return
      */
     public static final ContentValues asContentValues(String key1, Object value1) {
         final ContentValues result = new ContentValues();
@@ -506,11 +506,11 @@ public class CommonUtils {
     /**
      * As content values.
      *
-     * @param key1 the key 1
-     * @param value1 the value 1
-     * @param key2 the key 2
-     * @param value2 the value 2
-     * @return the content values
+     * @param key1
+     * @param value1
+     * @param key2
+     * @param value2
+     * @return
      */
     public static final ContentValues asContentValues(String key1, Object value1, String key2, Object value2) {
         final ContentValues result = new ContentValues();
@@ -533,13 +533,13 @@ public class CommonUtils {
     /**
      * As content values.
      *
-     * @param key1 the key 1
-     * @param value1 the value 1
-     * @param key2 the key 2
-     * @param value2 the value 2
-     * @param key3 the key 3
-     * @param value3 the value 3
-     * @return the content values
+     * @param key1
+     * @param value1
+     * @param key2
+     * @param value2
+     * @param key3
+     * @param value3
+     * @return
      */
     public static final ContentValues asContentValues(String key1, Object value1, String key2, Object value2, String key3, Object value3) {
         final ContentValues result = new ContentValues();
@@ -568,8 +568,8 @@ public class CommonUtils {
     /**
      * As content values.
      *
-     * @param a the a
-     * @return the content values
+     * @param a
+     * @return
      */
     @SafeVarargs
     public static final ContentValues asContentValues(final Object... a) {
@@ -607,9 +607,9 @@ public class CommonUtils {
     /**
      * As column types.
      *
-     * @param c1 the c 1
-     * @param t1 the t 1
-     * @return the map
+     * @param c1
+     * @param t1
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static Map<String, Class> asColumnTypes(String c1, Class t1) {
@@ -619,11 +619,11 @@ public class CommonUtils {
     /**
      * As column types.
      *
-     * @param c1 the c 1
-     * @param t1 the t 1
-     * @param c2 the c 2
-     * @param t2 the t 2
-     * @return the map
+     * @param c1
+     * @param t1
+     * @param c2
+     * @param t2
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static Map<String, Class> asColumnTypes(String c1, Class t1, String c2, Class t2) {
@@ -633,13 +633,13 @@ public class CommonUtils {
     /**
      * As column types.
      *
-     * @param c1 the c 1
-     * @param t1 the t 1
-     * @param c2 the c 2
-     * @param t2 the t 2
-     * @param c3 the c 3
-     * @param t3 the t 3
-     * @return the map
+     * @param c1
+     * @param t1
+     * @param c2
+     * @param t2
+     * @param c3
+     * @param t3
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static Map<String, Class> asColumnTypes(String c1, Class t1, String c2, Class t2, String c3, Class t3) {
@@ -649,8 +649,8 @@ public class CommonUtils {
     /**
      * As column types.
      *
-     * @param a the a
-     * @return the map
+     * @param a
+     * @return
      */
     @SuppressWarnings("rawtypes")
     @SafeVarargs
@@ -661,7 +661,7 @@ public class CommonUtils {
     /**
      * Gets the content resolver.
      *
-     * @return the content resolver
+     * @return
      */
     public static ContentResolver getContentResolver() {
         return context.getContentResolver();
@@ -670,11 +670,11 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param uri the uri
-     * @param projection the projection
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param uri
+     * @param projection
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, Uri uri, String projection) {
         return query(targetClass, uri, projection, null, null, null);
@@ -683,14 +683,14 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param uri the uri
-     * @param projection the projection
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @return the list
+     * @param <T>
+     * @param targetClass
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, Uri uri, String projection, String selection, String[] selectionArgs, String sortOrder) {
         return query(targetClass, uri, projection, selection, selectionArgs, sortOrder, null);
@@ -699,15 +699,15 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class or specific column type.
-     * @param uri the uri
-     * @param projection the projection
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @param cancellationSignal the cancellation signal
-     * @return the list
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @param cancellationSignal
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, final Uri uri, String projection, String selection, String[] selectionArgs, String sortOrder,
             CancellationSignal cancellationSignal) {
@@ -723,11 +723,11 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setting method.
-     * @param uri the uri
-     * @param projection the projection
-     * @return the list
+     * @param uri
+     * @param projection
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, final Uri uri, String[] projection) {
         return query(targetClass, uri, projection, null, null, null);
@@ -736,14 +736,14 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setting method.
-     * @param uri the uri
-     * @param projection the projection
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @return the list
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, final Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         return query(targetClass, uri, projection, selection, selectionArgs, sortOrder, null);
@@ -752,15 +752,15 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param <T> the generic type
+     * @param <T>
      * @param targetClass entity class with getter/setting method.
-     * @param uri the uri
-     * @param projection the projection
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @param cancellationSignal the cancellation signal
-     * @return the list
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @param cancellationSignal
+     * @return
      */
     public static <T> List<T> query(Class<T> targetClass, final Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder,
             CancellationSignal cancellationSignal) {
@@ -776,9 +776,9 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param uri the uri
-     * @param projectionTypeMap the projection type map
-     * @return the list
+     * @param uri
+     * @param projectionTypeMap
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static List<Map<String, Object>> query(final Uri uri, Map<String, Class> projectionTypeMap) {
@@ -788,12 +788,12 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param uri the uri
-     * @param projectionTypeMap the projection type map
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @return the list
+     * @param uri
+     * @param projectionTypeMap
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static List<Map<String, Object>> query(final Uri uri, Map<String, Class> projectionTypeMap, String selection, String[] selectionArgs,
@@ -804,13 +804,13 @@ public class CommonUtils {
     /**
      * Query by context.getContentResolver().
      *
-     * @param uri the uri
-     * @param projectionTypeMap the projection type map
-     * @param selection the selection
-     * @param selectionArgs the selection args
-     * @param sortOrder the sort order
-     * @param cancellationSignal the cancellation signal
-     * @return the list
+     * @param uri
+     * @param projectionTypeMap
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @param cancellationSignal
+     * @return
      */
     @SuppressWarnings("rawtypes")
     public static List<Map<String, Object>> query(final Uri uri, Map<String, Class> projectionTypeMap, String selection, String[] selectionArgs,
@@ -837,7 +837,7 @@ public class CommonUtils {
     /**
      * Checks if is ui thread.
      *
-     * @param thread the thread
+     * @param thread
      * @return true, if is ui thread
      */
     public static boolean isUiThread(Thread thread) {
@@ -848,7 +848,7 @@ public class CommonUtils {
      * Run on ui thread.
      *
      * @param <E> the element type
-     * @param action the action
+     * @param action
      * @throws E the e
      */
     public static <E extends Exception> void runOnUiThread(Try.Runnable<E> action) throws E {
@@ -870,10 +870,10 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param root the root
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(View root, int id) {
         return (T) root.findViewById(id);
@@ -882,10 +882,10 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param activity the activity
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -894,10 +894,10 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param dialog the dialog
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -906,11 +906,11 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param cls the cls
-     * @param root the root
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param cls
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(Class<T> cls, View root, int id) {
         return (T) root.findViewById(id);
@@ -919,11 +919,11 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param cls the cls
-     * @param activity the activity
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param cls
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(Class<T> cls, Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -932,11 +932,11 @@ public class CommonUtils {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param cls the cls
-     * @param dialog the dialog
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param cls
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends View> T getViewById(Class<T> cls, Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -945,10 +945,10 @@ public class CommonUtils {
     /**
      * Gets the text view by id.
      *
-     * @param <T> the generic type
-     * @param root the root
-     * @param id the id
-     * @return the text view by id
+     * @param <T>
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends TextView> T getTextViewById(View root, int id) {
         return (T) root.findViewById(id);
@@ -957,10 +957,10 @@ public class CommonUtils {
     /**
      * Gets the text view by id.
      *
-     * @param <T> the generic type
-     * @param activity the activity
-     * @param id the id
-     * @return the text view by id
+     * @param <T>
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends TextView> T getTextViewById(Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -969,10 +969,10 @@ public class CommonUtils {
     /**
      * Gets the text view by id.
      *
-     * @param <T> the generic type
-     * @param dialog the dialog
-     * @param id the id
-     * @return the text view by id
+     * @param <T>
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends TextView> T getTextViewById(Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -981,10 +981,10 @@ public class CommonUtils {
     /**
      * Gets the edits the text by id.
      *
-     * @param <T> the generic type
-     * @param root the root
-     * @param id the id
-     * @return the edits the text by id
+     * @param <T>
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends EditText> T getEditTextById(View root, int id) {
         return (T) root.findViewById(id);
@@ -993,10 +993,10 @@ public class CommonUtils {
     /**
      * Gets the edits the text by id.
      *
-     * @param <T> the generic type
-     * @param activity the activity
-     * @param id the id
-     * @return the edits the text by id
+     * @param <T>
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends EditText> T getEditTextById(Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -1005,10 +1005,10 @@ public class CommonUtils {
     /**
      * Gets the edits the text by id.
      *
-     * @param <T> the generic type
-     * @param dialog the dialog
-     * @param id the id
-     * @return the edits the text by id
+     * @param <T>
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends EditText> T getEditTextById(Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -1017,10 +1017,10 @@ public class CommonUtils {
     /**
      * Gets the image view by id.
      *
-     * @param <T> the generic type
-     * @param root the root
-     * @param id the id
-     * @return the image view by id
+     * @param <T>
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends ImageView> T getImageViewById(View root, int id) {
         return (T) root.findViewById(id);
@@ -1029,10 +1029,10 @@ public class CommonUtils {
     /**
      * Gets the image view by id.
      *
-     * @param <T> the generic type
-     * @param activity the activity
-     * @param id the id
-     * @return the image view by id
+     * @param <T>
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends ImageView> T getImageViewById(Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -1041,10 +1041,10 @@ public class CommonUtils {
     /**
      * Gets the image view by id.
      *
-     * @param <T> the generic type
-     * @param dialog the dialog
-     * @param id the id
-     * @return the image view by id
+     * @param <T>
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends ImageView> T getImageViewById(Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -1053,10 +1053,10 @@ public class CommonUtils {
     /**
      * Gets the button by id.
      *
-     * @param <T> the generic type
-     * @param root the root
-     * @param id the id
-     * @return the button by id
+     * @param <T>
+     * @param root
+     * @param id
+     * @return
      */
     public static <T extends Button> T getButtonById(View root, int id) {
         return (T) root.findViewById(id);
@@ -1065,10 +1065,10 @@ public class CommonUtils {
     /**
      * Gets the button by id.
      *
-     * @param <T> the generic type
-     * @param activity the activity
-     * @param id the id
-     * @return the button by id
+     * @param <T>
+     * @param activity
+     * @param id
+     * @return
      */
     public static <T extends Button> T getButtonById(Activity activity, int id) {
         return (T) activity.findViewById(id);
@@ -1077,10 +1077,10 @@ public class CommonUtils {
     /**
      * Gets the button by id.
      *
-     * @param <T> the generic type
-     * @param dialog the dialog
-     * @param id the id
-     * @return the button by id
+     * @param <T>
+     * @param dialog
+     * @param id
+     * @return
      */
     public static <T extends Button> T getButtonById(Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
@@ -1089,9 +1089,9 @@ public class CommonUtils {
     /**
      * Gets the view text by id.
      *
-     * @param root the root
-     * @param id the id
-     * @return the view text by id
+     * @param root
+     * @param id
+     * @return
      */
     public static String getViewTextById(View root, int id) {
         return getTextViewById(root, id).getText().toString().trim();
@@ -1100,9 +1100,9 @@ public class CommonUtils {
     /**
      * Gets the view text by id.
      *
-     * @param activity the activity
-     * @param id the id
-     * @return the view text by id
+     * @param activity
+     * @param id
+     * @return
      */
     public static String getViewTextById(Activity activity, int id) {
         return getTextViewById(activity, id).getText().toString().trim();
@@ -1111,9 +1111,9 @@ public class CommonUtils {
     /**
      * Gets the view text by id.
      *
-     * @param dialog the dialog
-     * @param id the id
-     * @return the view text by id
+     * @param dialog
+     * @param id
+     * @return
      */
     public static String getViewTextById(Dialog dialog, int id) {
         return getTextViewById(dialog, id).getText().toString().trim();
@@ -1122,7 +1122,7 @@ public class CommonUtils {
     /**
      * Sometimes {@code view.requestFocus()}, or {@code dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)} (the view is in a dialog) is required to show virtual keyboard.
      *
-     * @param view the view
+     * @param view
      */
     public static void showVirtualKeyboard(View view) {
         final Context context = view.getContext();
@@ -1133,7 +1133,7 @@ public class CommonUtils {
     /**
      * Hide virtual keyboard.
      *
-     * @param view the view
+     * @param view
      */
     public static void hideVirtualKeyboard(View view) {
         final Context context = view.getContext();
@@ -1144,7 +1144,7 @@ public class CommonUtils {
     /**
      * Show toast.
      *
-     * @param text the text
+     * @param text
      */
     public static void showToast(final CharSequence text) {
         showToast(context, text);
@@ -1153,8 +1153,8 @@ public class CommonUtils {
     /**
      * Show toast.
      *
-     * @param text the text
-     * @param duration the duration
+     * @param text
+     * @param duration
      */
     public static void showToast(final CharSequence text, final int duration) {
         showToast(context, text, duration);
@@ -1163,8 +1163,8 @@ public class CommonUtils {
     /**
      * Show toast.
      *
-     * @param context the context
-     * @param text the text
+     * @param context
+     * @param text
      */
     public static void showToast(final Context context, final CharSequence text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
@@ -1173,9 +1173,9 @@ public class CommonUtils {
     /**
      * Show toast.
      *
-     * @param context the context
-     * @param text the text
-     * @param duration the duration
+     * @param context
+     * @param text
+     * @param duration
      */
     public static void showToast(final Context context, final CharSequence text, final int duration) {
         Toast.makeText(context, text, duration).show();
@@ -1184,8 +1184,8 @@ public class CommonUtils {
     /**
      * Dp 2 px.
      *
-     * @param dpValue the dp value
-     * @return the int
+     * @param dpValue
+     * @return
      */
     public static int dp2px(float dpValue) {
         final float scale = getDisplayMetrics().density;
@@ -1195,8 +1195,8 @@ public class CommonUtils {
     /**
      * Px 2 dp.
      *
-     * @param pxValue the px value
-     * @return the int
+     * @param pxValue
+     * @return
      */
     public static int px2dp(float pxValue) {
         final float scale = getDisplayMetrics().density;
@@ -1206,8 +1206,8 @@ public class CommonUtils {
     /**
      * Sp 2 px.
      *
-     * @param spValue the sp value
-     * @return the int
+     * @param spValue
+     * @return
      */
     public static int sp2px(float spValue) {
         final float fontScale = getDisplayMetrics().scaledDensity;
@@ -1217,8 +1217,8 @@ public class CommonUtils {
     /**
      * Px 2 sp.
      *
-     * @param pxValue the px value
-     * @return the int
+     * @param pxValue
+     * @return
      */
     public static int px2sp(float pxValue) {
         final float fontScale = getDisplayMetrics().scaledDensity;
@@ -1228,7 +1228,7 @@ public class CommonUtils {
     /**
      * Gets the display metrics.
      *
-     * @return the display metrics
+     * @return
      */
     public static DisplayMetrics getDisplayMetrics() {
         return context.getResources().getDisplayMetrics();
@@ -1237,7 +1237,7 @@ public class CommonUtils {
     /**
      * Gets the screen width.
      *
-     * @return the screen width
+     * @return
      */
     public static int getScreenWidth() {
         // cache the result?
@@ -1250,7 +1250,7 @@ public class CommonUtils {
     /**
      * Gets the screen height.
      *
-     * @return the screen height
+     * @return
      */
     public static int getScreenHeight() {
         // cache the result?
@@ -1299,8 +1299,8 @@ public class CommonUtils {
     /**
      * Gets the screen rotation.
      *
-     * @param activity the activity
-     * @return the screen rotation
+     * @param activity
+     * @return
      */
     public static int getScreenRotation(Activity activity) {
         switch (activity.getWindowManager().getDefaultDisplay().getRotation()) {
@@ -1329,7 +1329,7 @@ public class CommonUtils {
     /**
      * Close.
      *
-     * @param closeable the closeable
+     * @param closeable
      */
     public static void close(Closeable closeable) {
         IOUtil.close(closeable);
@@ -1338,7 +1338,7 @@ public class CommonUtils {
     /**
      * Close quietly.
      *
-     * @param closeable the closeable
+     * @param closeable
      */
     public static void closeQuietly(Closeable closeable) {
         IOUtil.closeQuietly(closeable);
@@ -1347,8 +1347,8 @@ public class CommonUtils {
     /**
      * Copied from Picasso: http://square.github.io/picasso Copyright (C) 2013 Square, Inc.
      *
-     * @param bitmap the bitmap
-     * @return the size of the specified bitmap in bytes.
+     * @param bitmap
+     * @return
      */
     public static int getByteCount(Bitmap bitmap) {
         int result;
@@ -1376,8 +1376,8 @@ public class CommonUtils {
         /**
          * Gets the byte count.
          *
-         * @param bitmap the bitmap
-         * @return the byte count
+         * @param bitmap
+         * @return
          */
         static int getByteCount(Bitmap bitmap) {
             return bitmap.getByteCount();

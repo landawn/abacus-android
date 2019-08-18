@@ -71,9 +71,9 @@ public class ProgressBarTask {
     /**
      * Instantiates a new progress bar task.
      *
-     * @param root the root
-     * @param delay the delay
-     * @param circleColor the circle color
+     * @param root
+     * @param delay
+     * @param circleColor
      */
     public ProgressBarTask(final ViewGroup root, final long delay, final int circleColor) {
         future = UIExecutor.execute(new Callable<ProgressBar>() {
@@ -108,8 +108,8 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param activity the activity
-     * @return the progress bar task
+     * @param activity
+     * @return
      */
     public static ProgressBarTask display(final Activity activity) {
         return display(activity, 0);
@@ -118,9 +118,9 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param activity the activity
-     * @param delay the delay
-     * @return the progress bar task
+     * @param activity
+     * @param delay
+     * @return
      */
     public static ProgressBarTask display(final Activity activity, final long delay) {
         return display(activity, delay, Integer.MIN_VALUE);
@@ -129,10 +129,10 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param activity the activity
-     * @param delay the delay
-     * @param circleColor the circle color
-     * @return the progress bar task
+     * @param activity
+     * @param delay
+     * @param circleColor
+     * @return
      */
     public static ProgressBarTask display(final Activity activity, final long delay, final int circleColor) {
         return display((ViewGroup) activity.getWindow().getDecorView(), delay, circleColor);
@@ -141,8 +141,8 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param dialog the dialog
-     * @return the progress bar task
+     * @param dialog
+     * @return
      */
     public static ProgressBarTask display(final Dialog dialog) {
         return display(dialog, 0);
@@ -151,9 +151,9 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param dialog the dialog
-     * @param delay the delay
-     * @return the progress bar task
+     * @param dialog
+     * @param delay
+     * @return
      */
     public static ProgressBarTask display(final Dialog dialog, final long delay) {
         return display(dialog, delay, Integer.MIN_VALUE);
@@ -162,10 +162,10 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param dialog the dialog
-     * @param delay the delay
-     * @param circleColor the circle color
-     * @return the progress bar task
+     * @param dialog
+     * @param delay
+     * @param circleColor
+     * @return
      */
     public static ProgressBarTask display(final Dialog dialog, final long delay, final int circleColor) {
         return display((ViewGroup) dialog.getWindow().getDecorView(), delay, circleColor);
@@ -174,8 +174,8 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param root the root
-     * @return the progress bar task
+     * @param root
+     * @return
      */
     public static ProgressBarTask display(final ViewGroup root) {
         return display(root, 0);
@@ -184,9 +184,9 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param root the root
-     * @param delay the delay
-     * @return the progress bar task
+     * @param root
+     * @param delay
+     * @return
      */
     public static ProgressBarTask display(final ViewGroup root, final long delay) {
         return display(root, delay, Integer.MIN_VALUE);
@@ -195,10 +195,10 @@ public class ProgressBarTask {
     /**
      * Display.
      *
-     * @param root the root
-     * @param delay the delay
-     * @param circleColor the circle color
-     * @return the progress bar task
+     * @param root
+     * @param delay
+     * @param circleColor
+     * @return
      */
     public static ProgressBarTask display(final ViewGroup root, final long delay, final int circleColor) {
         return new ProgressBarTask(root, delay, circleColor);
@@ -207,7 +207,7 @@ public class ProgressBarTask {
     /**
      * Active progress bar task count.
      *
-     * @return the int
+     * @return
      */
     static int activeProgressBarTaskCount() {
         synchronized (activeProgressBarSet) {
@@ -218,8 +218,8 @@ public class ProgressBarTask {
     /**
      * Active progress bar task count.
      *
-     * @param activity the activity
-     * @return the int
+     * @param activity
+     * @return
      */
     static int activeProgressBarTaskCount(Activity activity) {
         synchronized (activeProgressBarSet) {
@@ -230,8 +230,8 @@ public class ProgressBarTask {
     /**
      * Active progress bar task count.
      *
-     * @param dialog the dialog
-     * @return the int
+     * @param dialog
+     * @return
      */
     static int activeProgressBarTaskCount(Dialog dialog) {
         synchronized (activeProgressBarSet) {
@@ -242,8 +242,8 @@ public class ProgressBarTask {
     /**
      * Active progress bar task count.
      *
-     * @param root the root
-     * @return the int
+     * @param root
+     * @return
      */
     static int activeProgressBarTaskCount(ViewGroup root) {
         synchronized (activeProgressBarSet) {
@@ -280,9 +280,9 @@ public class ProgressBarTask {
     /**
      * Creates the progress bar.
      *
-     * @param root the root
-     * @param circleColor the circle color
-     * @return the progress bar
+     * @param root
+     * @param circleColor
+     * @return
      */
     protected ProgressBar createProgressBar(final ViewGroup root, final int circleColor) {
         // Create layout params expecting to be added to a frame layout.

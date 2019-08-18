@@ -27,7 +27,7 @@ public interface Subscriber<E> {
     /**
      * On.
      *
-     * @param event the event
+     * @param event
      */
     public void on(E event);
 }

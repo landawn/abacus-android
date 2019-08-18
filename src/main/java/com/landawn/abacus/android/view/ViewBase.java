@@ -30,7 +30,7 @@ public abstract class ViewBase extends View {
     /**
      * Instantiates a new view base.
      *
-     * @param context the context
+     * @param context
      */
     public ViewBase(Context context) {
         super(context);
@@ -39,8 +39,8 @@ public abstract class ViewBase extends View {
     /**
      * Instantiates a new view base.
      *
-     * @param context the context
-     * @param attrs the attrs
+     * @param context
+     * @param attrs
      */
     public ViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,9 +49,9 @@ public abstract class ViewBase extends View {
     /**
      * Instantiates a new view base.
      *
-     * @param context the context
-     * @param attrs the attrs
-     * @param defStyleAttr the def style attr
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
      */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -60,10 +60,10 @@ public abstract class ViewBase extends View {
     /**
      * Instantiates a new view base.
      *
-     * @param context the context
-     * @param attrs the attrs
-     * @param defStyleAttr the def style attr
-     * @param defStyleRes the def style res
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     * @param defStyleRes
      */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

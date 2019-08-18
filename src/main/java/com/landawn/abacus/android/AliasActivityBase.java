@@ -33,9 +33,9 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param id
+     * @return
      */
     public <T extends View> T getViewById(int id) {
         return (T) this.findViewById(id);
@@ -44,10 +44,10 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the view by id.
      *
-     * @param <T> the generic type
-     * @param cls the cls
-     * @param id the id
-     * @return the view by id
+     * @param <T>
+     * @param cls
+     * @param id
+     * @return
      */
     public <T extends View> T getViewById(Class<T> cls, int id) {
         return (T) this.findViewById(id);
@@ -56,9 +56,9 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the text view by id.
      *
-     * @param <T> the generic type
-     * @param id the id
-     * @return the text view by id
+     * @param <T>
+     * @param id
+     * @return
      */
     public <T extends TextView> T getTextViewById(int id) {
         return (T) this.findViewById(id);
@@ -67,9 +67,9 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the edits the text by id.
      *
-     * @param <T> the generic type
-     * @param id the id
-     * @return the edits the text by id
+     * @param <T>
+     * @param id
+     * @return
      */
     public <T extends EditText> T getEditTextById(int id) {
         return (T) this.findViewById(id);
@@ -78,9 +78,9 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the image view by id.
      *
-     * @param <T> the generic type
-     * @param id the id
-     * @return the image view by id
+     * @param <T>
+     * @param id
+     * @return
      */
     public <T extends ImageView> T getImageViewById(int id) {
         return (T) this.findViewById(id);
@@ -89,9 +89,9 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the button by id.
      *
-     * @param <T> the generic type
-     * @param id the id
-     * @return the button by id
+     * @param <T>
+     * @param id
+     * @return
      */
     public <T extends Button> T getButtonById(int id) {
         return (T) this.findViewById(id);
@@ -100,8 +100,8 @@ public abstract class AliasActivityBase extends AliasActivity {
     /**
      * Gets the view text by id.
      *
-     * @param id the id
-     * @return the view text by id
+     * @param id
+     * @return
      */
     public String getViewTextById(int id) {
         return this.getTextViewById(id).getText().toString().trim();
