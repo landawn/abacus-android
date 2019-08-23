@@ -32,7 +32,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -143,7 +142,7 @@ public final class SQLiteExecutor {
         N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
         N.checkArgNotNullOrEmpty(readOnlyPropNames, "'readOnlyPropNames'");
 
-        final Set<String> set = new HashSet<String>();
+        final Set<String> set = N.newHashSet();
 
         for (String propName : readOnlyPropNames) {
             set.add(ClassUtil.getPropNameByMethod(ClassUtil.getPropGetMethod(targetClass, propName)));
@@ -154,7 +153,7 @@ public final class SQLiteExecutor {
         if (readOrWriteOnlyPropNamesMap.containsKey(targetClass)) {
             readOrWriteOnlyPropNamesMap.get(targetClass).addAll(set);
         } else {
-            readOrWriteOnlyPropNamesMap.put(targetClass, new HashSet<>(set));
+            readOrWriteOnlyPropNamesMap.put(targetClass, N.newHashSet(set));
         }
     }
 
@@ -168,7 +167,7 @@ public final class SQLiteExecutor {
         N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
         N.checkArgNotNullOrEmpty(writeOnlyPropNames, "'writeOnlyPropNames'");
 
-        final Set<String> set = new HashSet<String>();
+        final Set<String> set = N.newHashSet();
 
         for (String propName : writeOnlyPropNames) {
             set.add(ClassUtil.getPropNameByMethod(ClassUtil.getPropGetMethod(targetClass, propName)));

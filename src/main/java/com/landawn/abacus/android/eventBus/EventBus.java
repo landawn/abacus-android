@@ -19,10 +19,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -292,7 +290,7 @@ public class EventBus {
                 final Set<SubIdentifier> eventSubs = registeredEventIdSubMap.get(eventId);
 
                 if (eventSubs == null) {
-                    registeredEventIdSubMap.put(eventId, new LinkedHashSet<>(eventSubList));
+                    registeredEventIdSubMap.put(eventId, N.newLinkedHashSet(eventSubList));
                 } else {
                     eventSubs.addAll(eventSubList);
                 }
@@ -339,7 +337,7 @@ public class EventBus {
 
             if (subs == null) {
                 subs = new ArrayList<>();
-                final Set<Method> added = new HashSet<>();
+                final Set<Method> added = N.newHashSet();
 
                 final Set<Class<?>> allTypes = ClassUtil.getAllSuperTypes(cls);
                 allTypes.add(cls);
