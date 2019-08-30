@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Haiyang Li.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,7 +27,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.landawn.abacus.util.Fn.FN;
+import com.landawn.abacus.util.Fn.Fnn;
 import com.landawn.abacus.util.MoreExecutors;
 import com.landawn.abacus.util.Retry;
 import com.landawn.abacus.util.Try;
@@ -83,7 +83,7 @@ public class Async {
      * @return
      */
     static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action) {
-        return execute(new FutureTask<Void>(FN.toCallable(action)), SERIAL_EXECUTOR);
+        return execute(new FutureTask<>(Fnn.toCallable(action)), SERIAL_EXECUTOR);
     }
 
     /**
@@ -186,7 +186,7 @@ public class Async {
      * @return
      */
     static ContinuableFuture<Void> executeWithThreadPool(final Try.Runnable<? extends Exception> action) {
-        return execute(new FutureTask<Void>(FN.toCallable(action)), TP_EXECUTOR);
+        return execute(new FutureTask<>(Fnn.toCallable(action)), TP_EXECUTOR);
     }
 
     /**
@@ -300,7 +300,7 @@ public class Async {
      * @return
      */
     static ContinuableFuture<Void> executeOnUiThread(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
-        return execute(new FutureTask<Void>(FN.toCallable(action)), _UI_EXECUTOR, delayInMillis);
+        return execute(new FutureTask<>(Fnn.toCallable(action)), _UI_EXECUTOR, delayInMillis);
     }
 
     /**
@@ -768,7 +768,7 @@ public class Async {
 
     //    /**
     //     * Short name for AsyncExecutor
-    //     * 
+    //     *
     //     * @deprecated replaced with SerialExecutor/TPExecutor/UIExecutor.
     //     */
     //    @Deprecated
