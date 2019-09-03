@@ -33,7 +33,6 @@ import com.landawn.abacus.android.util.ThreadMode;
 public @interface Subscribe {
 
     /**
-     * Thread mode.
      *
      * @return
      */

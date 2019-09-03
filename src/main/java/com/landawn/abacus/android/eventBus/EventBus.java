@@ -139,7 +139,6 @@ public class EventBus {
     }
 
     /**
-     * Identifier.
      *
      * @return
      */
@@ -195,7 +194,6 @@ public class EventBus {
     }
 
     /**
-     * Register.
      *
      * @param subscriber
      * @return
@@ -205,7 +203,6 @@ public class EventBus {
     }
 
     /**
-     * Register.
      *
      * @param subscriber
      * @param eventId
@@ -216,7 +213,6 @@ public class EventBus {
     }
 
     /**
-     * Register.
      *
      * @param subscriber
      * @param threadMode
@@ -389,7 +385,6 @@ public class EventBus {
     //    }
 
     /**
-     * Register.
      *
      * @param <T>
      * @param subscriber General subscriber (type is {@code Subscriber} and parameter type is Object, mostly created by lambda) only can be registered with event id
@@ -410,7 +405,6 @@ public class EventBus {
     //    }
 
     /**
-     * Register.
      *
      * @param <T>
      * @param subscriber General subscriber (type is {@code Subscriber} and parameter type is Object, mostly created by lambda) only can be registered with event id
@@ -424,7 +418,6 @@ public class EventBus {
     }
 
     /**
-     * Unregister.
      *
      * @param subscriber
      * @return
@@ -467,7 +460,6 @@ public class EventBus {
     }
 
     /**
-     * Post.
      *
      * @param event
      * @return
@@ -477,7 +469,6 @@ public class EventBus {
     }
 
     /**
-     * Post.
      *
      * @param eventId
      * @param event
@@ -529,7 +520,6 @@ public class EventBus {
     }
 
     /**
-     * Post sticky.
      *
      * @param event
      * @return
@@ -539,7 +529,6 @@ public class EventBus {
     }
 
     /**
-     * Post sticky.
      *
      * @param eventId
      * @param event
@@ -686,7 +675,6 @@ public class EventBus {
     }
 
     /**
-     * Dispatch.
      *
      * @param identifier
      * @param event
@@ -734,7 +722,6 @@ public class EventBus {
     }
 
     /**
-     * Post.
      *
      * @param sub
      * @param event
@@ -895,7 +882,6 @@ public class EventBus {
         }
 
         /**
-         * Hash code.
          *
          * @return
          */
@@ -917,7 +903,6 @@ public class EventBus {
         }
 
         /**
-         * Equals.
          *
          * @param obj
          * @return true, if successful
@@ -941,7 +926,6 @@ public class EventBus {
         }
 
         /**
-         * To string.
          *
          * @return
          */

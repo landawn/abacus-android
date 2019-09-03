@@ -100,7 +100,6 @@ public class ContinuableFuture<T> implements Future<T> {
     //    }
 
     /**
-     * Completed.
      *
      * @param <T>
      * @param result
@@ -136,7 +135,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Wrap.
      *
      * @param <T>
      * @param future
@@ -147,7 +145,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Cancel.
      *
      * @param mayInterruptIfRunning
      * @return true, if successful
@@ -213,7 +210,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Gets the.
      *
      * @return
      * @throws InterruptedException the interrupted exception
@@ -225,7 +221,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param timeout
      * @param unit
@@ -412,7 +407,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Map.
      *
      * @param <U>
      * @param <E>
@@ -649,7 +643,6 @@ public class ContinuableFuture<T> implements Future<T> {
     //    }
 
     /**
-     * Then run.
      *
      * @param <E>
      * @param action
@@ -667,7 +660,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then run.
      *
      * @param <E>
      * @param action
@@ -684,7 +676,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then run.
      *
      * @param <E>
      * @param action
@@ -702,7 +693,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then call.
      *
      * @param <R>
      * @param action
@@ -720,7 +710,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then call.
      *
      * @param <R>
      * @param <E>
@@ -737,7 +726,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then call.
      *
      * @param <R>
      * @param <E>
@@ -1646,7 +1634,6 @@ public class ContinuableFuture<T> implements Future<T> {
     //    }
 
     /**
-     * Execute.
      *
      * @param <R>
      * @param command
@@ -1657,7 +1644,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Execute.
      *
      * @param <R>
      * @param command
@@ -1669,7 +1655,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Execute.
      *
      * @param <U>
      * @param futureTask
@@ -1685,7 +1670,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then delay.
      *
      * @param delay
      * @param unit
@@ -1700,7 +1684,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * Then use.
      *
      * @param executor
      * @return
@@ -1710,7 +1693,6 @@ public class ContinuableFuture<T> implements Future<T> {
     }
 
     /**
-     * With.
      *
      * @param executor
      * @param delay

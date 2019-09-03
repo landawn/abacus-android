@@ -181,7 +181,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Sqlite DB.
      *
      * @return
      */
@@ -190,7 +189,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param targetClass
      * @param cursor
@@ -201,7 +199,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param targetClass an entity class with getter/setter methods.
      * @param cursor
@@ -238,7 +235,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -250,7 +246,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -264,7 +259,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -276,7 +270,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -290,7 +283,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -303,7 +295,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -429,7 +420,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass entity class with getter/setter methods.
@@ -441,7 +431,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass entity class with getter/setter methods.
@@ -456,7 +445,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass
@@ -468,7 +456,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass an Map class or Entity class with getter/setter methods.
@@ -604,7 +591,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param targetClass
@@ -1116,7 +1102,6 @@ public final class SQLiteExecutor {
     //    }
 
     /**
-     * Insert all.
      *
      * @param <T>
      * @param records
@@ -1128,7 +1113,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Insert all.
      *
      * @param <T>
      * @param table
@@ -1296,7 +1280,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Delete.
      *
      * @param table
      * @param id
@@ -1307,7 +1290,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Delete.
      *
      * @param entityClass
      * @param id
@@ -1319,7 +1301,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Delete.
      *
      * @param table
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
@@ -1336,7 +1317,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Delete.
      *
      * @param entityClass
      * @param whereClause Only binary(=, <>, like, IS NULL ...)/between/junction(or, and...) are supported.
@@ -1348,7 +1328,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Delete.
      *
      * @param table
      * @param whereClause
@@ -1419,7 +1398,6 @@ public final class SQLiteExecutor {
     //    }
 
     /**
-     * Exists.
      *
      * @param entityClass
      * @param whereClause
@@ -1430,7 +1408,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Exists.
      *
      * @param tableName
      * @param whereClause
@@ -1462,7 +1439,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Count.
      *
      * @param entityClass
      * @param whereClause
@@ -1473,7 +1449,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Count.
      *
      * @param tableName
      * @param whereClause
@@ -1487,7 +1462,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Count.
      *
      * @param sql
      * @param parameters
@@ -1501,7 +1475,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Select.
      *
      * @param tableName
      * @param selectColumnName
@@ -1835,7 +1808,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Find first.
      *
      * @param <T>
      * @param targetClass
@@ -1889,7 +1861,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param targetClass
@@ -1902,7 +1873,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param targetClass
@@ -1916,7 +1886,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param targetClass
@@ -1932,7 +1901,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param targetClass
@@ -2007,7 +1975,6 @@ public final class SQLiteExecutor {
     //    }
 
     /**
-     * Query.
      *
      * @param targetClass
      * @param selectColumnNames
@@ -2019,7 +1986,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param targetClass
      * @param selectColumnNames
@@ -2032,7 +1998,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param targetClass
      * @param selectColumnNames
@@ -2047,7 +2012,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param targetClass
      * @param selectColumnNames
@@ -2092,7 +2056,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNameTypeMap
@@ -2106,7 +2069,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNameTypeMap
@@ -2121,7 +2083,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNameTypeMap
@@ -2138,7 +2099,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNameTypeMap
@@ -2187,7 +2147,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2202,7 +2161,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2218,7 +2176,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2236,7 +2193,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2282,7 +2238,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2297,7 +2252,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2313,7 +2267,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2331,7 +2284,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2349,7 +2301,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2375,7 +2326,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2391,7 +2341,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2409,7 +2358,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2428,7 +2376,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2448,7 +2395,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param table
      * @param selectColumnNames
@@ -2470,7 +2416,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Execute query.
      *
      * @param table
      * @param selectColumnNames
@@ -2547,7 +2492,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Query.
      *
      * @param targetClass
      * @param sql
@@ -2567,7 +2511,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Raw query.
      *
      * @param sql
      * @param parameters
@@ -2600,7 +2543,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * In transaction.
      *
      * @return true, if successful
      */
@@ -2623,7 +2565,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Format name.
      *
      * @param tableName
      * @return
@@ -2690,7 +2631,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Prepare arguments.
      *
      * @param namedSQL
      * @param parameters
@@ -2753,7 +2693,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret condition.
      *
      * @param condition
      * @return
@@ -2776,7 +2715,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret binary.
      *
      * @param binary
      * @return
@@ -2791,7 +2729,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret between.
      *
      * @param bt
      * @return
@@ -2806,7 +2743,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret in.
      *
      * @param in
      * @return
@@ -2829,7 +2765,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret junction.
      *
      * @param junction
      * @return
@@ -2884,7 +2819,6 @@ public final class SQLiteExecutor {
     }
 
     /**
-     * Interpret expression.
      *
      * @param exp
      * @return
@@ -2955,7 +2889,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Hash code.
          *
          * @return
          */
@@ -2968,7 +2901,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Equals.
          *
          * @param obj
          * @return true, if successful
@@ -2989,7 +2921,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * To string.
          *
          * @return
          */
@@ -3431,7 +3362,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Gets the.
          *
          * @param cursor
          * @param columnIndex
@@ -3440,7 +3370,6 @@ public final class SQLiteExecutor {
         public abstract T get(Cursor cursor, int columnIndex);
 
         /**
-         * Gets the.
          *
          * @param contentValues
          * @param key
@@ -3449,7 +3378,6 @@ public final class SQLiteExecutor {
         public abstract T get(ContentValues contentValues, String key);
 
         /**
-         * Sets the.
          *
          * @param contentValues
          * @param key
@@ -3458,7 +3386,6 @@ public final class SQLiteExecutor {
         public abstract void set(ContentValues contentValues, String key, T value);
 
         /**
-         * Value of.
          *
          * @param <T>
          * @param androidSQLiteType
@@ -3481,7 +3408,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Value of.
          *
          * @param <T>
          * @param <C>
@@ -3518,7 +3444,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Array of.
          *
          * @param <T>
          * @param androidSQLiteTypes
@@ -3537,7 +3462,6 @@ public final class SQLiteExecutor {
         }
 
         /**
-         * Array of.
          *
          * @param <T>
          * @param typeClasses

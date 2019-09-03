@@ -78,7 +78,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -90,7 +89,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -102,7 +100,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -114,7 +111,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -126,7 +122,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -138,7 +133,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>
@@ -170,7 +164,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Debounce.
          *
          * @param intervalDurationInMillis
          * @return
@@ -181,7 +174,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Debounce.
          *
          * @param intervalDuration
          * @param unit
@@ -193,7 +185,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Throttle first.
          *
          * @param intervalDurationInMillis
          * @return
@@ -204,7 +195,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Throttle first.
          *
          * @param intervalDuration
          * @param unit
@@ -216,7 +206,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Throttle last.
          *
          * @param intervalDurationInMillis
          * @return
@@ -227,7 +216,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Throttle last.
          *
          * @param intervalDuration
          * @param unit
@@ -239,7 +227,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Delay.
          *
          * @param delayInMillis
          * @return
@@ -250,7 +237,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Delay.
          *
          * @param delay
          * @param unit
@@ -262,7 +248,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Time interval.
          *
          * @return
          * @deprecated Unsupported operation.
@@ -274,7 +259,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Timestamp.
          *
          * @return
          * @deprecated Unsupported operation.
@@ -286,7 +270,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Skip.
          *
          * @param n
          * @return
@@ -300,7 +283,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Limit.
          *
          * @param maxSize
          * @return
@@ -314,7 +296,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
          * Is it possible to cause memory leak by caching the previous values?
          */
         /**
-         * Distinct.
          *
          * @return
          * @deprecated Unsupported operation.
@@ -329,7 +310,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
          * Is it possible to cause memory leak by caching the previous values?
          */
         /**
-         * Distinct by.
          *
          * @param keyMapper
          * @return
@@ -342,7 +322,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Filter.
          *
          * @param filter
          * @return
@@ -353,7 +332,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Map.
          *
          * @param <U>
          * @param map
@@ -367,7 +345,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Flat map.
          *
          * @param <U>
          * @param map
@@ -381,7 +358,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Buffer.
          *
          * @param timespan
          * @param unit
@@ -395,7 +371,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Buffer.
          *
          * @param timespan
          * @param unit
@@ -410,7 +385,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Buffer.
          *
          * @param timespan
          * @param timeskip
@@ -425,7 +399,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Buffer.
          *
          * @param timespan
          * @param timeskip
@@ -441,7 +414,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Observe.
          *
          * @param action
          * @deprecated Unsupported operation.
@@ -453,7 +425,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Observe.
          *
          * @param action
          * @param onError
@@ -466,7 +437,6 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
         }
 
         /**
-         * Observe.
          *
          * @param action
          * @param onError

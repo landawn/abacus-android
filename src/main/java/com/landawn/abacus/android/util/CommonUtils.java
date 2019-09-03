@@ -112,7 +112,6 @@ public class CommonUtils {
     }
 
     /**
-     * Inits the.
      *
      * @param context
      */
@@ -135,7 +134,6 @@ public class CommonUtils {
     }
 
     /**
-     * Context.
      *
      * @return
      */
@@ -144,7 +142,6 @@ public class CommonUtils {
     }
 
     /**
-     * Cup count.
      *
      * @return
      */
@@ -185,7 +182,6 @@ public class CommonUtils {
     }
 
     /**
-     * Device brand.
      *
      * @return
      * @see android.os.Build.BRAND
@@ -195,7 +191,6 @@ public class CommonUtils {
     }
 
     /**
-     * Device model.
      *
      * @return
      * @see android.os.Build.MODEL
@@ -205,7 +200,6 @@ public class CommonUtils {
     }
 
     /**
-     * Device manufacturer.
      *
      * @return
      * @see android.os.Build.MANUFACTURER
@@ -243,7 +237,6 @@ public class CommonUtils {
     //    }
 
     /**
-     * Extract data.
      *
      * @param targetClass
      * @param cursor
@@ -255,7 +248,6 @@ public class CommonUtils {
     }
 
     /**
-     * Extract data.
      *
      * @param targetClass an entity class with getter/setter methods.
      * @param cursor
@@ -269,7 +261,6 @@ public class CommonUtils {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -282,7 +273,6 @@ public class CommonUtils {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -297,7 +287,6 @@ public class CommonUtils {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -310,7 +299,6 @@ public class CommonUtils {
     }
 
     /**
-     * Extract data.
      *
      * @param cursor
      * @param selectColumnTypes
@@ -383,7 +371,6 @@ public class CommonUtils {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass entity class with getter/setter methods.
@@ -396,7 +383,6 @@ public class CommonUtils {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass entity class with getter/setter methods.
@@ -410,7 +396,6 @@ public class CommonUtils {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass
@@ -423,7 +408,6 @@ public class CommonUtils {
     }
 
     /**
-     * To entity.
      *
      * @param <T>
      * @param targetClass an Map class or Entity class with getter/setter methods.
@@ -1142,7 +1126,6 @@ public class CommonUtils {
     }
 
     /**
-     * Show toast.
      *
      * @param text
      */
@@ -1151,7 +1134,6 @@ public class CommonUtils {
     }
 
     /**
-     * Show toast.
      *
      * @param text
      * @param duration
@@ -1161,7 +1143,6 @@ public class CommonUtils {
     }
 
     /**
-     * Show toast.
      *
      * @param context
      * @param text
@@ -1171,7 +1152,6 @@ public class CommonUtils {
     }
 
     /**
-     * Show toast.
      *
      * @param context
      * @param text
@@ -1327,7 +1307,6 @@ public class CommonUtils {
     }
 
     /**
-     * Close.
      *
      * @param closeable
      */
@@ -1336,7 +1315,6 @@ public class CommonUtils {
     }
 
     /**
-     * Close quietly.
      *
      * @param closeable
      */

@@ -43,7 +43,6 @@ public abstract class ObserverX<T> {
     }
 
     /**
-     * Of.
      *
      * @param <T>
      * @param <O>

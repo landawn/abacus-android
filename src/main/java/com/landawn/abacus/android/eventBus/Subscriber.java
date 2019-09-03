@@ -25,7 +25,6 @@ package com.landawn.abacus.android.eventBus;
 public interface Subscriber<E> {
 
     /**
-     * On.
      *
      * @param event
      */

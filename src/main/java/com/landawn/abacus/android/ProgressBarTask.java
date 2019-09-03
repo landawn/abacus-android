@@ -106,7 +106,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param activity
      * @return
@@ -116,7 +115,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param activity
      * @param delay
@@ -127,7 +125,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param activity
      * @param delay
@@ -139,7 +136,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param dialog
      * @return
@@ -149,7 +145,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param dialog
      * @param delay
@@ -160,7 +155,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param dialog
      * @param delay
@@ -172,7 +166,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param root
      * @return
@@ -182,7 +175,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param root
      * @param delay
@@ -193,7 +185,6 @@ public class ProgressBarTask {
     }
 
     /**
-     * Display.
      *
      * @param root
      * @param delay
