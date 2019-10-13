@@ -16,7 +16,7 @@ public class Maven {
         final String sourceVersion = "0.0.1-SNAPSHOT";
         String targetVersion = null;
 
-        for (String line : IOUtil.readLines(new File("./pom.xml"))) {
+        for (String line : IOUtil.readAllLines(new File("./pom.xml"))) {
             if (line.indexOf("<version>") > 0 && line.indexOf("</version>") > 0) {
                 targetVersion = StringUtil.substringBetween(line, "<version>", line.indexOf("</version>")).get();
                 break;
@@ -47,7 +47,7 @@ public class Maven {
 
         for (File file : IOUtil.listFiles(targetDir)) {
             if (file.getName().endsWith(".pom") || file.getName().endsWith(".xml") || file.getName().endsWith(".txt")) {
-                final List<String> lines = IOUtil.readLines(file);
+                final List<String> lines = IOUtil.readAllLines(file);
                 final List<String> newLines = new ArrayList<>(lines.size());
 
                 for (String line : lines) {
