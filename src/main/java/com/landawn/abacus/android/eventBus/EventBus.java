@@ -47,38 +47,38 @@ import com.landawn.abacus.util.Try;
  *     System.out.println("Subscriber: strSubscriber_1, event: " + event);
  *     }
  * };
- * 
+ *
  * final Object anySubscriber_2 = new Object() {
  *     &#64;Subscribe(threadMode = ThreadMode.DEFAULT, interval = 1000)
  *     public void anyMethod(Object event) {
  *     System.out.println("Subscriber: anySubscriber_2, event: " + event);
  *     }
  * };
- * 
+ *
  * final Object anySubscriber_3 = new Object() {
  *     &#64;Subscribe(threadMode = ThreadMode.DEFAULT, sticky = true)
  *     public void anyMethod(Object event) {
  *     System.out.println("Subscriber: anySubscriber_3, event: " + event);
  *     }
  * };
- * 
+ *
  * final EventBus eventBus = EventBus.getDefault();
- * 
+ *
  * eventBus.register(strSubscriber_1);
  * eventBus.register(strSubscriber_1);
  * eventBus.register(anySubscriber_2, "eventId_2");
- * 
+ *
  * eventBus.post("abc");
  * eventBus.postSticky("sticky");
  * eventBus.post("eventId_2", "abc");
- * 
+ *
  * eventBus.post(123);
  * eventBus.post("eventId_2", 123);
- * 
+ *
  * eventBus.register(anySubscriber_3);
  * </code>
  * </pre>
- * 
+ *
  * @author haiyang li
  */
 public class EventBus {
@@ -223,7 +223,7 @@ public class EventBus {
     }
 
     /**
-     * Register the subscriber with the specified <code>eventId</code> and <code>threadMode</code>. 
+     * Register the subscriber with the specified <code>eventId</code> and <code>threadMode</code>.
      * If the same register has been registered before, it be over-written with the new specified <code>eventId</code> and <code>threadMode</code>.
      *
      * @param subscriber
@@ -375,7 +375,7 @@ public class EventBus {
     }
 
     //    /**
-    //     * 
+    //     *
     //     * @param subscriber General subscriber (type is {@code Subscriber} and parameter type is Object, mostly created by lambda) only can be registered with event id
     //     * @param eventId
     //     * @return
@@ -832,9 +832,7 @@ public class EventBus {
             this.isPossibleLambdaSubscriber = Subscriber.class.isAssignableFrom(method.getDeclaringClass()) && method.getName().equals("on")
                     && parameterType.equals(Object.class) && subscribe == null;
 
-            if (method.isAccessible() == false) {
-                method.setAccessible(true);
-            }
+            ClassUtil.setAccessible(method, true);
         }
 
         /**
