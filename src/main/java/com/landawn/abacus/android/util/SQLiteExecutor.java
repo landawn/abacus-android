@@ -1672,8 +1672,25 @@ public final class SQLiteExecutor {
     @SafeVarargs
     public final <T> Optional<T> findFirst(final Class<T> targetClass, final String sql, Object... parameters) {
         final DataSet rs = query(targetClass, sql, 0, 1, parameters);
+        final com.landawn.abacus.type.Type<T> targetType = N.typeOf(targetClass);
 
-        return N.isNullOrEmpty(rs) ? (Optional<T>) Optional.empty() : Optional.of(rs.getRow(targetClass, 0));
+        if (N.isNullOrEmpty(rs)) {
+            if (!(targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) && rs.columnNameList().size() != 1) {
+                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            }
+
+            return (Optional<T>) Optional.empty();
+        } else {
+            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+                return rs.firstRow(targetClass);
+            } else if (rs.columnNameList().size() == 1) {
+                return Optional.of(N.convert(rs.getColumn(0).get(0), targetType));
+            } else {
+                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            }
+        }
     }
 
     /**
@@ -1749,12 +1766,33 @@ public final class SQLiteExecutor {
      */
     public <T> List<T> list(final Class<T> targetClass, Collection<String> selectColumnNames, Condition whereClause, String groupBy, String having,
             String orderBy, int offset, int count) {
+        final com.landawn.abacus.type.Type<T> targetType = N.typeOf(targetClass);
+
+        if (!(targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) && selectColumnNames.size() != 1) {
+            throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                    + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+        }
+
         final DataSet rs = query(targetClass, selectColumnNames, whereClause, groupBy, having, orderBy, offset, count);
 
         if (N.isNullOrEmpty(rs)) {
             return new ArrayList<>();
         } else {
-            return rs.toList(targetClass);
+            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+                return rs.toList(targetClass);
+            } else if (rs.columnNameList().size() == 1) {
+                final List<Object> column = rs.getColumn(0);
+                final List<T> result = new ArrayList<>(column.size());
+
+                for (Object val : column) {
+                    result.add(N.convert(val, targetType));
+                }
+
+                return result;
+            } else {
+                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            }
         }
     }
 
@@ -1774,11 +1812,24 @@ public final class SQLiteExecutor {
     @SafeVarargs
     public final <T> List<T> list(final Class<T> targetClass, final String sql, Object... parameters) {
         final DataSet rs = query(targetClass, sql, 0, Integer.MAX_VALUE, parameters);
+        final com.landawn.abacus.type.Type<T> targetType = N.typeOf(targetClass);
 
         if (N.isNullOrEmpty(rs)) {
+            if (!(targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) && rs.columnNameList().size() != 1) {
+                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            }
+
             return new ArrayList<>();
         } else {
-            return rs.toList(targetClass);
+            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+                return rs.toList(targetClass);
+            } else if (rs.columnNameList().size() == 1) {
+                return new ArrayList<>((List<T>) rs.getColumn(0));
+            } else {
+                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            }
         }
     }
 
