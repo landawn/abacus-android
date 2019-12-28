@@ -23,7 +23,7 @@ A general Java programming library for Android
 * Gradle:
 ```gradle
 // JDK 1.7 or above:
-compile 'com.landawn:abacus-android:1.9.6' 
+compile 'com.landawn:abacus-android:1.9.7' 
 ```
 
 

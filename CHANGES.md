@@ -1,3 +1,9 @@
+### 1.9.7
+
+* Move functional interfaces from `Try` to `Throwables`.
+* Improvements and bug fix.
+
+
 ### 1.9.6
 
 * Improvements and bug fix.

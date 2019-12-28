@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.landawn.abacus.android.util.Async.UIExecutor;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.Timed;
-import com.landawn.abacus.util.Try;
 import com.landawn.abacus.util.Tuple;
 import com.landawn.abacus.util.Tuple.Tuple2;
 import com.landawn.abacus.util.Tuple.Tuple3;
@@ -546,7 +546,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onClick(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onClick(tmp);
@@ -560,7 +560,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onClick(View view) {
                     dispatcher.onNext(view);
-                };
+                }
             });
 
             disposeActions.add(new Runnable() {
@@ -621,7 +621,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onLongClick(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onLongClick(tmp);
@@ -636,7 +636,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public boolean onLongClick(View view) {
                     dispatcher.onNext(view);
                     return true;
-                };
+                }
             });
 
             disposeActions.add(new Runnable() {
@@ -697,7 +697,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onDrag(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onDrag(tmp._1, tmp._2);
@@ -773,7 +773,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onTouch(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onTouch(tmp._1, tmp._2);
@@ -849,7 +849,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onFocusChange(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onFocusChange(tmp._1, tmp._2);
@@ -924,7 +924,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onHover(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onHover(tmp._1, tmp._2);
@@ -1000,7 +1000,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onKey(tmp._1, tmp._2, tmp._3);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onKey(tmp._1, tmp._2, tmp._3);
@@ -1076,7 +1076,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -1095,7 +1095,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onViewDetachedFromWindow(View view) {
                     // Do nothing
-                };
+                }
             };
 
             _view.addOnAttachStateChangeListener(onAttachStateChangeListener);
@@ -1158,7 +1158,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -1177,7 +1177,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onViewDetachedFromWindow(View view) {
                     dispatcher.onNext(view);
-                };
+                }
             };
 
             _view.addOnAttachStateChangeListener(onAttachStateChangeListener);
@@ -1244,7 +1244,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                             onNext.onViewDetachedFromWindow(tmp._2);
                         }
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 if (tmp._1 == 0) {
@@ -1267,7 +1267,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onViewDetachedFromWindow(View view) {
                     dispatcher.onNext(Tuple.of(1, view));
-                };
+                }
             };
 
             _view.addOnAttachStateChangeListener(onAttachStateChangeListener);
@@ -1330,7 +1330,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onLayoutChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5, tmp._6, tmp._7, tmp._8, tmp._9);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onLayoutChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5, tmp._6, tmp._7, tmp._8, tmp._9);
@@ -1344,7 +1344,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
                     dispatcher.onNext(Tuple.of(v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
-                };
+                }
             };
 
             _view.addOnLayoutChangeListener(onAttachStateChangeListener);
@@ -1409,7 +1409,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -1423,7 +1423,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
                     dispatcher.onNext(Tuple.of(v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
-                };
+                }
             };
 
             _view.addOnLayoutChangeListener(onAttachStateChangeListener);
@@ -1509,7 +1509,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp._1, tmp._2);
@@ -1591,7 +1591,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp._1, tmp._2);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp._1, tmp._2);
@@ -1676,7 +1676,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                             onNext.onChildViewRemoved(tmp._2, tmp._3);
                         }
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 if (tmp._1 == 0) {
@@ -1782,7 +1782,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -1872,7 +1872,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -1960,7 +1960,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2050,7 +2050,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2138,7 +2138,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2226,7 +2226,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2323,7 +2323,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                             onNext.afterTextChanged(tmp._2);
                         }
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 if (param instanceof Tuple5) {
@@ -2444,7 +2444,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2527,7 +2527,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2614,7 +2614,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                             onNext.onQueryTextSubmit(tmp._2);
                         }
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 if (tmp._1 == 0) {
@@ -2722,7 +2722,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onItemClick(tmp._1, tmp._2, tmp._3, tmp._4);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onItemClick(tmp._1, tmp._2, tmp._3, tmp._4);
@@ -2799,7 +2799,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -2898,7 +2898,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onMenuItemClick(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onMenuItemClick(tmp);
@@ -2913,7 +2913,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
                 public boolean onMenuItemClick(MenuItem item) {
                     dispatcher.onNext(item);
                     return true;
-                };
+                }
             });
 
             disposeActions.add(new Runnable() {

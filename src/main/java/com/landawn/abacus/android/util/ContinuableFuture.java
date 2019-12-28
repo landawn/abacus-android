@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Result;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.Tuple;
 import com.landawn.abacus.util.Tuple.Tuple4;
 
@@ -75,7 +75,7 @@ public class ContinuableFuture<T> implements Future<T> {
         this.asyncExecutor = asyncExecutor == null ? DEFAULT_EXECUTOR : asyncExecutor;
     }
 
-    //    public static ContinuableFuture<Void> run(final Try.Runnable<E> action) {
+    //    public static ContinuableFuture<Void> run(final Throwables.Runnable<E> action) {
     //        return run(action, Async.SERIAL_EXECUTOR);
     //    }
     //
@@ -83,7 +83,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //        return run(action, Async.SERIAL_EXECUTOR);
     //    }
     //
-    //    public static ContinuableFuture<Void> run(final Try.Runnable<E> action, final Executor executor) {
+    //    public static ContinuableFuture<Void> run(final Throwables.Runnable<E> action, final Executor executor) {
     //        final FutureTask<Void> futureTask = new FutureTask<>(action, null);
     //
     //        executor.execute(futureTask);
@@ -141,7 +141,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public static <T> ContinuableFuture<T> wrap(Future<T> future) {
-        return new ContinuableFuture<T>(future);
+        return new ContinuableFuture<>(future);
     }
 
     /**
@@ -291,7 +291,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @throws ExecutionException the execution exception
      * @throws E the e
      */
-    public <R, E extends Exception> R getThenApply(final Try.Function<? super T, R, E> action) throws InterruptedException, ExecutionException, E {
+    public <R, E extends Exception> R getThenApply(final Throwables.Function<? super T, R, E> action) throws InterruptedException, ExecutionException, E {
         return action.apply(get());
     }
 
@@ -309,7 +309,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @throws TimeoutException the timeout exception
      * @throws E the e
      */
-    public <R, E extends Exception> R getThenApply(final long timeout, final TimeUnit unit, final Try.Function<? super T, R, E> action)
+    public <R, E extends Exception> R getThenApply(final long timeout, final TimeUnit unit, final Throwables.Function<? super T, R, E> action)
             throws InterruptedException, ExecutionException, TimeoutException, E {
         return action.apply(get(timeout, unit));
     }
@@ -323,7 +323,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      * @throws E the e
      */
-    public <R, E extends Exception> R getThenApply(final Try.BiFunction<? super T, ? super Exception, R, E> action) throws E {
+    public <R, E extends Exception> R getThenApply(final Throwables.BiFunction<? super T, ? super Exception, R, E> action) throws E {
         final Result<T, Exception> result = gett();
         return action.apply(result.orElse(null), result.getExceptionIfPresent());
     }
@@ -339,8 +339,8 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      * @throws E the e
      */
-    public <R, E extends Exception> R getThenApply(final long timeout, final TimeUnit unit, final Try.BiFunction<? super T, ? super Exception, R, E> action)
-            throws E {
+    public <R, E extends Exception> R getThenApply(final long timeout, final TimeUnit unit,
+            final Throwables.BiFunction<? super T, ? super Exception, R, E> action) throws E {
         final Result<T, Exception> result = gett(timeout, unit);
         return action.apply(result.orElse(null), result.getExceptionIfPresent());
     }
@@ -355,7 +355,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @throws ExecutionException the execution exception
      * @throws E the e
      */
-    public <E extends Exception> void getThenAccept(final Try.Consumer<? super T, E> action) throws InterruptedException, ExecutionException, E {
+    public <E extends Exception> void getThenAccept(final Throwables.Consumer<? super T, E> action) throws InterruptedException, ExecutionException, E {
         action.accept(get());
     }
 
@@ -372,7 +372,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @throws TimeoutException the timeout exception
      * @throws E the e
      */
-    public <E extends Exception> void getThenAccept(final long timeout, final TimeUnit unit, final Try.Consumer<? super T, E> action)
+    public <E extends Exception> void getThenAccept(final long timeout, final TimeUnit unit, final Throwables.Consumer<? super T, E> action)
             throws InterruptedException, ExecutionException, TimeoutException, E {
         action.accept(get(timeout, unit));
     }
@@ -385,7 +385,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      * @throws E the e
      */
-    public <E extends Exception> void getThenAccept(final Try.BiConsumer<? super T, ? super Exception, E> action) throws E {
+    public <E extends Exception> void getThenAccept(final Throwables.BiConsumer<? super T, ? super Exception, E> action) throws E {
         final Result<T, Exception> result = gett();
         action.accept(result.orElse(null), result.getExceptionIfPresent());
     }
@@ -400,8 +400,8 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      * @throws E the e
      */
-    public <E extends Exception> void getThenAccept(final long timeout, final TimeUnit unit, final Try.BiConsumer<? super T, ? super Exception, E> action)
-            throws E {
+    public <E extends Exception> void getThenAccept(final long timeout, final TimeUnit unit,
+            final Throwables.BiConsumer<? super T, ? super Exception, E> action) throws E {
         final Result<T, Exception> result = gett(timeout, unit);
         action.accept(result.orElse(null), result.getExceptionIfPresent());
     }
@@ -413,7 +413,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param func
      * @return
      */
-    public <U, E extends Exception> ContinuableFuture<U> map(final Try.Function<? super T, U, E> func) {
+    public <U, E extends Exception> ContinuableFuture<U> map(final Throwables.Function<? super T, U, E> func) {
         return new ContinuableFuture<U>(new Future<U>() {
             @Override
             public boolean cancel(boolean mayInterruptIfRunning) {
@@ -507,7 +507,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //        };
     //    }
 
-    //    public <U> ContinuableFuture<Void> thenAccept(final Try.Consumer<? super T, E> action)  {
+    //    public <U> ContinuableFuture<Void> thenAccept(final Throwables.Consumer<? super T, E> action)  {
     //        return thenApply(new Function<T, Void>() {
     //            @Override
     //            public Void apply(T t) {
@@ -517,7 +517,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //        });
     //    }
     //
-    //    public <U> ContinuableFuture<Void> thenAccept(final Try.BiConsumer<? super T, Exception, E> action)  {
+    //    public <U> ContinuableFuture<Void> thenAccept(final Throwables.BiConsumer<? super T, Exception, E> action)  {
     //        return thenApply(new BiFunction<T, Exception, Void>() {
     //            @Override
     //            public Void apply(T t, Exception e) {
@@ -573,7 +573,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //        };
     //    }
     //
-    //    public <U, R> ContinuableFuture<R> thenCombine(final ContinuableFuture<U> other, final Try.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
+    //    public <U, R> ContinuableFuture<R> thenCombine(final ContinuableFuture<U> other, final Throwables.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
     //        return new ContinuableFuture<R>(new Future<R>() {
     //            @Override
     //            public boolean cancel(boolean mayInterruptIfRunning) {
@@ -632,7 +632,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //        });
     //    }
     //
-    //    public <U> ContinuableFuture<Void> thenAcceptBoth(final ContinuableFuture<U> other, final Try.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
+    //    public <U> ContinuableFuture<Void> thenAcceptBoth(final ContinuableFuture<U> other, final Throwables.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
     //        return thenCombine(other, new Function<Tuple4<T, Exception, U, Exception>, Void>() {
     //            @Override
     //            public Void apply(Tuple4<T, Exception, U, Exception> t) {
@@ -648,7 +648,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRun(final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRun(final Throwables.Runnable<E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -665,7 +665,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRun(final Try.Consumer<? super T, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRun(final Throwables.Consumer<? super T, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -681,7 +681,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRun(final Try.BiConsumer<? super T, ? super Exception, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRun(final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -716,7 +716,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCall(final Try.Function<? super T, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCall(final Throwables.Function<? super T, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -732,7 +732,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCall(final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCall(final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -749,7 +749,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Throwables.Runnable<E> action) {
         return thenUseUIExecutor().thenRun(action);
     }
 
@@ -760,7 +760,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Try.Consumer<? super T, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Throwables.Consumer<? super T, E> action) {
         return thenUseUIExecutor().thenRun(action);
     }
 
@@ -771,7 +771,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Try.BiConsumer<? super T, ? super Exception, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunOnUI(final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseUIExecutor().thenRun(action);
     }
 
@@ -794,7 +794,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCallOnUI(final Try.Function<? super T, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCallOnUI(final Throwables.Function<? super T, R, E> action) {
         return thenUseUIExecutor().thenCall(action);
     }
 
@@ -806,7 +806,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCallOnUI(final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCallOnUI(final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseUIExecutor().thenCall(action);
     }
 
@@ -817,7 +817,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Throwables.Runnable<E> action) {
         return thenUseTPExecutor().thenRun(action);
     }
 
@@ -828,7 +828,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Try.Consumer<? super T, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Throwables.Consumer<? super T, E> action) {
         return thenUseTPExecutor().thenRun(action);
     }
 
@@ -839,7 +839,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Try.BiConsumer<? super T, ? super Exception, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> thenRunByTP(final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseTPExecutor().thenRun(action);
     }
 
@@ -862,7 +862,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCallByTP(final Try.Function<? super T, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCallByTP(final Throwables.Function<? super T, R, E> action) {
         return thenUseTPExecutor().thenCall(action);
     }
 
@@ -874,7 +874,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <R, E extends Exception> ContinuableFuture<R> thenCallByTP(final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+    public <R, E extends Exception> ContinuableFuture<R> thenCallByTP(final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseTPExecutor().thenCall(action);
     }
 
@@ -886,7 +886,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runAfterBoth(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runAfterBoth(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -908,7 +908,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiConsumer<? super T, ? super U, E> action) {
+            final Throwables.BiConsumer<? super T, ? super U, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -928,7 +928,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runAfterBoth(final ContinuableFuture<U> other,
-            final Try.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
+            final Throwables.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -971,7 +971,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiFunction<? super T, ? super U, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super U, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -991,7 +991,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callAfterBoth(final ContinuableFuture<U> other,
-            final Try.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
+            final Throwables.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -1011,7 +1011,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterBoth(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterBoth(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return thenUseUIExecutor().runAfterBoth(other, action);
     }
 
@@ -1025,7 +1025,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiConsumer<? super T, ? super U, E> action) {
+            final Throwables.BiConsumer<? super T, ? super U, E> action) {
         return thenUseUIExecutor().runAfterBoth(other, action);
     }
 
@@ -1039,7 +1039,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterBoth(final ContinuableFuture<U> other,
-            final Try.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
+            final Throwables.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
         return thenUseUIExecutor().runAfterBoth(other, action);
     }
 
@@ -1066,7 +1066,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiFunction<? super T, ? super U, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super U, R, E> action) {
         return thenUseUIExecutor().callAfterBoth(other, action);
     }
 
@@ -1081,7 +1081,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterBoth(final ContinuableFuture<U> other,
-            final Try.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
+            final Throwables.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
         return thenUseUIExecutor().callAfterBoth(other, action);
     }
 
@@ -1093,7 +1093,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runByTPAfterBoth(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runByTPAfterBoth(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return thenUseTPExecutor().runAfterBoth(other, action);
     }
 
@@ -1107,7 +1107,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiConsumer<? super T, ? super U, E> action) {
+            final Throwables.BiConsumer<? super T, ? super U, E> action) {
         return thenUseTPExecutor().runAfterBoth(other, action);
     }
 
@@ -1121,7 +1121,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterBoth(final ContinuableFuture<U> other,
-            final Try.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
+            final Throwables.Consumer<? super Tuple4<T, Exception, U, Exception>, E> action) {
         return thenUseTPExecutor().runAfterBoth(other, action);
     }
 
@@ -1148,7 +1148,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterBoth(final ContinuableFuture<U> other,
-            final Try.BiFunction<? super T, ? super U, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super U, R, E> action) {
         return thenUseTPExecutor().callAfterBoth(other, action);
     }
 
@@ -1163,7 +1163,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterBoth(final ContinuableFuture<U> other,
-            final Try.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
+            final Throwables.Function<? super Tuple4<T, Exception, U, Exception>, R, E> action) {
         return thenUseTPExecutor().callAfterBoth(other, action);
     }
 
@@ -1175,7 +1175,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runAfterEither(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runAfterEither(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -1194,7 +1194,8 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runAfterEither(final ContinuableFuture<? extends T> other, final Try.Consumer<? super T, E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runAfterEither(final ContinuableFuture<? extends T> other,
+            final Throwables.Consumer<? super T, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -1214,7 +1215,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <E extends Exception> ContinuableFuture<Void> runAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiConsumer<? super T, ? super Exception, E> action) {
+            final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -1254,7 +1255,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <R, E extends Exception> ContinuableFuture<R> callAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.Function<? super T, R, E> action) {
+            final Throwables.Function<? super T, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -1275,7 +1276,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <R, E extends Exception> ContinuableFuture<R> callAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return execute(new Callable<R>() {
             @Override
             public R call() throws Exception {
@@ -1294,7 +1295,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return thenUseUIExecutor().runAfterEither(other, action);
     }
 
@@ -1308,7 +1309,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.Consumer<? super T, E> action) {
+            final Throwables.Consumer<? super T, E> action) {
         return thenUseUIExecutor().runAfterEither(other, action);
     }
 
@@ -1322,7 +1323,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiConsumer<? super T, ? super Exception, E> action) {
+            final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseUIExecutor().runAfterEither(other, action);
     }
 
@@ -1349,7 +1350,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.Function<? super T, R, E> action) {
+            final Throwables.Function<? super T, R, E> action) {
         return thenUseUIExecutor().callAfterEither(other, action);
     }
 
@@ -1364,7 +1365,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseUIExecutor().callAfterEither(other, action);
     }
 
@@ -1376,7 +1377,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<?> other, final Try.Runnable<E> action) {
+    public <E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<?> other, final Throwables.Runnable<E> action) {
         return thenUseTPExecutor().runAfterEither(other, action);
     }
 
@@ -1390,7 +1391,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.Consumer<? super T, E> action) {
+            final Throwables.Consumer<? super T, E> action) {
         return thenUseTPExecutor().runAfterEither(other, action);
     }
 
@@ -1404,7 +1405,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiConsumer<? super T, ? super Exception, E> action) {
+            final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseTPExecutor().runAfterEither(other, action);
     }
 
@@ -1431,7 +1432,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.Function<? super T, R, E> action) {
+            final Throwables.Function<? super T, R, E> action) {
         return thenUseTPExecutor().callAfterEither(other, action);
     }
 
@@ -1446,7 +1447,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @return
      */
     public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
-            final Try.BiFunction<? super T, ? super Exception, R, E> action) {
+            final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseTPExecutor().callAfterEither(other, action);
     }
 
@@ -1455,7 +1456,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //     * other given ContinuableFuture complete normally. If both of the given
     //     * ContinuableFutures complete exceptionally, then the returned
     //     * ContinuableFuture also does so.
-    //     * 
+    //     *
     //     * @param other
     //     * @param action
     //     * @return
@@ -1469,12 +1470,12 @@ public class ContinuableFuture<T> implements Future<T> {
     //     * other given ContinuableFuture complete normally. If both of the given
     //     * ContinuableFutures complete exceptionally, then the returned
     //     * ContinuableFuture also does so.
-    //     * 
+    //     *
     //     * @param other
     //     * @param action
     //     * @return
     //     */
-    //    public ContinuableFuture<Void> acceptEither(final ContinuableFuture<? extends T> other, final Try.Consumer<? super T, E> action)  {
+    //    public ContinuableFuture<Void> acceptEither(final ContinuableFuture<? extends T> other, final Throwables.Consumer<? super T, E> action)  {
     //        return Futures.anyOf(N.asList(this, other)).thenAccept(action);
     //    }
 
@@ -1484,7 +1485,7 @@ public class ContinuableFuture<T> implements Future<T> {
     //     * argument to the supplied function. Otherwise, if this ContinuableFuture
     //     * completes normally, then the returned ContinuableFuture also completes
     //     * normally with the same value.
-    //     * 
+    //     *
     //     * @param action
     //     * @return
     //     */

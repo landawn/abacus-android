@@ -35,7 +35,7 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Primitives;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -687,7 +687,7 @@ public class EventBus {
                 return;
 
             case SERIAL_EXECUTOR:
-                SerialExecutor.execute(new Try.Runnable<RuntimeException>() {
+                SerialExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                     @Override
                     public void run() {
                         post(identifier, event);
@@ -697,7 +697,7 @@ public class EventBus {
                 return;
 
             case THREAD_POOL_EXECUTOR:
-                TPExecutor.execute(new Try.Runnable<RuntimeException>() {
+                TPExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                     @Override
                     public void run() {
                         post(identifier, event);
@@ -707,7 +707,7 @@ public class EventBus {
                 return;
 
             case UI_THREAD:
-                UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                     @Override
                     public void run() {
                         post(identifier, event);

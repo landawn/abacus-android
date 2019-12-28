@@ -27,10 +27,9 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.landawn.abacus.util.Fn.Fnn;
 import com.landawn.abacus.util.MoreExecutors;
 import com.landawn.abacus.util.Retry;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.function.BiPredicate;
 import com.landawn.abacus.util.function.Predicate;
 
@@ -82,8 +81,14 @@ public class Async {
      * @param action
      * @return
      */
-    static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action) {
-        return execute(new FutureTask<>(Fnn.toCallable(action)), SERIAL_EXECUTOR);
+    static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action) {
+        return execute(new FutureTask<>(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                action.run();
+                return null;
+            }
+        }), SERIAL_EXECUTOR);
     }
 
     /**
@@ -92,7 +97,7 @@ public class Async {
      * @param delayInMillis
      * @return
      */
-    static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
+    static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
         final Callable<ContinuableFuture<Void>> scheduledAction = new Callable<ContinuableFuture<Void>>() {
             @Override
             public ContinuableFuture<Void> call() throws Exception {
@@ -113,7 +118,7 @@ public class Async {
      * @param retryCondition
      * @return
      */
-    static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
+    static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
             final Predicate<? super Exception> retryCondition) {
         return execute(new Callable<Void>() {
             @Override
@@ -181,8 +186,14 @@ public class Async {
      * @param action
      * @return
      */
-    static ContinuableFuture<Void> executeWithThreadPool(final Try.Runnable<? extends Exception> action) {
-        return execute(new FutureTask<>(Fnn.toCallable(action)), TP_EXECUTOR);
+    static ContinuableFuture<Void> executeWithThreadPool(final Throwables.Runnable<? extends Exception> action) {
+        return execute(new FutureTask<>(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                action.run();
+                return null;
+            }
+        }), TP_EXECUTOR);
     }
 
     /**
@@ -192,7 +203,7 @@ public class Async {
      * @param delayInMillis
      * @return
      */
-    static ContinuableFuture<Void> executeWithThreadPool(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
+    static ContinuableFuture<Void> executeWithThreadPool(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
         final Callable<ContinuableFuture<Void>> scheduledAction = new Callable<ContinuableFuture<Void>>() {
             @Override
             public ContinuableFuture<Void> call() throws Exception {
@@ -214,8 +225,8 @@ public class Async {
      * @param retryCondition
      * @return
      */
-    static ContinuableFuture<Void> executeWithThreadPool(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
-            final Predicate<? super Exception> retryCondition) {
+    static ContinuableFuture<Void> executeWithThreadPool(final Throwables.Runnable<? extends Exception> action, final int retryTimes,
+            final long retryIntervalInMillis, final Predicate<? super Exception> retryCondition) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -284,7 +295,7 @@ public class Async {
      * @param action
      * @return
      */
-    static ContinuableFuture<Void> executeOnUiThread(final Try.Runnable<? extends Exception> action) {
+    static ContinuableFuture<Void> executeOnUiThread(final Throwables.Runnable<? extends Exception> action) {
         return executeOnUiThread(action, 0);
     }
 
@@ -295,8 +306,14 @@ public class Async {
      * @param delayInMillis
      * @return
      */
-    static ContinuableFuture<Void> executeOnUiThread(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
-        return execute(new FutureTask<>(Fnn.toCallable(action)), _UI_EXECUTOR, delayInMillis);
+    static ContinuableFuture<Void> executeOnUiThread(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
+        return execute(new FutureTask<>(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                action.run();
+                return null;
+            }
+        }), _UI_EXECUTOR, delayInMillis);
     }
 
     /**
@@ -308,8 +325,8 @@ public class Async {
      * @param retryCondition
      * @return
      */
-    static ContinuableFuture<Void> executeOnUiThread(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
-            final Predicate<? super Exception> retryCondition) {
+    static ContinuableFuture<Void> executeOnUiThread(final Throwables.Runnable<? extends Exception> action, final int retryTimes,
+            final long retryIntervalInMillis, final Predicate<? super Exception> retryCondition) {
         return execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
@@ -515,7 +532,7 @@ public class Async {
          * @param action
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action) {
             return Async.execute(action);
         }
 
@@ -525,7 +542,7 @@ public class Async {
          * @param delayInMillis
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
             return Async.execute(action, delayInMillis);
         }
 
@@ -537,8 +554,8 @@ public class Async {
          * @param retryCondition
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
-                final Predicate<? super Exception> retryCondition) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final int retryTimes,
+                final long retryIntervalInMillis, final Predicate<? super Exception> retryCondition) {
             return Async.execute(action, retryTimes, retryIntervalInMillis, retryCondition);
 
         }
@@ -598,7 +615,7 @@ public class Async {
          * @param action
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action) {
             return Async.executeWithThreadPool(action);
         }
 
@@ -608,7 +625,7 @@ public class Async {
          * @param delayInMillis
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
             return Async.executeWithThreadPool(action, delayInMillis);
         }
 
@@ -620,8 +637,8 @@ public class Async {
          * @param retryCondition
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
-                final Predicate<? super Exception> retryCondition) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final int retryTimes,
+                final long retryIntervalInMillis, final Predicate<? super Exception> retryCondition) {
             return Async.executeWithThreadPool(action, retryTimes, retryIntervalInMillis, retryCondition);
 
         }
@@ -681,7 +698,7 @@ public class Async {
          * @param action
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action) {
             return Async.executeOnUiThread(action);
         }
 
@@ -692,7 +709,7 @@ public class Async {
          * @param delayInMillis unit is milliseconds
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final long delayInMillis) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final long delayInMillis) {
             return Async.executeOnUiThread(action, delayInMillis);
         }
 
@@ -704,8 +721,8 @@ public class Async {
          * @param retryCondition
          * @return
          */
-        public static ContinuableFuture<Void> execute(final Try.Runnable<? extends Exception> action, final int retryTimes, final long retryIntervalInMillis,
-                final Predicate<? super Exception> retryCondition) {
+        public static ContinuableFuture<Void> execute(final Throwables.Runnable<? extends Exception> action, final int retryTimes,
+                final long retryIntervalInMillis, final Predicate<? super Exception> retryCondition) {
             return Async.executeOnUiThread(action, retryTimes, retryIntervalInMillis, retryCondition);
         }
 

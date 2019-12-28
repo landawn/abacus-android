@@ -28,7 +28,7 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.IOUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.NamingPolicy;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.function.Consumer;
 
 import android.annotation.TargetApi;
@@ -63,7 +63,7 @@ import android.widget.Toast;
 // TODO: Auto-generated Javadoc
 /**
  * Always remember to initialize {@code Fu} class by calling method {@code init(Context context)} when the application is started.
- * 
+ *
  * More:
  *
  * @author Haiyang Li
@@ -92,7 +92,7 @@ public class CommonUtils {
     public static final Runnable EMPTY_ACTION = new Runnable() {
         @Override
         public void run() {
-            // Do nothing;            
+            // Do nothing;
         }
     };
 
@@ -219,7 +219,7 @@ public class CommonUtils {
     }
 
     //    /**
-    //     * 
+    //     *
     //     * @return
     //     * @see android.os.Build.VERSION.RELEASE
     //     */
@@ -228,7 +228,7 @@ public class CommonUtils {
     //    }
     //
     //    /**
-    //     * 
+    //     *
     //     * @return
     //     * @see android.os.Build.VERSION.BASE_OS
     //     */
@@ -341,7 +341,7 @@ public class CommonUtils {
     }
 
     /**
-     * Returns the values from the specified <code>column</code>. 
+     * Returns the values from the specified <code>column</code>.
      *
      * @param <T>
      * @param targetClass entity class or specific column type.
@@ -355,7 +355,7 @@ public class CommonUtils {
     }
 
     /**
-     * Returns the values from the specified <code>column</code>. 
+     * Returns the values from the specified <code>column</code>.
      *
      * @param <T>
      * @param targetClass entity class or specific column type.
@@ -835,7 +835,7 @@ public class CommonUtils {
      * @param action
      * @throws E the e
      */
-    public static <E extends Exception> void runOnUiThread(Try.Runnable<E> action) throws E {
+    public static <E extends Exception> void runOnUiThread(Throwables.Runnable<E> action) throws E {
         if (isUiThread()) {
             action.run();
         } else {
@@ -1346,7 +1346,7 @@ public class CommonUtils {
 
     /**
      * Copied from Picasso: http://square.github.io/picasso Copyright (C) 2013 Square, Inc.
-     * 
+     *
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
     private static class BitmapHoneycombMR1 {

@@ -17,7 +17,7 @@ package com.landawn.abacus.android.util;
 import com.landawn.abacus.android.util.Async.UIExecutor;
 import com.landawn.abacus.android.util.Observer.ViewObserver;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.Tuple;
 import com.landawn.abacus.util.Tuple.Tuple5;
 import com.landawn.abacus.util.function.Consumer;
@@ -112,7 +112,7 @@ public abstract class ObserverX<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.onScrollChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.onScrollChange(tmp._1, tmp._2, tmp._3, tmp._4, tmp._5);
@@ -126,7 +126,7 @@ public abstract class ObserverX<T> {
                 @Override
                 public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                     dispatcher.onNext(Tuple.of(v, scrollX, scrollY, oldScrollX, oldScrollY));
-                };
+                }
             });
 
             disposeActions.add(new Runnable() {
@@ -183,7 +183,7 @@ public abstract class ObserverX<T> {
                     if (CommonUtils.isUiThread()) {
                         onNext.accept(tmp);
                     } else {
-                        UIExecutor.execute(new Try.Runnable<RuntimeException>() {
+                        UIExecutor.execute(new Throwables.Runnable<RuntimeException>() {
                             @Override
                             public void run() {
                                 onNext.accept(tmp);
@@ -197,7 +197,7 @@ public abstract class ObserverX<T> {
                 @Override
                 public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                     dispatcher.onNext(Tuple.of(v, scrollX, scrollY, oldScrollX, oldScrollY));
-                };
+                }
             });
 
             disposeActions.add(new Runnable() {
