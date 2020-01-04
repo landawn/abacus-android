@@ -141,7 +141,7 @@ public final class SQLiteExecutor {
      * @param readOnlyPropNames
      */
     public static void registerReadOnlyProps(Class<?> targetClass, Collection<String> readOnlyPropNames) {
-        N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getClassName(targetClass) + " is not an entity class with getter/setter methods");
+        N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
         N.checkArgNotNullOrEmpty(readOnlyPropNames, "'readOnlyPropNames'");
 
         final EntityInfo entityInfo = ParserUtil.getEntityInfo(targetClass);
@@ -167,7 +167,7 @@ public final class SQLiteExecutor {
      * @param writeOnlyPropNames
      */
     public static void registerWriteOnlyProps(Class<?> targetClass, Collection<String> writeOnlyPropNames) {
-        N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getClassName(targetClass) + " is not an entity class with getter/setter methods");
+        N.checkArgument(ClassUtil.isEntity(targetClass), ClassUtil.getCanonicalClassName(targetClass) + " is not an entity class with getter/setter methods");
         N.checkArgNotNullOrEmpty(writeOnlyPropNames, "'writeOnlyPropNames'");
 
         final EntityInfo entityInfo = ParserUtil.getEntityInfo(targetClass);
@@ -473,7 +473,7 @@ public final class SQLiteExecutor {
     static <T> T toEntity(final Class<T> targetClass, final ContentValues contentValues, NamingPolicy namingPolicy) {
         if (!(ClassUtil.isEntity(targetClass) || targetClass.equals(Map.class))) {
             throw new IllegalArgumentException("The target class must be an entity class with getter/setter methods or Map.class. But it is: "
-                    + ClassUtil.getClassName(targetClass));
+                    + ClassUtil.getCanonicalClassName(targetClass));
         }
 
         if (targetClass.isAssignableFrom(Map.class)) {
@@ -711,7 +711,7 @@ public final class SQLiteExecutor {
             }
         } else {
             throw new IllegalArgumentException("Only entity class with getter/setter methods or Map are supported. "
-                    + ClassUtil.getClassName(obj.getClass()) + " is not supported");
+                    + ClassUtil.getCanonicalClassName(obj.getClass()) + " is not supported");
         }
 
         return result;
