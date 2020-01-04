@@ -244,7 +244,7 @@ public class EventBus {
         final List<SubIdentifier> subList = getClassSubList(cls);
 
         if (N.isNullOrEmpty(subList)) {
-            throw new RuntimeException("No subscriber method found in class: " + ClassUtil.getCanonicalClassName(cls));
+            throw new RuntimeException("No subscriber method found in class: " + ClassUtil.getClassName(cls));
         }
 
         final List<SubIdentifier> eventSubList = new ArrayList<>(subList.size());
