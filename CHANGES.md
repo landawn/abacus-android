@@ -1,3 +1,9 @@
+### 1.9.8
+
+* Rename `NamedSQL` to `ParsedSql`.
+* Improvements and bug fix.
+
+
 ### 1.9.7
 
 * Move functional interfaces from `Try` to `Throwables`.

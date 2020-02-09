@@ -53,10 +53,10 @@ import com.landawn.abacus.parser.ParserUtil.PropInfo;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.DateUtil;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.NamedSQL;
 import com.landawn.abacus.util.NamingPolicy;
 import com.landawn.abacus.util.ObjectPool;
 import com.landawn.abacus.util.Objectory;
+import com.landawn.abacus.util.ParsedSql;
 import com.landawn.abacus.util.SQLBuilder;
 import com.landawn.abacus.util.SQLBuilder.PAC;
 import com.landawn.abacus.util.SQLBuilder.PLC;
@@ -1178,9 +1178,9 @@ public final class SQLiteExecutor {
         if (N.isNullOrEmpty(parameters)) {
             sqliteDB.execSQL(sql);
         } else {
-            final NamedSQL namedSQL = parseSQL(sql);
-            final Object[] args = prepareArguments(namedSQL, parameters);
-            sqliteDB.execSQL(namedSQL.getParameterizedSQL(), args);
+            final ParsedSql parsedSql = parseSQL(sql);
+            final Object[] args = prepareArguments(parsedSql, parameters);
+            sqliteDB.execSQL(parsedSql.getParameterizedSql(), args);
         }
     }
 
@@ -2385,15 +2385,15 @@ public final class SQLiteExecutor {
      * @return
      */
     private Cursor rawQuery(String sql, Object... parameters) {
-        final NamedSQL namedSQL = parseSQL(sql);
-        final Object[] args = prepareArguments(namedSQL, parameters);
+        final ParsedSql parsedSql = parseSQL(sql);
+        final Object[] args = prepareArguments(parsedSql, parameters);
         final String[] strArgs = new String[args.length];
 
         for (int i = 0, len = args.length; i < len; i++) {
             strArgs[i] = N.stringOf(args[i]);
         }
 
-        return sqliteDB.rawQuery(namedSQL.getParameterizedSQL(), strArgs);
+        return sqliteDB.rawQuery(parsedSql.getParameterizedSql(), strArgs);
     }
 
     /**
@@ -2447,8 +2447,8 @@ public final class SQLiteExecutor {
      * @param sql
      * @return
      */
-    private NamedSQL parseSQL(String sql) {
-        return NamedSQL.parse(sql);
+    private ParsedSql parseSQL(String sql) {
+        return ParsedSql.parse(sql);
     }
 
     /**
@@ -2488,20 +2488,20 @@ public final class SQLiteExecutor {
 
     /**
      *
-     * @param namedSQL
+     * @param parsedSql
      * @param parameters
      * @return
      */
-    private Object[] prepareArguments(final NamedSQL namedSQL, final Object... parameters) {
-        final int parameterCount = namedSQL.getParameterCount();
+    private Object[] prepareArguments(final ParsedSql parsedSql, final Object... parameters) {
+        final int parameterCount = parsedSql.getParameterCount();
 
         if (parameterCount == 0) {
             return N.EMPTY_OBJECT_ARRAY;
         } else if (N.isNullOrEmpty(parameters)) {
-            throw new IllegalArgumentException("Null or empty parameters for parameterized query: " + namedSQL.getNamedSQL());
+            throw new IllegalArgumentException("Null or empty parameters for parameterized query: " + parsedSql.sql());
         }
 
-        final List<String> namedParameters = namedSQL.getNamedParameters();
+        final List<String> namedParameters = parsedSql.getNamedParameters();
         Object[] result = parameters;
 
         if (N.notNullOrEmpty(namedParameters) && parameters.length == 1 && (parameters[0] instanceof Map || ClassUtil.isEntity(parameters[0].getClass()))) {
