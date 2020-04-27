@@ -1341,6 +1341,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             });
 
             final OnLayoutChangeListener onAttachStateChangeListener = new OnLayoutChangeListener() {
+                @SuppressWarnings("deprecation")
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
                     dispatcher.onNext(Tuple.of(v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
@@ -1420,6 +1421,7 @@ public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
             });
 
             final OnLayoutChangeListener onAttachStateChangeListener = new OnLayoutChangeListener() {
+                @SuppressWarnings("deprecation")
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
                     dispatcher.onNext(Tuple.of(v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
