@@ -1,3 +1,9 @@
+### 1.9.9
+
+* Refactoring `SQLBuilder`.
+* Improvements and bug fix.
+
+
 ### 1.9.8
 
 * Rename `NamedSQL` to `ParsedSql`.
