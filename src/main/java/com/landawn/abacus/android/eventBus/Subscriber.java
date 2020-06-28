@@ -16,7 +16,6 @@ package com.landawn.abacus.android.eventBus;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Subscriber.
  *
  * @author Haiyang Li
  * @param <E>

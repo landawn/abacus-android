@@ -23,7 +23,6 @@ import com.landawn.abacus.android.util.ThreadMode;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Subscribe.
  *
  * @author Haiyang Li
  * @since 0.8
