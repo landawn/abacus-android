@@ -41,34 +41,18 @@ import com.landawn.abacus.util.Tuple.Tuple4;
  */
 public class ContinuableFuture<T> implements Future<T> {
 
-    /** The Constant DEFAULT_EXECUTOR. */
     private static final Executor DEFAULT_EXECUTOR = Async.TP_EXECUTOR;
 
-    /** The future. */
     final Future<T> future;
 
-    /** The up futures. */
     final List<ContinuableFuture<?>> upFutures;
 
-    /** The async executor. */
     final Executor asyncExecutor;
 
-    /**
-     * Instantiates a new continuable future.
-     *
-     * @param future
-     */
     ContinuableFuture(final Future<T> future) {
         this(future, null, null);
     }
 
-    /**
-     * Instantiates a new continuable future.
-     *
-     * @param future
-     * @param upFutures
-     * @param asyncExecutor
-     */
     ContinuableFuture(final Future<T> future, final List<ContinuableFuture<?>> upFutures, final Executor asyncExecutor) {
         this.future = future;
         this.upFutures = upFutures;

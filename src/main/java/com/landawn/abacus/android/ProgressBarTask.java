@@ -53,28 +53,16 @@ import android.widget.ProgressBar;
  */
 public class ProgressBarTask {
 
-    /** The Constant activeProgressBarSet. */
     private static final Multiset<ViewGroup> activeProgressBarSet = new Multiset<>();
 
-    /** The max progress bar task. */
     private static volatile int maxProgressBarTask = Integer.MAX_VALUE;
 
-    /** The max progress bar task per view. */
     private static volatile int maxProgressBarTaskPerView = Integer.MAX_VALUE;
 
-    /** The future. */
     protected final ContinuableFuture<ProgressBar> future;
 
-    /** The progress bar. */
     protected ProgressBar progressBar;
 
-    /**
-     * Instantiates a new progress bar task.
-     *
-     * @param root
-     * @param delay
-     * @param circleColor
-     */
     public ProgressBarTask(final ViewGroup root, final long delay, final int circleColor) {
         future = UIExecutor.execute(new Callable<ProgressBar>() {
             @Override

@@ -69,9 +69,6 @@ import android.widget.TextView;
  */
 public abstract class Observer<T> extends com.landawn.abacus.util.Observer<T> {
 
-    /**
-     * Instantiates a new observer.
-     */
     Observer() {
         super();
     }

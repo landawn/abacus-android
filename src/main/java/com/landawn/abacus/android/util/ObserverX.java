@@ -34,9 +34,6 @@ import android.view.View.OnScrollChangeListener;
  */
 public abstract class ObserverX<T> {
 
-    /**
-     * Instantiates a new observer X.
-     */
     ObserverX() {
 
     }

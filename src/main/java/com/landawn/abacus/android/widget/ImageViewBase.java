@@ -26,44 +26,18 @@ import android.widget.ImageView;
  */
 public abstract class ImageViewBase extends ImageView {
 
-    /**
-     * Instantiates a new image view base.
-     *
-     * @param context
-     */
     public ImageViewBase(Context context) {
         super(context);
     }
 
-    /**
-     * Instantiates a new image view base.
-     *
-     * @param context
-     * @param attrs
-     */
     public ImageViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    /**
-     * Instantiates a new image view base.
-     *
-     * @param context
-     * @param attrs
-     * @param defStyleAttr
-     */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    /**
-     * Instantiates a new image view base.
-     *
-     * @param context
-     * @param attrs
-     * @param defStyleAttr
-     * @param defStyleRes
-     */
     public ImageViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

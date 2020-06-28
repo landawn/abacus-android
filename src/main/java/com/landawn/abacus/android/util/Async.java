@@ -45,7 +45,6 @@ import android.os.Looper;
  */
 public class Async {
 
-    /** The Constant SCHEDULED_EXECUTOR. */
     static final ScheduledExecutorService SCHEDULED_EXECUTOR;
     static {
         final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(8);
@@ -55,21 +54,14 @@ public class Async {
         SCHEDULED_EXECUTOR = MoreExecutors.getExitingScheduledExecutorService(executor);
     }
 
-    /** The Constant _UI_EXECUTOR. */
     static final _UIExecutor _UI_EXECUTOR = new _UIExecutor();
 
-    /** The Constant SERIAL_EXECUTOR. */
     public static final Executor SERIAL_EXECUTOR = AsyncTask.SERIAL_EXECUTOR;
 
-    /** The Constant TP_EXECUTOR. */
     public static final Executor TP_EXECUTOR = AsyncTask.THREAD_POOL_EXECUTOR;
 
-    /** The Constant UI_EXECUTOR. */
     public static final Executor UI_EXECUTOR = _UI_EXECUTOR;
 
-    /**
-     * Instantiates a new async.
-     */
     private Async() {
         // Singleton
     }

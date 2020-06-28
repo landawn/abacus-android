@@ -47,9 +47,6 @@ import com.landawn.abacus.util.Tuple.Tuple7;
  */
 public final class Futures {
 
-    /**
-     * Instantiates a new futures.
-     */
     private Futures() {
         // singleton.
     }

@@ -93,42 +93,24 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public final class SQLiteExecutor {
 
-    /** The Constant DEFAULT_NAMING_POLICY. */
     public static final NamingPolicy DEFAULT_NAMING_POLICY = NamingPolicy.LOWER_CASE_WITH_UNDERSCORE;
 
-    /** The Constant readOnlyPropNamesMap. */
     private static final Map<Class<?>, Set<String>> readOnlyPropNamesMap = new ConcurrentHashMap<>();
 
-    /** The Constant readOrWriteOnlyPropNamesMap. */
     private static final Map<Class<?>, Set<String>> readOrWriteOnlyPropNamesMap = new ConcurrentHashMap<>();
 
-    /** The Constant ID. */
     private static final String ID = "id";
 
-    /** The Constant _ID. */
     private static final String _ID = "_id";
 
-    /** The sqlite DB. */
     private final SQLiteDatabase sqliteDB;
 
-    /** The column naming policy. */
     private final NamingPolicy columnNamingPolicy;
 
-    /**
-     * Instantiates a new SQ lite executor.
-     *
-     * @param sqliteDatabase
-     */
     public SQLiteExecutor(final SQLiteDatabase sqliteDatabase) {
         this(sqliteDatabase, DEFAULT_NAMING_POLICY);
     }
 
-    /**
-     * Instantiates a new SQ lite executor.
-     *
-     * @param sqliteDatabase
-     * @param columnNamingPolicy a naming convention to convert the entity/property names in the Entity/Map parameter to table/column names
-     */
     public SQLiteExecutor(final SQLiteDatabase sqliteDatabase, final NamingPolicy columnNamingPolicy) {
         this.sqliteDB = sqliteDatabase;
         this.columnNamingPolicy = columnNamingPolicy == null ? DEFAULT_NAMING_POLICY : columnNamingPolicy;
@@ -184,10 +166,6 @@ public final class SQLiteExecutor {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public SQLiteDatabase sqliteDB() {
         return sqliteDB;
     }

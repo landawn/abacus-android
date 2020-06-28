@@ -26,44 +26,18 @@ import android.view.View;
  */
 public abstract class ViewBase extends View {
 
-    /**
-     * Instantiates a new view base.
-     *
-     * @param context
-     */
     public ViewBase(Context context) {
         super(context);
     }
 
-    /**
-     * Instantiates a new view base.
-     *
-     * @param context
-     * @param attrs
-     */
     public ViewBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    /**
-     * Instantiates a new view base.
-     *
-     * @param context
-     * @param attrs
-     * @param defStyleAttr
-     */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    /**
-     * Instantiates a new view base.
-     *
-     * @param context
-     * @param attrs
-     * @param defStyleAttr
-     * @param defStyleRes
-     */
     public ViewBase(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

@@ -76,19 +76,14 @@ import android.widget.Toast;
  */
 public class CommonUtils {
 
-    /** The Constant logger. */
     static final Logger logger = LoggerFactory.getLogger(CommonUtils.class);
 
-    /** The Constant CPU_COUNT. */
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
 
-    /** The context. */
     protected static volatile Context context;
 
-    /** The max app memory. */
     private static volatile int MAX_APP_MEMORY;
 
-    /** The Constant EMPTY_ACTION. */
     public static final Runnable EMPTY_ACTION = new Runnable() {
         @Override
         public void run() {
@@ -96,7 +91,6 @@ public class CommonUtils {
         }
     };
 
-    /** The Constant ON_ERROR_MISSING. */
     public static final Consumer<Exception> ON_ERROR_MISSING = new Consumer<Exception>() {
         @Override
         public void accept(Exception t) {
@@ -104,9 +98,6 @@ public class CommonUtils {
         }
     };
 
-    /**
-     * Instantiates a new common utils.
-     */
     private CommonUtils() {
         // singleton.
     }
@@ -133,18 +124,10 @@ public class CommonUtils {
         MAX_APP_MEMORY = memoryClass;
     }
 
-    /**
-     *
-     * @return
-     */
     public static Context context() {
         return context;
     }
 
-    /**
-     *
-     * @return
-     */
     public static int cupCount() {
         return CPU_COUNT;
     }
