@@ -20,7 +20,6 @@ import android.widget.ImageView;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ImageViewBase.
  *
  * @author Haiyang Li
  * @since 0.8

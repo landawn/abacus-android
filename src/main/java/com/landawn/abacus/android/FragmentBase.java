@@ -17,7 +17,6 @@ package com.landawn.abacus.android;
 import android.app.Fragment;
 
 /**
- * The Class FragmentBase.
  *
  * @author Haiyang Li
  * @since 0.8

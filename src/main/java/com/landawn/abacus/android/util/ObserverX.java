@@ -27,7 +27,6 @@ import android.view.View.OnScrollChangeListener;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ObserverX.
  *
  * @author Haiyang Li
  * @param <T>

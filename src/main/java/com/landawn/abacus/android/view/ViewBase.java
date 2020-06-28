@@ -20,7 +20,6 @@ import android.view.View;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ViewBase.
  *
  * @author Haiyang Li
  * @since 0.8

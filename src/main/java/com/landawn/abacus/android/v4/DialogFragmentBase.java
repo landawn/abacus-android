@@ -17,7 +17,6 @@ package com.landawn.abacus.android.v4;
 import android.support.v4.app.DialogFragment;
 
 /**
- * The Class DialogFragmentBase.
  *
  * @author Haiyang Li
  * @since 0.8

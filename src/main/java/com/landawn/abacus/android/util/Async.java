@@ -39,7 +39,6 @@ import android.os.Looper;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Async.
  *
  * @author Haiyang Li
  * @since 0.8

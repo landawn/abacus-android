@@ -62,7 +62,6 @@ import android.widget.TextView;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Observer.
  *
  * @author Haiyang Li
  * @param <T>

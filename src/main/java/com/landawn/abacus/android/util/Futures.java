@@ -41,7 +41,6 @@ import com.landawn.abacus.util.Tuple.Tuple7;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Futures.
  *
  * @author Haiyang Li
  * @since 0.9

@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AccountAuthenticatorActivityBase.
  *
  * @author Haiyang Li
  * @since 0.8
