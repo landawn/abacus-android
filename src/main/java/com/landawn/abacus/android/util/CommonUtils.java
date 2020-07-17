@@ -537,7 +537,9 @@ public class CommonUtils {
      *
      * @param a
      * @return
+     * @deprecated
      */
+    @Deprecated
     @SafeVarargs
     public static final ContentValues asContentValues(final Object... a) {
         if (N.isNullOrEmpty(a)) {
@@ -618,8 +620,10 @@ public class CommonUtils {
      *
      * @param a
      * @return
+     * @deprecated
      */
-    @SuppressWarnings("rawtypes")
+    @Deprecated
+    @SuppressWarnings({ "rawtypes" })
     @SafeVarargs
     public static Map<String, Class> asColumnTypes(final Object... a) {
         return N.asMap(a);
