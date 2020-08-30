@@ -1,3 +1,9 @@
+### 1.9.10
+
+* Rename `Observer` to `ObserverX`
+* Improvements and bug fix.
+
+
 ### 1.9.9
 
 * Refactoring `SQLBuilder`.
