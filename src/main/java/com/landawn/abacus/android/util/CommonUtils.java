@@ -22,6 +22,12 @@ import java.util.Map;
 
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.android.util.Async.UIExecutor;
+import com.landawn.abacus.android.util.ObserverX.AutoCompleteTextViewObserver;
+import com.landawn.abacus.android.util.ObserverX.MenuItemObserver;
+import com.landawn.abacus.android.util.ObserverX.SearchViewObserver;
+import com.landawn.abacus.android.util.ObserverX.TextViewObserver;
+import com.landawn.abacus.android.util.ObserverX.ViewGroupObserver;
+import com.landawn.abacus.android.util.ObserverX.ViewObserver;
 import com.landawn.abacus.android.util.SQLiteExecutor.Type;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
@@ -50,13 +56,17 @@ import android.os.CancellationSignal;
 import android.os.Looper;
 import android.os.StatFs;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -1329,6 +1339,72 @@ public class CommonUtils {
         }
 
         return result;
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
+     */
+    public static <T extends View, O extends ViewObserver<T, O>> ViewObserver<T, O> observe(final T view) {
+        return new ViewObserver<>(view);
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
+     */
+    public static <T extends ViewGroup, O extends ViewGroupObserver<T, O>> ViewGroupObserver<T, O> observe(final T view) {
+        return new ViewGroupObserver<>(view);
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
+     */
+    public static <T extends TextView, O extends TextViewObserver<T, O>> TextViewObserver<T, O> observe(final T view) {
+        return new TextViewObserver<>(view);
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
+     */
+    public static <T extends SearchView, O extends SearchViewObserver<T, O>> SearchViewObserver<T, O> observe(final T view) {
+        return new SearchViewObserver<>(view);
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param view
+     * @return
+     */
+    public static <T extends AutoCompleteTextView, O extends AutoCompleteTextViewObserver<T, O>> AutoCompleteTextViewObserver<T, O> observe(final T view) {
+        return new AutoCompleteTextViewObserver<>(view);
+    }
+
+    /**
+     *
+     * @param <T>
+     * @param <O>
+     * @param menuItem
+     * @return
+     */
+    public static <T extends MenuItem, O extends MenuItemObserver<T, O>> MenuItemObserver<T, O> observe(final T menuItem) {
+        return new MenuItemObserver<>(menuItem);
     }
 
     /**
