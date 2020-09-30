@@ -12,7 +12,6 @@ A general Java programming library for Android
 [ContinuableFuture](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/ContinuableFuture_Android_view.html), 
 [Futures](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/Futures_Android_view.html), 
 [EventBus](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/EventBus_view.html), 
-[Observer](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/Observer_view.html), 
 [ObserverX](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/ObserverX_view.html) and 
 [CommonUtils](https://htmlpreview.github.io/?https://github.com/landawn/abacus-android/master/docs/CommonUtils_view.html).
 
