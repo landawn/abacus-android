@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -456,7 +455,7 @@ public final class SQLiteExecutor {
 
         if (targetClass.isAssignableFrom(Map.class)) {
             final Map<String, Object> map = (Map<String, Object>) ((Modifier.isAbstract(targetClass.getModifiers())
-                    ? new HashMap<>(N.initHashCapacity(contentValues.size()))
+                    ? N.<String, Object> newHashMap(contentValues.size())
                     : N.newInstance(targetClass)));
 
             Object propValue = null;
