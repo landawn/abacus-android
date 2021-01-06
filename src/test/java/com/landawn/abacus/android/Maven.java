@@ -18,7 +18,7 @@ public class Maven {
 
         for (String line : IOUtil.readAllLines(new File("./pom.xml"))) {
             if (line.indexOf("<version>") > 0 && line.indexOf("</version>") > 0) {
-                targetVersion = StringUtil.substringBetween(line, "<version>", line.indexOf("</version>")).get();
+                targetVersion = StringUtil.substringBetween(line, "<version>", line.indexOf("</version>"));
                 break;
             }
         }
