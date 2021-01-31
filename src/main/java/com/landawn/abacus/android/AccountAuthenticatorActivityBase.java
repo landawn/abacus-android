@@ -48,6 +48,7 @@ public abstract class AccountAuthenticatorActivityBase extends AccountAuthentica
      * @param id
      * @return
      */
+    @SuppressWarnings("unused")
     public <T extends View> T getViewById(Class<T> cls, int id) {
         return (T) this.findViewById(id);
     }

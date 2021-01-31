@@ -1222,12 +1222,8 @@ public final class SQLiteExecutor {
      */
     @SafeVarargs
     public final boolean exists(String sql, Object... parameters) {
-        final Cursor cursor = rawQuery(sql, parameters);
-
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             return cursor.moveToNext();
-        } finally {
-            cursor.close();
         }
     }
 
@@ -1486,13 +1482,10 @@ public final class SQLiteExecutor {
     public final <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String sql, Object... parameters) {
         N.checkArgNotNull(targetClass, "targetClass");
 
-        final Cursor cursor = rawQuery(sql, parameters);
         DataSet ds = null;
 
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             ds = extractData(cursor, Type.arrayOf(targetClass), 0, 1);
-        } finally {
-            cursor.close();
         }
 
         return N.isNullOrEmpty(ds) ? Nullable.<V> empty() : Nullable.of(N.convert(ds.get(0, 0), targetClass));
@@ -1511,13 +1504,10 @@ public final class SQLiteExecutor {
     public final <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String sql, Object... parameters) {
         N.checkArgNotNull(targetClass, "targetClass");
 
-        final Cursor cursor = rawQuery(sql, parameters);
         DataSet ds = null;
 
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             ds = extractData(cursor, Type.arrayOf(targetClass), 0, 1);
-        } finally {
-            cursor.close();
         }
 
         return N.isNullOrEmpty(ds) ? Optional.<V> empty() : Optional.of(N.convert(ds.get(0, 0), targetClass));
@@ -1549,13 +1539,10 @@ public final class SQLiteExecutor {
     public final <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String sql, Object... parameters) throws DuplicatedResultException {
         N.checkArgNotNull(targetClass, "targetClass");
 
-        final Cursor cursor = rawQuery(sql, parameters);
         DataSet ds = null;
 
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             ds = extractData(cursor, Type.arrayOf(targetClass), 0, 2);
-        } finally {
-            cursor.close();
         }
 
         if (N.isNullOrEmpty(ds)) {
@@ -1582,13 +1569,10 @@ public final class SQLiteExecutor {
     public final <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String sql, Object... parameters) throws DuplicatedResultException {
         N.checkArgNotNull(targetClass, "targetClass");
 
-        final Cursor cursor = rawQuery(sql, parameters);
         DataSet ds = null;
 
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             ds = extractData(cursor, Type.arrayOf(targetClass), 0, 2);
-        } finally {
-            cursor.close();
         }
 
         if (N.isNullOrEmpty(ds)) {
@@ -2301,14 +2285,11 @@ public final class SQLiteExecutor {
         groupBy = groupBy == null ? null : formatName(groupBy);
         having = having == null ? null : parseStringCondition(having);
         orderBy = orderBy == null ? null : formatName(orderBy);
-        Cursor cursor = sqliteDB.query(table, formattedColumnNames, where, whereArgs, groupBy, having, orderBy, limit);
 
         DataSet rs = null;
 
-        try {
+        try (Cursor cursor = sqliteDB.query(table, formattedColumnNames, where, whereArgs, groupBy, having, orderBy, limit)) {
             rs = extractData(cursor, selectColumnTypes);
-        } finally {
-            cursor.close();
         }
 
         for (int i = 0, len = formattedColumnNames.length; i < len; i++) {
@@ -2346,12 +2327,9 @@ public final class SQLiteExecutor {
      * @return
      */
     private DataSet query(Class<?> targetClass, String sql, int offset, int count, Object... parameters) {
-        final Cursor cursor = rawQuery(sql, parameters);
 
-        try {
+        try (final Cursor cursor = rawQuery(sql, parameters)) {
             return extractData(targetClass, cursor, offset, count);
-        } finally {
-            cursor.close();
         }
     }
 

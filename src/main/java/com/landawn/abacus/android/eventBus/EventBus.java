@@ -161,10 +161,9 @@ public class EventBus {
     /**
      * Returns all registered subscribers.
      *
-     * @param eventType
      * @return
      */
-    public List<Object> getAllSubscribers(final Class<?> eventType) {
+    public List<Object> getAllSubscribers() {
         synchronized (registeredSubMap) {
             return new ArrayList<>(registeredSubMap.keySet());
         }
@@ -797,8 +796,7 @@ public class EventBus {
             final Subscribe subscribe = method.getAnnotation(Subscribe.class);
             this.obj = null;
             this.method = method;
-            this.parameterType = N.isPrimitiveType(method.getParameterTypes()[0]) ? N.wrap(method.getParameterTypes()[0])
-                    : method.getParameterTypes()[0];
+            this.parameterType = N.isPrimitiveType(method.getParameterTypes()[0]) ? N.wrap(method.getParameterTypes()[0]) : method.getParameterTypes()[0];
             this.eventId = subscribe == null || N.isNullOrEmpty(subscribe.eventId()) ? null : subscribe.eventId();
             this.threadMode = subscribe == null ? ThreadMode.DEFAULT : subscribe.threadMode();
             this.strictEventType = subscribe == null ? false : subscribe.strictEventType();

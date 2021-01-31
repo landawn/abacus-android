@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.landawn.abacus.android.util.Async.UIExecutor;
-import com.landawn.abacus.util.Immutable;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.Timed;
@@ -70,7 +69,7 @@ import android.widget.TextView;
  * @since 0.9
  */
 @com.landawn.abacus.annotation.Immutable
-public abstract class ObserverX<T> extends com.landawn.abacus.util.Observer<T> implements Immutable {
+public abstract class ObserverX<T> extends com.landawn.abacus.util.Observer<T> {
 
     ObserverX() {
         super();

@@ -1294,7 +1294,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
+    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.Consumer<? super T, E> action) {
         return thenUseUIExecutor().runAfterEither(other, action);
     }
@@ -1308,7 +1308,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
+    public <E extends Exception> ContinuableFuture<Void> runOnUIAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseUIExecutor().runAfterEither(other, action);
     }
@@ -1335,7 +1335,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
+    public <R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.Function<? super T, R, E> action) {
         return thenUseUIExecutor().callAfterEither(other, action);
     }
@@ -1350,7 +1350,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
+    public <R, E extends Exception> ContinuableFuture<R> callOnUIAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseUIExecutor().callAfterEither(other, action);
     }
@@ -1376,7 +1376,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
+    public <E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.Consumer<? super T, E> action) {
         return thenUseTPExecutor().runAfterEither(other, action);
     }
@@ -1390,7 +1390,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
+    public <E extends Exception> ContinuableFuture<Void> runByTPAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.BiConsumer<? super T, ? super Exception, E> action) {
         return thenUseTPExecutor().runAfterEither(other, action);
     }
@@ -1417,7 +1417,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
+    public <R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.Function<? super T, R, E> action) {
         return thenUseTPExecutor().callAfterEither(other, action);
     }
@@ -1432,7 +1432,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param action
      * @return
      */
-    public <U, R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
+    public <R, E extends Exception> ContinuableFuture<R> callByTPAfterEither(final ContinuableFuture<? extends T> other,
             final Throwables.BiFunction<? super T, ? super Exception, R, E> action) {
         return thenUseTPExecutor().callAfterEither(other, action);
     }

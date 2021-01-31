@@ -263,6 +263,7 @@ public class ProgressBarTask {
      * @param circleColor
      * @return
      */
+    @SuppressWarnings("static-method")
     protected ProgressBar createProgressBar(final ViewGroup root, final int circleColor) {
         // Create layout params expecting to be added to a frame layout.
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(0, 0);
@@ -270,6 +271,7 @@ public class ProgressBarTask {
         lp.gravity = Gravity.CENTER;
 
         // Create a progress bar to be added to the window.
+        @SuppressWarnings("hiding")
         final ProgressBar progressBar = new ProgressBar(root.getContext());
         progressBar.setIndeterminate(true);
         progressBar.setLayoutParams(lp);

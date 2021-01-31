@@ -745,7 +745,7 @@ public class CommonUtils {
      */
     public static <T> List<T> query(Class<T> targetClass, final Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder,
             CancellationSignal cancellationSignal) {
-        final Cursor cursor = getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
+        final Cursor cursor = getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder, cancellationSignal);
 
         try {
             return toList(targetClass, cursor);
@@ -797,7 +797,7 @@ public class CommonUtils {
     public static List<Map<String, Object>> query(final Uri uri, Map<String, Class> projectionTypeMap, String selection, String[] selectionArgs,
             String sortOrder, CancellationSignal cancellationSignal) {
         final Cursor cursor = getContentResolver().query(uri, projectionTypeMap.keySet().toArray(new String[projectionTypeMap.size()]), selection,
-                selectionArgs, sortOrder);
+                selectionArgs, sortOrder, cancellationSignal);
 
         try {
             return (List) extractData(cursor, projectionTypeMap.values()).toList(Map.class);
@@ -893,6 +893,7 @@ public class CommonUtils {
      * @param id
      * @return
      */
+    @SuppressWarnings("unused")
     public static <T extends View> T getViewById(Class<T> cls, View root, int id) {
         return (T) root.findViewById(id);
     }
@@ -906,6 +907,7 @@ public class CommonUtils {
      * @param id
      * @return
      */
+    @SuppressWarnings("unused")
     public static <T extends View> T getViewById(Class<T> cls, Activity activity, int id) {
         return (T) activity.findViewById(id);
     }
@@ -919,6 +921,7 @@ public class CommonUtils {
      * @param id
      * @return
      */
+    @SuppressWarnings("unused")
     public static <T extends View> T getViewById(Class<T> cls, Dialog dialog, int id) {
         return (T) dialog.findViewById(id);
     }
