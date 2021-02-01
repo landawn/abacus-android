@@ -116,6 +116,7 @@ public class CommonUtils {
      *
      * @param context
      */
+    @SuppressWarnings("hiding")
     public static synchronized void init(Context context) {
         if (CommonUtils.context != null) {
             return;
@@ -1108,6 +1109,7 @@ public class CommonUtils {
      *
      * @param view
      */
+    @SuppressWarnings("hiding")
     public static void showVirtualKeyboard(View view) {
         final Context context = view.getContext();
         final InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -1119,6 +1121,7 @@ public class CommonUtils {
      *
      * @param view
      */
+    @SuppressWarnings("hiding")
     public static void hideVirtualKeyboard(View view) {
         final Context context = view.getContext();
         final InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -1147,6 +1150,7 @@ public class CommonUtils {
      * @param context
      * @param text
      */
+    @SuppressWarnings("hiding")
     public static void showToast(final Context context, final CharSequence text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
@@ -1157,6 +1161,7 @@ public class CommonUtils {
      * @param text
      * @param duration
      */
+    @SuppressWarnings("hiding")
     public static void showToast(final Context context, final CharSequence text, final int duration) {
         Toast.makeText(context, text, duration).show();
     }

@@ -1648,6 +1648,7 @@ public class ContinuableFuture<T> implements Future<T> {
      * @param other
      * @return
      */
+    @SuppressWarnings("hiding")
     private <U> ContinuableFuture<U> execute(final FutureTask<U> futureTask, final ContinuableFuture<?> other) {
         asyncExecutor.execute(futureTask);
 
@@ -1723,6 +1724,7 @@ public class ContinuableFuture<T> implements Future<T> {
                 return future.get();
             }
 
+            @SuppressWarnings("hiding")
             @Override
             public T get(final long timeout, final TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
                 delay();

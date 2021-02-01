@@ -271,6 +271,7 @@ public class EventBus {
             }
         }
 
+        @SuppressWarnings("hiding")
         Map<Object, String> mapOfStickyEvent = this.mapOfStickyEvent;
 
         for (SubIdentifier sub : eventSubList) {
@@ -655,6 +656,7 @@ public class EventBus {
      * @param identifier
      * @param event
      */
+    @SuppressWarnings("hiding")
     protected void dispatch(final SubIdentifier identifier, final Object event) {
         switch (identifier.threadMode) {
             case DEFAULT:
@@ -838,6 +840,7 @@ public class EventBus {
          * @param eventId
          * @return true, if is my event
          */
+        @SuppressWarnings("hiding")
         boolean isMyEvent(final Class<?> eventType, final String eventId) {
             if (N.equals(this.eventId, eventId) == false) {
                 return false;
@@ -880,6 +883,7 @@ public class EventBus {
          * @param obj
          * @return true, if successful
          */
+        @SuppressWarnings("hiding")
         @Override
         public boolean equals(Object obj) {
             if (this == obj) {
@@ -889,7 +893,7 @@ public class EventBus {
             if (obj instanceof SubIdentifier) {
                 final SubIdentifier other = (SubIdentifier) obj;
 
-                return N.equals(obj, other.obj) && N.equals(method, other.method) && N.equals(parameterType, other.parameterType)
+                return N.equals(this.obj, other.obj) && N.equals(method, other.method) && N.equals(parameterType, other.parameterType)
                         && N.equals(eventId, other.eventId) && N.equals(threadMode, other.threadMode) && N.equals(strictEventType, other.strictEventType)
                         && N.equals(sticky, other.sticky) && N.equals(interval, other.interval) && N.equals(deduplicate, other.deduplicate)
                         && N.equals(isPossibleLambdaSubscriber, other.isPossibleLambdaSubscriber);
