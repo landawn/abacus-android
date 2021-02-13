@@ -33,11 +33,11 @@ public class Maven {
 
         targetDir.mkdir();
 
-        IOUtil.copy(sourceDir, targetDir);
+        IOUtil.copyFileToDirectory(sourceDir, targetDir);
 
         for (File f : IOUtil.listFiles(new File("./target/"))) {
             if (f.getName().startsWith("abacus-android") && f.getName().endsWith(".jar")) {
-                IOUtil.copy(f, targetDir);
+                IOUtil.copyFileToDirectory(f, targetDir);
             }
         }
 
