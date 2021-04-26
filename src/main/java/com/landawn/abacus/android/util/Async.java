@@ -758,7 +758,7 @@ public class Async {
     //    /**
     //     * Short name for AsyncExecutor
     //     *
-    //     * @deprecated replaced with SerialExecutor/TPExecutor/UIExecutor.
+    //     * @deprecated replaced by SerialExecutor/TPExecutor/UIExecutor.
     //     */
     //    @Deprecated
     //    @Beta

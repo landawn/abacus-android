@@ -847,7 +847,7 @@ public final class SQLiteExecutor {
     //     * @return
     //     *
     //     * @since 0.8.10
-    //     * @deprecated replaced with {@code insertAll}.
+    //     * @deprecated replaced by {@code insertAll}.
     //     */
     //    @Deprecated
     //    public <T> List<Long> insert(Collection<T> records, boolean withTransaction) {
@@ -861,7 +861,7 @@ public final class SQLiteExecutor {
     //     * @param records
     //     * @param withTransaction
     //     * @return
-    //     * @deprecated replaced with {@code insertAll}.
+    //     * @deprecated replaced by {@code insertAll}.
     //     */
     //    @Deprecated
     //    public <T> List<Long> insert(String table, Collection<T> records, boolean withTransaction) {
