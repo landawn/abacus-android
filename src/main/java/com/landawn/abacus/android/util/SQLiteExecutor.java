@@ -56,6 +56,7 @@ import com.landawn.abacus.util.NamingPolicy;
 import com.landawn.abacus.util.ObjectPool;
 import com.landawn.abacus.util.Objectory;
 import com.landawn.abacus.util.ParsedSql;
+import com.landawn.abacus.util.QueryUtil;
 import com.landawn.abacus.util.SQLBuilder;
 import com.landawn.abacus.util.SQLBuilder.PAC;
 import com.landawn.abacus.util.SQLBuilder.PLC;
@@ -332,16 +333,15 @@ public final class SQLiteExecutor {
      * @return
      */
     static <T> List<T> toList(Class<T> targetClass, Cursor cursor, int offset, int count) {
-        if (ClassUtil.isEntity(targetClass)) {
-            final DataSet ds = extractData(targetClass, cursor, offset, count);
-
-            if (ds == null || ds.isEmpty()) {
-                return new ArrayList<>();
-            } else {
-                return ds.toList(targetClass);
-            }
-        } else {
+        if (!ClassUtil.isEntity(targetClass)) {
             return toList(targetClass, cursor, 0, offset, count);
+        }
+        final DataSet ds = extractData(targetClass, cursor, offset, count);
+
+        if (ds == null || ds.isEmpty()) {
+            return new ArrayList<>();
+        } else {
+            return ds.toList(targetClass);
         }
     }
 
@@ -470,42 +470,41 @@ public final class SQLiteExecutor {
             }
 
             return (T) map;
-        } else {
-            final T entity = N.newInstance(targetClass);
-            final EntityInfo entityInfo = ParserUtil.getEntityInfo(targetClass);
-            PropInfo propInfo = null;
-            Object propValue = null;
+        }
+        final T entity = N.newInstance(targetClass);
+        final EntityInfo entityInfo = ParserUtil.getEntityInfo(targetClass);
+        PropInfo propInfo = null;
+        Object propValue = null;
 
-            for (String propName : contentValues.keySet()) {
-                propInfo = entityInfo.getPropInfo(propName);
+        for (String propName : contentValues.keySet()) {
+            propInfo = entityInfo.getPropInfo(propName);
 
-                if (propInfo == null) {
-                    continue;
-                }
+            if (propInfo == null) {
+                continue;
+            }
 
-                propValue = contentValues.get(propName);
+            propValue = contentValues.get(propName);
 
-                if (propValue != null && !propInfo.clazz.isAssignableFrom(propValue.getClass())) {
-                    if (propValue instanceof ContentValues) {
-                        if (Map.class.isAssignableFrom(propInfo.clazz) || ClassUtil.isEntity(propInfo.clazz)) {
-                            propInfo.setPropValue(entity, toEntity(propInfo.clazz, (ContentValues) propValue, namingPolicy));
-                        } else {
-                            propInfo.setPropValue(entity, propInfo.dbType.valueOf(N.stringOf(toEntity(Map.class, (ContentValues) propValue, namingPolicy))));
-                        }
+            if (propValue != null && !propInfo.clazz.isAssignableFrom(propValue.getClass())) {
+                if (propValue instanceof ContentValues) {
+                    if (Map.class.isAssignableFrom(propInfo.clazz) || ClassUtil.isEntity(propInfo.clazz)) {
+                        propInfo.setPropValue(entity, toEntity(propInfo.clazz, (ContentValues) propValue, namingPolicy));
                     } else {
-                        propInfo.setPropValue(entity, propValue);
+                        propInfo.setPropValue(entity, propInfo.dbType.valueOf(N.stringOf(toEntity(Map.class, (ContentValues) propValue, namingPolicy))));
                     }
                 } else {
                     propInfo.setPropValue(entity, propValue);
                 }
+            } else {
+                propInfo.setPropValue(entity, propValue);
             }
-
-            if (isDirtyMarkerEntity(entity.getClass())) {
-                ((DirtyMarker) entity).markDirty(false);
-            }
-
-            return entity;
         }
+
+        if (isDirtyMarkerEntity(entity.getClass())) {
+            ((DirtyMarker) entity).markDirty(false);
+        }
+
+        return entity;
     }
 
     /**
@@ -1040,10 +1039,9 @@ public final class SQLiteExecutor {
 
         if (whereClause == null) {
             return sqliteDB.update(table, contentValues, null, N.EMPTY_STRING_ARRAY);
-        } else {
-            final Command cmd = interpretCondition(whereClause);
-            return sqliteDB.update(table, contentValues, cmd.getSql(), cmd.getArgs());
         }
+        final Command cmd = interpretCondition(whereClause);
+        return sqliteDB.update(table, contentValues, cmd.getSql(), cmd.getArgs());
     }
 
     //    // mess up
@@ -1102,11 +1100,10 @@ public final class SQLiteExecutor {
     public int delete(String table, Condition whereClause) {
         if (whereClause == null) {
             return delete(table, null, N.EMPTY_STRING_ARRAY);
-        } else {
-            final Command cmd = interpretCondition(whereClause);
-
-            return delete(table, cmd.getSql(), cmd.getArgs());
         }
+        final Command cmd = interpretCondition(whereClause);
+
+        return delete(table, cmd.getSql(), cmd.getArgs());
     }
 
     /**
@@ -1547,7 +1544,8 @@ public final class SQLiteExecutor {
 
         if (N.isNullOrEmpty(ds)) {
             return Nullable.empty();
-        } else if (ds.size() == 1) {
+        }
+        if (ds.size() == 1) {
             return Nullable.of(N.convert(ds.get(0, 0), targetClass));
         } else {
             throw new DuplicatedResultException("At least two results found: " + Strings.concat(ds.get(0, 0), ", ", ds.get(1, 0)));
@@ -1577,7 +1575,8 @@ public final class SQLiteExecutor {
 
         if (N.isNullOrEmpty(ds)) {
             return Optional.empty();
-        } else if (ds.size() == 1) {
+        }
+        if (ds.size() == 1) {
             return Optional.of(N.convert(ds.get(0, 0), targetClass));
         } else {
             throw new DuplicatedResultException("At least two results found: " + Strings.concat(ds.get(0, 0), ", ", ds.get(1, 0)));
@@ -1642,15 +1641,14 @@ public final class SQLiteExecutor {
             }
 
             return (Optional<T>) Optional.empty();
+        }
+        if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+            return rs.firstRow(targetClass);
+        } else if (rs.columnNameList().size() == 1) {
+            return Optional.of(N.convert(rs.getColumn(0).get(0), targetType));
         } else {
-            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
-                return rs.firstRow(targetClass);
-            } else if (rs.columnNameList().size() == 1) {
-                return Optional.of(N.convert(rs.getColumn(0).get(0), targetType));
-            } else {
-                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
-                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
-            }
+            throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                    + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
         }
     }
 
@@ -1738,22 +1736,21 @@ public final class SQLiteExecutor {
 
         if (N.isNullOrEmpty(rs)) {
             return new ArrayList<>();
-        } else {
-            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
-                return rs.toList(targetClass);
-            } else if (rs.columnNameList().size() == 1) {
-                final List<Object> column = rs.getColumn(0);
-                final List<T> result = new ArrayList<>(column.size());
+        }
+        if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+            return rs.toList(targetClass);
+        } else if (rs.columnNameList().size() == 1) {
+            final List<Object> column = rs.getColumn(0);
+            final List<T> result = new ArrayList<>(column.size());
 
-                for (Object val : column) {
-                    result.add(N.convert(val, targetType));
-                }
-
-                return result;
-            } else {
-                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
-                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
+            for (Object val : column) {
+                result.add(N.convert(val, targetType));
             }
+
+            return result;
+        } else {
+            throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                    + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
         }
     }
 
@@ -1782,15 +1779,14 @@ public final class SQLiteExecutor {
             }
 
             return new ArrayList<>();
+        }
+        if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
+            return rs.toList(targetClass);
+        } else if (rs.columnNameList().size() == 1) {
+            return new ArrayList<>((List<T>) rs.getColumn(0));
         } else {
-            if (targetType.isEntity() || targetType.isMap() || targetType.isCollection() || targetType.isObjectArray()) {
-                return rs.toList(targetClass);
-            } else if (rs.columnNameList().size() == 1) {
-                return new ArrayList<>((List<T>) rs.getColumn(0));
-            } else {
-                throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
-                        + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
-            }
+            throw new IllegalArgumentException("Unsupported target row class/type: " + targetClass
+                    + ". Only Entity with getter/setter methods, Map, Collection and Array types are supported for multiple columns");
         }
     }
 
@@ -2059,11 +2055,9 @@ public final class SQLiteExecutor {
         if (whereClause == null) {
             return executeQuery(table, selectColumnNames, Type.arrayOf(selectColumnTypes), (String) null, N.EMPTY_STRING_ARRAY, groupBy, having, orderBy,
                     offset, count);
-        } else {
-            final Command cmd = interpretCondition(whereClause);
-            return executeQuery(table, selectColumnNames, Type.arrayOf(selectColumnTypes), cmd.getSql(), cmd.getArgs(), groupBy, having, orderBy, offset,
-                    count);
         }
+        final Command cmd = interpretCondition(whereClause);
+        return executeQuery(table, selectColumnNames, Type.arrayOf(selectColumnTypes), cmd.getSql(), cmd.getArgs(), groupBy, having, orderBy, offset, count);
     }
 
     /**
@@ -2148,10 +2142,9 @@ public final class SQLiteExecutor {
             int offset, int count) {
         if (whereClause == null) {
             return executeQuery(table, selectColumnNames, selectColumnTypes, (String) null, N.EMPTY_STRING_ARRAY, groupBy, having, orderBy, offset, count);
-        } else {
-            final Command cmd = interpretCondition(whereClause);
-            return executeQuery(table, selectColumnNames, selectColumnTypes, cmd.getSql(), cmd.getArgs(), groupBy, having, orderBy, offset, count);
         }
+        final Command cmd = interpretCondition(whereClause);
+        return executeQuery(table, selectColumnNames, selectColumnTypes, cmd.getSql(), cmd.getArgs(), groupBy, having, orderBy, offset, count);
     }
 
     /**
@@ -2452,7 +2445,8 @@ public final class SQLiteExecutor {
 
         if (parameterCount == 0) {
             return N.EMPTY_OBJECT_ARRAY;
-        } else if (N.isNullOrEmpty(parameters)) {
+        }
+        if (N.isNullOrEmpty(parameters)) {
             throw new IllegalArgumentException("Null or empty parameters for parameterized query: " + parsedSql.sql());
         }
 
@@ -2490,14 +2484,13 @@ public final class SQLiteExecutor {
                     result[i] = propInfo.getPropValue(entity);
                 }
             }
-        } else {
-            if ((parameters.length == 1) && (parameters[0] != null)) {
-                if (parameters[0] instanceof Object[] && ((((Object[]) parameters[0]).length) >= parameterCount)) {
-                    return (Object[]) parameters[0];
-                } else if (parameters[0] instanceof List && (((List<?>) parameters[0]).size() >= parameterCount)) {
-                    final Collection<?> c = (Collection<?>) parameters[0];
-                    return c.toArray(new Object[c.size()]);
-                }
+        } else if ((parameters.length == 1) && (parameters[0] != null)) {
+            if (parameters[0] instanceof Object[] && ((((Object[]) parameters[0]).length) >= parameterCount)) {
+                return (Object[]) parameters[0];
+            }
+            if (parameters[0] instanceof List && (((List<?>) parameters[0]).size() >= parameterCount)) {
+                final Collection<?> c = (Collection<?>) parameters[0];
+                return c.toArray(new Object[c.size()]);
             }
         }
 
@@ -2512,7 +2505,8 @@ public final class SQLiteExecutor {
     private Command interpretCondition(Condition condition) {
         if (condition instanceof Binary) {
             return interpretBinary((Binary) condition);
-        } else if (condition instanceof Between) {
+        }
+        if (condition instanceof Between) {
             return interpretBetween((Between) condition);
         } else if (condition instanceof In) {
             return interpretIn((In) condition);
@@ -2563,7 +2557,7 @@ public final class SQLiteExecutor {
         final Command cmd = new Command();
         final List<Object> parameters = in.getParameters();
 
-        cmd.setSql(formatName(in.getPropName()) + " IN (" + SQLBuilder.repeatQM(parameters.size()) + ")");
+        cmd.setSql(formatName(in.getPropName()) + " IN (" + QueryUtil.repeatQM(parameters.size()) + ")");
 
         final String[] args = new String[parameters.size()];
 
@@ -2590,43 +2584,42 @@ public final class SQLiteExecutor {
 
         if (conditionList.size() == 1) {
             return interpretCondition(conditionList.get(0));
-        } else {
-            final List<String> argList = new ArrayList<>();
-            final StringBuilder sb = Objectory.createStringBuilder();
+        }
+        final List<String> argList = new ArrayList<>();
+        final StringBuilder sb = Objectory.createStringBuilder();
 
-            try {
-                for (int i = 0; i < conditionList.size(); i++) {
-                    if (i > 0) {
-                        sb.append(WD._SPACE);
-                        sb.append(junction.getOperator().toString());
-                        sb.append(WD._SPACE);
-                    }
-
-                    sb.append(WD._PARENTHESES_L);
-
-                    Command cmd = interpretCondition(conditionList.get(i));
-                    sb.append(cmd.getSql());
-
-                    if (N.notNullOrEmpty(cmd.getArgs())) {
-                        for (String arg : cmd.getArgs()) {
-                            argList.add(arg);
-                        }
-                    }
-
-                    sb.append(WD._PARENTHESES_R);
+        try {
+            for (int i = 0; i < conditionList.size(); i++) {
+                if (i > 0) {
+                    sb.append(WD._SPACE);
+                    sb.append(junction.getOperator().toString());
+                    sb.append(WD._SPACE);
                 }
 
-                Command cmd = new Command();
-                cmd.setSql(sb.toString());
+                sb.append(WD._PARENTHESES_L);
 
-                if (N.notNullOrEmpty(argList)) {
-                    cmd.setArgs(argList.toArray(new String[argList.size()]));
+                Command cmd = interpretCondition(conditionList.get(i));
+                sb.append(cmd.getSql());
+
+                if (N.notNullOrEmpty(cmd.getArgs())) {
+                    for (String arg : cmd.getArgs()) {
+                        argList.add(arg);
+                    }
                 }
 
-                return cmd;
-            } finally {
-                Objectory.recycle(sb);
+                sb.append(WD._PARENTHESES_R);
             }
+
+            Command cmd = new Command();
+            cmd.setSql(sb.toString());
+
+            if (N.notNullOrEmpty(argList)) {
+                cmd.setArgs(argList.toArray(new String[argList.size()]));
+            }
+
+            return cmd;
+        } finally {
+            Objectory.recycle(sb);
         }
     }
 
@@ -2740,31 +2733,30 @@ public final class SQLiteExecutor {
         public String toString() {
             if (N.isNullOrEmpty(args)) {
                 return sql;
-            } else {
-                final StringBuilder sb = Objectory.createStringBuilder();
+            }
+            final StringBuilder sb = Objectory.createStringBuilder();
 
-                try {
-                    sb.append(sql);
-                    sb.append(_SPACE);
-                    sb.append(_BRACE_L);
+            try {
+                sb.append(sql);
+                sb.append(_SPACE);
+                sb.append(_BRACE_L);
 
-                    for (int i = 0, len = args.length; i < len; i++) {
-                        if (i > 0) {
-                            sb.append(COMMA_SPACE);
-                        }
-
-                        sb.append(i + 1);
-                        sb.append(_EQUAL);
-                        sb.append(args[i]);
+                for (int i = 0, len = args.length; i < len; i++) {
+                    if (i > 0) {
+                        sb.append(COMMA_SPACE);
                     }
 
-                    sb.append(_BRACE_R);
-
-                    return sb.toString();
-
-                } finally {
-                    Objectory.recycle(sb);
+                    sb.append(i + 1);
+                    sb.append(_EQUAL);
+                    sb.append(args[i]);
                 }
+
+                sb.append(_BRACE_R);
+
+                return sb.toString();
+
+            } finally {
+                Objectory.recycle(sb);
             }
         }
     }
