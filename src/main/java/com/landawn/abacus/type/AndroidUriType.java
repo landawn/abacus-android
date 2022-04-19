@@ -14,11 +14,6 @@
 
 package com.landawn.abacus.type;
 
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.landawn.abacus.util.N;
 
 import android.net.Uri;
@@ -65,47 +60,51 @@ public class AndroidUriType extends AbstractType<Uri> {
         return android.net.Uri.parse(str);
     }
 
-    /**
-     *
-     * @param rs
-     * @param columnIndex
-     * @return
-     * @throws SQLException the SQL exception
-     */
-    public Uri get(ResultSet rs, int columnIndex) throws SQLException {
-        return valueOf(rs.getString(columnIndex));
-    }
-
-    /**
-     *
-     * @param rs
-     * @param columnLabel
-     * @return
-     * @throws SQLException the SQL exception
-     */
-    public Uri get(ResultSet rs, String columnLabel) throws SQLException {
-        return valueOf(rs.getString(columnLabel));
-    }
-
-    /**
-     *
-     * @param stmt
-     * @param columnIndex
-     * @param x
-     * @throws SQLException the SQL exception
-     */
-    public void set(PreparedStatement stmt, int columnIndex, Uri x) throws SQLException {
-        stmt.setString(columnIndex, stringOf(x));
-    }
-
-    /**
-     *
-     * @param stmt
-     * @param parameterName
-     * @param x
-     * @throws SQLException the SQL exception
-     */
-    public void set(CallableStatement stmt, String parameterName, Uri x) throws SQLException {
-        stmt.setString(parameterName, stringOf(x));
-    }
+    //    /**
+    //     *
+    //     * @param rs
+    //     * @param columnIndex
+    //     * @return
+    //     * @throws SQLException the SQL exception
+    //     */
+    //    @Override
+    //    public Uri get(ResultSet rs, int columnIndex) throws SQLException {
+    //        return valueOf(rs.getString(columnIndex));
+    //    }
+    //
+    //    /**
+    //     *
+    //     * @param rs
+    //     * @param columnLabel
+    //     * @return
+    //     * @throws SQLException the SQL exception
+    //     */
+    //    @Override
+    //    public Uri get(ResultSet rs, String columnLabel) throws SQLException {
+    //        return valueOf(rs.getString(columnLabel));
+    //    }
+    //
+    //    /**
+    //     *
+    //     * @param stmt
+    //     * @param columnIndex
+    //     * @param x
+    //     * @throws SQLException the SQL exception
+    //     */
+    //    @Override
+    //    public void set(PreparedStatement stmt, int columnIndex, Uri x) throws SQLException {
+    //        stmt.setString(columnIndex, stringOf(x));
+    //    }
+    //
+    //    /**
+    //     *
+    //     * @param stmt
+    //     * @param parameterName
+    //     * @param x
+    //     * @throws SQLException the SQL exception
+    //     */
+    //    @Override
+    //    public void set(CallableStatement stmt, String parameterName, Uri x) throws SQLException {
+    //        stmt.setString(parameterName, stringOf(x));
+    //    }
 }
